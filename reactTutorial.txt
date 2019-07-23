@@ -117,6 +117,8 @@ S3e8====>Styling
 s3e9--->bootstrap-->npm install bootstrap--->in app.js
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+npm i --save react-bootstrap
+
 08.06.2019
 s4e1---this.state--->render and react written in class only-->state can be written in constructor or outside constructor
 
@@ -202,6 +204,8 @@ npm i react-router-dom
 
 import {BrowseRouter as Router, Route, Switch} from 'react-router-dom';
 
+
+
 Router>
             <Switch>
             <Route exact path="/" component={Home}></Route>
@@ -210,5 +214,24 @@ Router>
         </Switch>
     </Router>);
 
+import Link from 'react-router-dom';
+
+<Link to="/" className="nav-link" >Home<Link>
     git remote add origin URL_TO_YOUR_REPO
     git remote -v      ==========>to chechk remote URL
+
+    First, we make a backup copy of our master branch, in case something goes wrong. (This isn’t strictly necessary because of git reflog, but I find making a backup branch quicker and involving less thought). Once we make this backup branch we’re going to ignore it and ultimately when we’re done with this process we can delete it.
+
+git branch bkup
+Now, we rebase our master branch with the remote branch origin/master.
+
+git rebase origin/master
+
+https://code.visualstudio.com/docs/editor/emmet
+
+
+pass data bw components
+https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf
+
+
+https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/html/ltr/vertical-menu-template/card-bootstrap.html

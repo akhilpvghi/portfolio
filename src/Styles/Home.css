@@ -1,0 +1,13 @@
+.app_start > .main_conent > .dpDimension{
+    height: 51vh;
+    width: 372px;
+}
+.gradColor{
+    background: linear-gradient(to right,#2ad2e8,#00cc33)
+}
+
+.container.card_dimension {
+    width: 61%;
+    height: 60vh;
+    float: right;
+}

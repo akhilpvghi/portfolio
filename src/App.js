@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Home from './Components/Home/index';
+import './Styles/Common.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from './Components/Router';
 function App() {
   return (
@@ -22,7 +22,8 @@ function App() {
     //   </header>
     // </div>
     // <Home></Home>
-    <Routes></Routes>
+      <Routes></Routes>
+    
   );
 }
 

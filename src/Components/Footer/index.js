@@ -3,8 +3,8 @@ import '../../Styles/Footer.css';
 class Footer extends Component{
     render() {
         return(
-            <div className="Footer">{this.props.footerElements.map((a)=>{
-                return(<a>{a}</a>)
+            <div className="Footer">{this.props.footerElements.map((a,index)=>{
+                return(<a key={index}>{a}</a>)
             })}</div>
         );
     }
