@@ -1,0 +1,211 @@
+REACT	
+
+By stephen grider
+
+jest looks for .test file in src
+
+--->gulp serve
+
+11.05.2019
+---------->npm i -g create-react-app
+-------->create-react-app
+---------->add roaming/npm path in path and system variables 
+src--must contain index.js
+
+
+in index.js
+import React from 'react';
+import ReactDom from 'react-dom';
+import App from './component/App';
+
+ReactDom.render(<App />,
+                document.querySelector('#root'))
+
+
+
+		in app.js
+		import React from 'react';
+
+export default () => {
+    return (
+        <div>
+            hello app component
+        </div>
+    );
+};
+
+
+absolute refrencses---->
+
+
+ES6 part-2
+
+Spread --->is three dots
+
+
+[...arr,4]
+
+Destructuring---->to pull out from object
+
+Const {name, address,hobbies}= profile
+
+
+
+Template literals=`dnms ${this.name}`;--->using tilde operators
+
+
+Modules 
+
+Export
+And import
+
+--->default export not in parenthesis while importing
+
+13/05/2019
+14/05/2019
+
+in index.html in public---we have title
+index.js--->is entry point for java script
+
+ReactDom has function called render takes two parameter (<compoent name>,document.getElementById(where to put))
+
+---->import css files in js only
+
+
+every Component class will extend COmponent class-->i.e included with react
+
+S3e1--->Smart component and dumb component--->smart component having states(must have class)
+--->dumb component are static 
+and stateless function
+
+to amnage state among component we need ContextAPI, stateManager like Redux,
+
+S3e2
+JSX---->jsx rule use className instead of class
+	---->we can't use for else we can use htmlFor
+	---->we must have to use /> even in input or <br />
+	--->must return one element only
+
+
+	s3e3=----->in class we can define constant like js in render and while returning we can use curly braces {name}
+	in div to access
+
+we can use html anywhere in return, we can use braces only if want to perform computation  
+
+S3e4
+------->vs extension ES7 React/Redux/GraphQL/React-Native snippets
+---> while importing is we export as default no need to use { curly braces while importing} 
+
+S3e5--->function in place of class--->if we dont want states
+
+s3e6--->props are short for prooperty --->when we use child component in parent component for viewing component we can
+pass values in child component whether class level component or function level componen---->in order to access it from 
+function level we can get one parameter named as props and in class level component we can use it by this keyword in curly 
+{this.props.name} braces
+
+Destructuring in ES6-===> {name, phone}=this.props;--->must have same structure
+
+
+LEARNING DIRECT THROUGH NET
+---->16/05/2019
+--->despite of searching problem --->search how to start
+
+07.06.2019
+S3e7----->defaultProps--->impotant
+
+S3e8====>Styling
+s3e9--->bootstrap-->npm install bootstrap--->in app.js
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+08.06.2019
+s4e1---this.state--->render and react written in class only-->state can be written in constructor or outside constructor
+
+S4e2--->state will always be object--->event like onClick can call custom fn but inorder to access this we need arrow fn or bind keyword 
+
+s4e3---->react-fragment---->changing state
+
+s4e4---4. Changing State From Another Component
+
+s4e5--->provider --->contextAPI---->consumer
+
+s4e6---->context reducer
+
+create component---type rcc to get structure
+
+s5e1---> creating form
+
+s5e2--->handle form data
+
+s5e3---->handle form without using state and by using ref
+
+By stephen grider
+
+jest looks for .test file in src
+
+--->gulp serve
+
+11.05.2019
+---------->npm i -g create-react-app
+-------->create-react-app app_name
+---------->add roaming/npm path in path and system variables 
+
+13/05/2019
+14/05/2019
+
+in index.html in public---we have title
+index.js--->is entry point for java script
+
+ReactDom has function called render takes two parameter (<compoent name>,document.getElementById(where to put))
+
+---->import css files in js only
+
+
+every Component class will extend COmponent class-->i.e included with react
+
+S3e1--->Smart component and dumb component--->smart component having states(must have class)
+--->dumb component are static 
+and stateless function
+
+to amnage state among component we need ContextAPI, stateManager like Redux,
+
+S3e2
+JSX---->jsx rule use className instead of class
+	---->we can't use for else we can use htmlFor
+	---->we must have to use /> even in input or <br />
+	--->must return one element only
+
+
+	s3e3=----->in class we can define constant like js in render and while returning we can use curly braces {name}
+	in div to access
+
+we can use html anywhere in return, we can use braces only if want to perform computation  
+
+S3e4
+------->vs extension ES7 React/Redux/GraphQL/React-Native snippets
+---> while importing is we export as default no need to use { curly braces while importing} 
+
+S3e5--->function in place of class--->if we dont want states
+
+s3e6--->props are short for prooperty --->when we use child component in parent component for viewing component we can
+pass values in child component whether class level component or function level componen---->in order to access it from 
+function level we can get one parameter named as props and in class level component we can use it by this keyword in curly 
+{this.props.name} braces
+
+Destructuring in ES6-===> {name, phone}=this.props;--->must have same structure
+
+
+07.06.2019
+
+
+React router (S6e1)
+npm i react-router-dom
+
+import {BrowseRouter as Router, Route, Switch} from 'react-router-dom';
+
+Router>
+            <Switch>
+            <Route exact path="/" component={Home}></Route>
+            <Route exact path="/aboutMe" component={AboutMe}></Route>
+            <Route exact path="/experience" component={Experience}></Route>
+        </Switch>
+    </Router>);

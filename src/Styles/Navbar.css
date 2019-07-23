@@ -1,0 +1,12 @@
+.app_start .Navbar {
+    display: -webkit-inline-box;
+    background-color: yellow;
+    width: 100%;
+    height: 5vh;
+    /* padding: 18px; */
+}
+
+.Navbar > a {
+    padding-right: 24px;
+    background-color: yellow;
+}
