@@ -235,3 +235,5 @@ https://towardsdatascience.com/passing-data-between-react-components-parent-chil
 
 
 https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/html/ltr/vertical-menu-template/card-bootstrap.html
+
+to create build---npm run build
