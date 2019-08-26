@@ -250,9 +250,31 @@ then init command-------->command----->firebase init--->then confirm it by press
 by arrow key and select by pressing space bar---then hit enter----->
 
 
-then enter build-------->otherwise enter location like dist by putting build into dist folder
+if you dont want to use public as your directory--->then enter build-------->otherwise enter location like dist by putting build into dist folder
 
 don't rewrite index.html press (N)
 
 
 then---> command----->firebase deploy
+
+
+
+instagrammm--->
+https://www.instagram.com/oauth/authorize/?client_id=1d6d81e5cc2b4a6687d3bb42a95bda0d&redirect_uri=https://portfolio-fd8ac.firebaseapp.com/
+
+
+
+https://portfolio-fd8ac.firebaseapp.com/#access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e
+
+https://www.instagram.com/developer/authentication/
+
+
+Axios---https://alligator.io/react/axios-react/
+# Yarn
+$ yarn add axios
+
+# npm
+$ npm install axios --save
+
+
+

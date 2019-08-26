@@ -3,12 +3,33 @@ import '../../Styles/Home.css';
 import Navbar from "../NavBar";
 import Footer from "../Footer";
 import DP from '../../Assets/Images/B5216.jpg'
+import Phonelogo from '../../Assets/Images/sh_call_icon.png';
+import the_movement_bg from '../../Assets/Images/the_movement_bg.png';
 import AboutMe from '../AboutMe';
 import Experience from '../Experience';
 import Hobbies from '../Hobbies';
 import Downloads from '../Downloads';
 import GetInTouch from '../GetInTouch';
+import axios from 'axios';
 class Home extends Component {
+
+    state={
+        following: "",
+        followers: ""
+    }
+
+    componentDidMount=()=>{
+        axios.get('https://api.instagram.com/v1/users/self/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e')
+        .then((res)=>{
+            console.log('insta res')
+            console.log(res.data)
+        this.setState({
+            followers: res.data.data.counts.followed_by,
+            following : res.data.data.counts.follows
+        })
+        }
+            ).catch((err)=>{console.log('insta error',err)})
+    }
 
     getContentFromHome = ()=>{
             return(<div>
@@ -40,90 +61,95 @@ render() {
     return(
 
         <div className="row">
-            <div className="col-md-12"><Navbar navbarElements={navbarElementsFromHome} loadComponent={this.loadComponent}/></div>
-            <div className="col-md-4 sm-12">
-                <div className="rotatingFrontCard">
-             <div className="card-container">
-                <div className="card">
-                    <div className="front">
-                        <div className="cover">
-                            {/* <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg"/> */}
-                            <div className="profilePicture">
-                            {/* <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/> */}
-                        
-                            </div>
-                            </div>
-                        <div className="user">
-                            
-                        <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/>
+   <div className="col-md-12">
+      <Navbar navbarElements={navbarElementsFromHome} loadComponent={this.loadComponent}/>
+   </div>
+   {/* <div className="bgImg">
+      <img src={the_movement_bg} alt="Logo" className="container rounded-circle dpDimension"/>
+   </div> */}
+   <div className="col-md-4 sm-12">
+      <div className="rotatingFrontCard">
+         <div className="card-container">
+            <div className="card">
+               <div className="front">
+                  <div className="cover">
+                     {/* <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg"/> */}
+                     <div className="profilePicture">
+                        {/* <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/> */}
+                     </div>
+                  </div>
+                  <div className="user">
+                     <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/>
+                  </div>
+                  <div className="content">
+                     <div className="main">
+                        <h3 className="name">Akhil Kumar</h3>
+                        <p className="profession">Software Engineer</p>
+                     </div>
+                  </div>
+               </div>
+               <div className="back">
+                  <div className="header">
+                     <h5 className="motto"></h5>
+                  </div>
+                  <div className="content">
+                     <div className="main">
+                        <h4 className="text-center">Job Description</h4>
+                        <p className="text-center">HTML5, CSS3, JavaScript, TypeScript, Angular2+, ReactJs</p>
+                        <div className="stats-container">
+                           <div className="stats">
+                              {(this.state.followers==null) ?<div className="spinner-border text-secondary" role="status">
+</div> :
+                              <h4>{this.state.followers}</h4>}
+                              <p>
+                                 Followers
+                              </p>
+                           </div>
+                           <div className="stats">
+                           {(this.state.following==null) ?<div className="spinner-border text-secondary" role="status">
+</div> :
+                              <h4>{this.state.following}</h4>}
+                              <p>
+                                 Following
+                              </p>
+                           </div>
+                           <div className="stats">
+                              <h4>5</h4>
+                              <p>
+                                 Projects
+                              </p>
+                           </div>
+                           <div className="oneDiv row">
+                           <div className="col-sm-1 md-3 MobLogoAdjust">
+                                 <img src={Phonelogo} alt="Logo" className="container icon"/>
+                           </div>
+                           <div className="col-sm-11 md-9 mobNoMargin"> <h5 style={{display: 'unset'}}>+91-8799717085</h5></div>
+                           </div>
                         </div>
-                        {/* <iframe src="https://giphy.com/embed/WQ8jI9xsfbAeQ" width="480" height="225" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/29-WQ8jI9xsfbAeQ">via GIPHY</a></p> */}
-                        <div className="content">
-                            <div className="main">
-                                <h3 className="name">Akhil Kumar</h3>
-                                <p className="profession">Software Engineer</p>
-                                {/* <p className="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p> */}
-                            </div>
-                            {/* <div className="footer">
-                                <i className="fa fa-mail-forward"></i> Auto Rotation
-                            </div> */}
-                        </div>
-                    </div> 
-                    <div className="back">
-                        <div className="header">
-                            <h5 className="motto">"To be or not to be, this is my awesome motto!"</h5>
-                        </div>
-                        <div className="content">
-                            <div className="main">
-                                <h4 className="text-center">Job Description</h4>
-                                <p className="text-center">HTML5, CSS3, JavaScript, TypeScript, Angular2+, ReactJs</p>
-
-                                <div className="stats-container">
-                                    <div className="stats">
-                                        <h4>235</h4>
-                                        <p>
-                                            Followers
-                                        </p>
-                                    </div>
-                                    <div className="stats">
-                                        <h4>114</h4>
-                                        <p>
-                                            Following
-                                        </p>
-                                    </div>
-                                    <div className="stats">
-                                        <h4>35</h4>
-                                        <p>
-                                            Projects
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className="footer">
-                            <div className="social-links text-center">
-                                <a href="http://deepak646.blogspot.in/" className="facebook"><i className="fa fa-facebook fa-fw"></i></a>
-                                <a href="http://deepak646.blogspot.in/" className="google"><i className="fa fa-google-plus fa-fw"></i></a>
-                                <a href="http://deepak646.blogspot.in/" className="twitter"><i className="fa fa-twitter fa-fw"></i></a>
-                            </div>
-                        </div>
-                    </div> 
-                </div> 
-            </div> 
-
-                
-                </div>
-                </div>
-            <div className="col-md-8 sm-12">
-                <div className="card bg-primary mainContent">
-                    Akhil
-                    {this.state.component ? this.state.component : this.getContentFromHome()}
+                     </div>
+                  </div>
+                  <div className="footer">
+                     <div className="social-links text-center">
+                        <a href="http://deepak646.blogspot.in/" className="facebook"><i className="fa fa-facebook fa-fw"></i></a>
+                        <a href="http://deepak646.blogspot.in/" className="google"><i className="fa fa-google-plus fa-fw"></i></a>
+                        <a href="http://deepak646.blogspot.in/" className="twitter"><i className="fa fa-twitter fa-fw"></i></a>
+                     </div>
+                  </div>
+               </div>
             </div>
-            </div>
-            <div className="col-md-12"><Footer footerElements={FooterElementsFromHome}/></div>
-        </div>
-
+         </div>
+      </div>
+   </div>
+   <div className="col-md-8 sm-12">
+      <div className="card bg-primary mainContent">
+         Akhil
+         {this.state.component ? this.state.component : this.getContentFromHome()}
+      </div>
+   </div>
+   <div className="col-md-12">
+      <Footer footerElements={FooterElementsFromHome}/>
+   </div>
+</div>
     );
 }
 }

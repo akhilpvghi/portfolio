@@ -334,6 +334,61 @@ box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
     color: #555;
 }
 
+img.container.icon {
+   float: right;
+}
+
+.oneDiv {
+    display: inline-flex;
+    margin: 17px;
+    margin-top: inherit;
+}
+
+
+@media (min-width: 576px){
+
+    .oneDiv {
+        display: -webkit-inline-box;
+        margin: 17px;
+        margin-top: inherit;
+        text-align: center;
+    }
+    .mobNoMargin {
+        margin-left: -76px;
+    }
+    
+    .MobLogoAdjust {
+        margin: -2px;
+        margin-left: 57px;
+        padding-left: 58px;
+    }
+    img.container.icon {
+        float: right;
+        width: 60px;
+    }
+}
+
+@media (max-width: 576px){
+    .oneDiv {
+        display: -webkit-inline-box;
+        margin: 15px;
+    }
+    .mobNoMargin {
+        margin-left: -34px;
+    }
+    
+    .MobLogoAdjust {
+        margin: -5px;
+        height: 66px;
+        width: 96px;
+        margin-right: 0px;
+    }
+}
+
+.bgImg{
+    position: absolute;
+}
+
 
 /*       Fix bug for IE      */
 
