@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import './Styles/Common.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css'; 
 import Routes from './Components/Router';
 function App() {
   return (

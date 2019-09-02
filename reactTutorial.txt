@@ -250,7 +250,8 @@ then init command-------->command----->firebase init--->then confirm it by press
 by arrow key and select by pressing space bar---then hit enter----->
 
 
-if you dont want to use public as your directory--->then enter build-------->otherwise enter location like dist by putting build into dist folder
+if you dont want to use public as your directory--->then enter build-----
+--->otherwise enter location like dist by putting build into dist folder
 
 don't rewrite index.html press (N)
 
@@ -277,4 +278,74 @@ $ yarn add axios
 $ npm install axios --save
 
 
+return(
+            <div>
+              {this.props.isShowModal ?           
+              <div className= "" id="myModal"></div> : null}
+              
 
+================================================for dynamic loading of component
+
+
+              constructor(props) {
+    super(props);
+      this.state = {
+        count: this.props.count
+      }
+    }
+  increment(){
+    console.log("this.props.count");
+    console.log(this.props.count);
+    ////////////////////////////////////////////////////////
+    The component’s state changes
+A re-render can only be triggered if a component’s state has changed. The state can change from a props change, or from a direct setState change. The component gets the updated state and React decides if it should re-render the component. Unfortunately,
+ by default React is incredibly simplistic and basically re-renders everything all the time.
+
+
+https://reactjs.org/docs/render-props.html
+
+
+---------------------------------------------------
+fontAwesome
+If you are new to React JS and using create-react-app cli command to create the application, then run the following NPM command to include the latest version of font-awesome.
+
+npm install --save font-awesome
+import font-awesome to your index.js file. Just add below line to your index.js file
+
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
+or
+
+import 'font-awesome/css/font-awesome.min.css';
+Don't forget to use className as attribute
+
+ render: function() {
+    return <div><i className="fa fa-spinner fa-spin">no spinner but why</i></div>;
+}
+________________________________________________________________________________________________-
+
+
+Author to react slider
+https://medium.com/@ilonacodes/simple-image-carousel-with-react-5e20933001bf
+
+
+Ilona Codes
+
+_______________________________________________________________________________________
+
+get Data from other class in react
+
+export function HelloChandu() {
+
+}
+
+
+import { HelloChandu } from './helpers'
+-______________________________________________________
+ADVANCED JAVA
+
+core java ----only standalone application--->running on single system--->two types of standalone system--->
+GUI(desktop based application) and CUI(character user interface)
+
+Advanced java---->web application---->technologies--->JDBC,Servlet,JSP
+
+find cureent version of these technologies

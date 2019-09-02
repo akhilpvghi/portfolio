@@ -15,10 +15,10 @@ class Footer extends Component{
         <div className="mb-5 flex-center">
 
           <a className="fb-ic">
-            <i className="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            <i className="fa fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           <a className="tw-ic">
-            <i className="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            <i className="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           <a className="gplus-ic">
             <i className="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
@@ -27,10 +27,10 @@ class Footer extends Component{
             <i className="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           <a className="ins-ic">
-            <i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            <i className="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
           </a>
           <a className="pin-ic">
-            <i className="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+            <i className="fa fa-pinterest fa-lg white-text fa-2x"> </i>
           </a>
         </div>
       </div>
