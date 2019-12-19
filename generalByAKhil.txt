@@ -1,0 +1,73 @@
+https://www.downvids.ne-------->for downloading youtube playlist
+
+
+sanandreas ----->change fm using INSERT and track by FN + F5------------->VROCKPOKEY--->for car----->W,A,S,D for driving car
+
+____________________________________________________________________________________________________________
+
+
+The Kinetic Living Podcast ------------>https://www.youtube.com/watch?v=E1FEAPs8oN8&list=PLcBVsra3A46ppuJaBaleTJuGgoaW3_s_z
+
+Tech Careers------>
+https://www.youtube.com/watch?v=oRhAlmX_ijo&list=PLcBVsra3A46ppvu91JgrYFHGJWVY0sAQk&index=21
+
+____________________________________________________________________________________________________________
+
+Word meaning
+
+I find indian dood devisive
+
+carphacist----nervocking---spell Mistake
+
+
+
+
+
+____________________________________________________________________________________________________________
+
+English phrase
+
+could tell joke to fill time
+
+____________________________________________________________________________________________________________
+
+shortcut of vscode
+
+alt + up and down----->move line up and down
+
+alt + numbers --------->to switch tabs-
+
+
+____________________________________________________________________________________________________________
+
+to remove unnecessary extension files from windows where F is disk location
+
+attrib -h -r -s /d F:\*.*
+
+____________________________________________________________________________________________________________
+
+kill task in windows 
+
+
+taskkill /f /fi “status eq not responding” 
+
+taskkill /im explorer.exe -f
+
+
+taskkill /F /IM explorer.exe & start explorer
+
+____________________________________________________________________________________________________________
+
+
+movie index
+
+http://dl3.haylimoviez.info/Movie%202017/
+
+
+http://www.isdevelopment.us/Documents/Videos/Videos-Movies/
+
+random----- http://www.ai.sri.com/movies/
+
+http://103.126.12.226/Data/disk2/Movies/Bollywood/2019/
+
+above same as http://103.126.12.226/movie.php?imdbid=tt7469726&cat=Bollywood

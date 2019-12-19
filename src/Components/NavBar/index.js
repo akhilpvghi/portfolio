@@ -1,109 +1,80 @@
-    import React, {Component} from 'react';
-    import '../../Styles/Navbar.css';
-    // import {Link} from 'react-router-dom';
-    class Navbar extends Component{
-        state={};
+      import React, {Component,useState,useEffect} from 'react';
+      import '../../Styles/Navbar.css';
+      import useWindowWidth from '../helper/WindowWidth'
+      // import {Link} from 'react-router-dom';
 
-        constructor(){
-            super()
+      const Navbar=(props)=>{
+        const[date_n_time,setDate_n_time]=useState("")
+        const[collapsed,SetCollapsed]=useState(true);
+        let windowWidth=useWindowWidth()
+        const tick=()=>{
+          setDate_n_time(new Date().toLocaleString())
+          // this.setState({date_n_time : new Date().toLocaleString()})
         }
 
-        componentDidMount(){
+      const getLink=(event)=>{
+          console.log("akhilll",event)
+          props.loadComponent(event);
+          // this.setState({collapsed: true});
+          SetCollapsed(true)
+          // return "/About";
 
-            this.setState({collapsed: true});
-        }
+      }
 
-         getLink(event){
-            console.log("akhilll",event)
-            this.props.loadComponent(event);
-            // return "/About";
-
-        }
-        toggleControl=()=>{
-            
-            this.setState({collapsed: !this.state.collapsed});
-        }
-        render(props) {
-            return(
-
-
-
-
-
-
-
-
-<nav className="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
-  {/* <a className="navbar-brand" href="#">Navbar</a> */}
-  <button onClick={()=>this.toggleControl()} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-
-  <div className={(this.state.collapsed  ? "collapse" : "") + ' navbar-collapse'} id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-     
-      {this.props.navbarElements.map((link,index)=>{
-                    return(
-                        // <button className="nav-link bg-warning" onClick={()=>this.getLink(link)}>{link}</button>
-                        <li className="nav-item" key={index} onClick={()=>this.getLink(link)}>
-                        <a className="nav-link" >{link}</a>
-                      </li>
-                    )
-                })}
-      {/* <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a className="dropdown-item" href="#">Action</a>
-          <a className="dropdown-item" href="#">Another action</a>
-          <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> */}
-      {/* <li className="nav-item">
-        <a className="nav-link disabled" href="#">Disabled</a>
-      </li> */}
-    </ul>
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
-
-
-
-
-                /* <nav className="navbar navbar-dark bg-dark">
-  <a className="navbar-brand" href="#">Navbar w/ text</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarText">
-    <ul className="navbar-nav mr-auto">
-    {this.props.navbarElements.map((link,index)=>{
-                    return(
-                        // <button className="nav-link bg-warning" onClick={()=>this.getLink(link)}>{link}</button>
-                        <li className="nav-item active" key={index} onClick={()=>this.getLink(link)}>
-                        <a className="nav-link" >{link} <span className="sr-only">{link} </span></a>
-                      </li>
-                    )
-                })}
-    </ul>
-  </div>
-</nav> */
-
-
-               
-               
-               
-               
-               
-          
-            );
-        }
+      const toggleControl=()=>{
+              SetCollapsed(!collapsed)
+        // this.setState({collapsed: !this.state.collapsed});
     }
 
-    export default Navbar;
+    useEffect(()=>{
+
+      // setWindowWidth(windowWidth)
+      if(windowWidth==undefined){
+        windowWidth=windowWidth+1
+      }
+      console.log("window.innerWidthwindow.innerWidth",windowWidth)
+    }
+    
+    ,[windowWidth])
+
+
+        useEffect(()=>{
+          let intervalID=setInterval(()=>tick(),1000)
+          return ()=>{
+            clearInterval(intervalID);
+          }
+        }
+        
+        ,[])
+
+        let content=(<nav className="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+        {/* <a className="navbar-brand" href="#">Navbar</a> */}
+        <button onClick={()=>toggleControl()} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          
+          <span className="navbar-toggler-icon"></span>
+        </button>
+      {windowWidth<987?<div className="date_n_time"> {date_n_time}</div>:null} 
+        <div className={(collapsed  ? "collapse" : "") + ' navbar-collapse'} id="navbarSupportedContent">
+          <ul className="navbar-nav">
+          
+            {props.navbarElements.map((link,index)=>{
+                          return(
+                              // <button className="nav-link bg-warning" onClick={()=>this.getLink(link)}>{link}</button>
+                              <li className="nav-item" key={index} onClick={()=>getLink(link)}>
+                              <a className="nav-link" >{link}</a>
+                            </li>
+                          )
+                      })}
+          </ul>
+          {windowWidth>987?<div className="date_n_time"> {date_n_time}</div>:null}
+          <form className="form-inline my-2 my-lg-0">
+            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      )
+      return content
+      }
+
+      export default Navbar;

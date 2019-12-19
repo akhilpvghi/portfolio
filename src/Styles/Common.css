@@ -133,5 +133,51 @@ i.fa.fa-chevron-circle-left.fa-3x.floaty-left {
 }
 
 .incWidth{
-  max-width: 506px !important;
+  max-width: 523px !important;
+  max-height: 600px !important;
+}
+
+.controlOverflow{
+  overflow: scroll;
+}
+
+.imgSpinner{
+  align-items: center;
+  text-align: center;
+  margin-left: 110px;
+}
+
+.black{
+  color: rgb(33, 37, 41);
+}
+
+.cursrPointer{
+  cursor: pointer;
+}
+
+.padd0{
+  padding-left:0px !important; 
+  padding-right:0px !important;
+}
+
+.marg0{
+  margin-left:0px !important; 
+  margin-right:0px !important;
+}
+
+
+.SmallWidth{
+width: 200px;
+height: 180px;
+}
+
+/* .LargeWidth{
+  width: 285px;
+  height: 216px;
+  } */
+
+  .date_n_time {
+    color: white;
+    margin: auto;
+    font-size: x-large;
 }

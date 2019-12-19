@@ -214,7 +214,9 @@ Router>
         </Switch>
     </Router>);
 
-import Link from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
+<Link to="route" target="_blank" onClick={(event) => {event.preventDefault(); window.open(this.makeHref("route"));}} />
 
 <Link to="/" className="nav-link" >Home<Link>
     git remote add origin URL_TO_YOUR_REPO
@@ -341,6 +343,110 @@ export function HelloChandu() {
 
 import { HelloChandu } from './helpers'
 -______________________________________________________
+
+Check imageloading
+ handleImageLoaded() {
+    this.setState({ imageStatus: "loaded" });
+  }
+
+  handleImageErrored() {
+    this.setState({ imageStatus: "failed to load" });
+  }
+
+  render() {
+    return (
+      <div>
+        <img
+          src={this.props.imageUrl}
+          onLoad={this.handleImageLoaded.bind(this)}
+          onError={this.handleImageErrored.bind(this)}
+        />
+        {this.state.imageStatus}
+      </div>
+    );
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    ReactHooks--> allow to create functional components--->useState,
+useEffect--->takes two parameter 1. the function like componenetDidMount(this function can take cleaning function) and the dependency array  
+
+
+export const useInstaPhotos = (isDataLoaded) =>{
+  const [instaPhotos,setInstaphotos] = useState([])
+  const [isDataLoadedOnce,setIsDataLoadedOnce] = useState(isDataLoaded)
+  useEffect(() => {
+    const InstaImg=[];
+    console.log("sending http request");
+        axios.get('https://api.instagram.com/v1/users/self/media/recent/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e')
+        .then((res)=>{
+              res.data.data.map((element)=>{
+                InstaImg.push(element.images.standard_resolution.url)
+              })
+              setInstaphotos(InstaImg)
+              setIsDataLoadedOnce(true)
+        } 
+              ).catch((err)=>{console.log('insta error',err)})
+              
+  }, [isDataLoadedOnce])
+
+  return [instaPhotos,isDataLoadedOnce]; 
+
+}
+
+______________________________________________________________________________________
+
+conditional styling
+
+className={(this.state.collapsed  ? "collapse" : "") + ' navbar-collapse'}
+
+____________________________________________________________________________________
+to find inner  of the screen
+const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+
+
+useEffect(()=>{
+    // window.addEventListener('resize',)
+    // console.log("galleryurl",localStorage.getItem("galleryImages"))
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize',handleResize)
+    setInstaPhotos(JSON.parse(localStorage.getItem("galleryImages")));
+    return() => {
+      window.removeEventListener('resize',handleResize)
+    } 
+  },[localStorage.getItem("galleryImages").length])
+
+
+_________________________________________________________________________________
+
+styling
+https://www.bootdey.com/snippets/view/User-list-page#preview
+_____________________________________________________________________________________
+
+react tutorial
+https://openclassrooms.com/en/courses/4286486-build-web-apps-with-reactjs/4286711-build-a-ticking-clock-component
+
+
+
+___________________________________________________________________________________________________________
+
+dynamic level css in reactjs
+
+import classLevelStyles from '../styles/cell.css';
+
+const style = {
+    width:  this.calcWidth()  + 'px',
+    height: this.calcHeight() + 'px',
+};
+
+<div className={classLevelStyles} style={style} />
+
+______________________________________________________________________________
+
+
+colors
+https://codepen.io/k3no/pen/gMrKbX
+______________________________________________________________________________
+
 ADVANCED JAVA
 
 core java ----only standalone application--->running on single system--->two types of standalone system--->
@@ -349,3 +455,150 @@ GUI(desktop based application) and CUI(character user interface)
 Advanced java---->web application---->technologies--->JDBC,Servlet,JSP
 
 find cureent version of these technologies
+
+______________________________________________________________________________
+
+dynamic img url
+src={`http://localhost:8000/img%20%28${ele}%29.jpg`}
+<img src={require(`${image}`)} alt="product" />
+
+______________________________________________________________________________
+
+ngrok ---https://www.sitepoint.com/accessing-localhost-from-anywhere/
+
+
+go to ngrok folder---->run ngrok http port_number 
+
+______________________________________________________________________________  
+
+CORS problem 
+
+https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/
+
+axios.get('https://example.com/getSomething', {
+headers:{    
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*' 
+}
+})
+_________________________________________________________________________________
+slider
+
+https://medium.com/@gianpaul.r/rendering-new-images-onclick-in-react-7cf0fee2184f
+
+_________________________________________________________________________________
+
+Regular Expression
+
+{
+   "type": "string",
+   "pattern": "^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$"
+}
+"555-1212"
+"(888)555-1212"
+"(888)555-1212 ext. 532"
+"(800)FLOWERS"
+_________________________________________________________________________________
+
+Run command-line as an Administrator. Then run the below mention command. type your port number in yourPortNumber
+
+netstat -ano | findstr :<yourPortNumber>
+
+Then you execute this command after identify the PID.
+taskkill /PID <typeyourPIDhere> /F
+
+______________________________________________________________________________ 
+to hide
+--->prefernce--------->setting--->setting json---->workspace setting
+
+navigate within file------->command+shift+p
+
+navigate within folder------->command+p
+
+generate setter---start writing setT---->and it will give suggestion
+JDBC
+
+1. import package---------------------->phone----------->(import java.sql.*)
+2.1  load and ----------->network------------>com.mysql.jdbc.driver------->download jar file--->mysql.connector
+          2.2 register the driver------------->Class.forName("com.mysql.jdbc.Driver")
+3.connecting or establishing the connection---------->dial a no.----------->Connection con= DriverManager.getConnection("URL or database name","userName","password")
+4.create the statement----------------->ask the query------------>a) statement b) prepared statement c) execute the procedural lang.----->
+
+Statement st = con.createStatement();
+
+5.execute the query--------------------->listen------>
+
+ResultSet rs = st.executeQuery("select * from student");
+
+
+6.process the result-------------------------->comment
+
+rs.next()----->// or we can use // while(rs.next) //oving the cursor from table title :P
+
+rs.getInt(1) // 1st column data + " " + rs.getInt(2)// 2nd column data
+
+
+7.close the connection-------------------------------->disconnect the call
+
+st.close()
+con.close()
+
+import java.sql.*;
+
+main(){
+
+}
+
+----------------------------------___________________________________________________________________________________________________________
+to set path temporariy in java
+
+java -cp ./classes;. className
+
+___________________________________________________________________________________________________________
+
+Reaact Conf 2019---->watched on 28112019
+
+2014-----React came in 2014----------1st conference--------react native learn once write anywhere-------
+
+low barrier to entry----------> super easy to use-------->spark your curiosity------->
+ability to scale--->
+high productivity
+
+
+react developer tool--------> for google chrome extension
+indistinguishable----->
+React 16.8 : the one with hooks
+
+various input device loaded ------>stylus pen---->
+------->selective hydration
+------>concurrent
+Picture worth thousand words--->
+
+------------------------>order of precedence according to style sheet 
+------------------------>className={styles('blue','red')}------->actual overriding in react--------------->svg in img src using react----->
+----------------->use REM instead px i.e rootElement
+
+load important data first------->this isn't the best win....
+
+<React.suspense>------>loading according to componet not with type of data--->
+
+Developer -----------Tanya  --twitter--->@_Tany_    hello@tany4.com---------->OLIO---->sharing food-------->build in react 
+
+Tejas at 2:42----->it is not a formal specification----->play guessing games--->GraphQL----->formal specification ,remove guessing games, Meaningful discussion,
+
+schema definition---> strong contractual request--->
+
+bcoz we dont trust api in js------>
+
+restful-react <RestfulProvider>----->package------->it has data,loading and error--------always use id-------->
+
+______________________________________________________________________________
+
+sofie bitts---->our own environment--->
+
+mutaion mode--->div.style.color = 'red';
+
+persistent mode----->
+
+view = createView()----->
