@@ -1,0 +1,22 @@
+CLIENT INFO
+CLIENT ID	1d6d81e5cc2b4a6687d3bb42a95bda0d
+CLIENT STATUS	Sandbox Mode https://portfolio-fd8ac.firebaseapp.com/
+
+access-token
+7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e
+
+id": "7926815114",
+
+https://api.instagram.com/v1/users/self/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e
+
+https://portfolio-fd8ac.firebaseapp.com
+
+
+
+https://api.instagram.com/oauth/authorize/?client_id=1d6d81e5cc2b4a6687d3bb42a95bda0d&redirect_uri=https://portfolio-fd8ac.firebaseapp.com/&response_type=code&scope=basic+comments+follower_list+likes+relationships+public_content
+
+https://api.instagram.com/oauth/authorize/?client_id=1d6d81e5cc2b4a6687d3bb42a95bda0d&redirect_uri=https://portfolio-fd8ac.firebaseapp.com/&response_type=code&scope=public_content
+
+https://instagram.com/oauth/authorize/?client_id=1d6d81e5cc2b4a6687d3bb42a95bda0d&redirect_uri=https://portfolio-fd8ac.firebaseapp.com&response_type=token&scope=basic+likes
+
+https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables=%7B%22id%22%3A%227926815114%22%2C%22include_reel%22%3Atrue%2C%22fetch_mutual%22%3Atrue%2C%22first%22%3A24%7D

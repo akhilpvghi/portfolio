@@ -1,0 +1,18 @@
+img.exp_logo_img {
+    border-radius: 15px !important;
+    padding-left: 29px;
+    width: 169px;
+    height: 87px;
+    /* padding-bottom: 8px; */
+    padding: 5px;
+    margin: 0px;
+    padding-left: 31px;
+}
+
+.elem_experience{
+    display: flex;
+}
+
+.exp_block.row {
+    border: 2px solid black;
+}

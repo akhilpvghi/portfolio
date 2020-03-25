@@ -1,0 +1,91 @@
+
+{
+    "Experiences": [
+        {
+            "companyName": "CDAC",
+            "logo": "https://media.newstracklive.com/uploads/career-news-info/jobs/Jun/08/big_thumb/CDAC_5cfb8af113fb1.jpg",
+            "url": "",
+            "roles": [
+              {
+                "title": "Master Of Technology in Computer Science & Engg.(CSE)",
+                "description": "",
+                "startDate": "XX-08-2019",
+                "endDate": "Pursuing",
+                "location": "Sector-62, Noida(UP)",
+                "Rating":""
+              }
+            ]
+          },
+        {
+            "companyName": "Quincus",
+            "logo": "https://www.quincus.com/wp-content/themes/quincus/images/logo.png",
+            "url": "",
+            "roles": [
+              {
+                "title": "Software Engineer",
+                "description": "",
+                "startDate": "27-03-2019",
+                "endDate": "12-07-2019",
+                "location": "Karol Bagh, New Delhi",
+                "Rating":"8/10"
+              }
+            ]
+          },
+        {
+          "companyName": "smartbox",
+          "logo": "https://smartbox.in/assets/img/logo.png",
+          "url": "",
+          "roles": [
+            {
+              "title": "Software Engineer",
+              "description": "",
+              "startDate": "12-01-2018",
+              "endDate": "05-12-2018",
+              "location": "Sector-125, Noida(UP)",
+              "Rating":"8/10"
+            }
+          ]
+        },{
+            "companyName": "WCTM",
+            "logo": "https://www.wctmgurgaon.com/img/wctm%20130.png",
+            "url": "",
+            "roles": [
+              {
+                "title": "Bachelor Of Technology in Computer Science & Engg.(CSE)",
+                "description": "",
+                "startDate": "XX-XX-2014",
+                "endDate": "XX-XX-2018",
+                "location": "Farrukh Nagar Gurgaon",
+                "Rating":"Scored 73.4%"
+              }
+            ]
+          },{
+            "companyName": "KV",
+            "logo": "https://4.bp.blogspot.com/-cKfxHZBZKNo/WIQaN1S0CwI/AAAAAAAAFAc/8CVg_TVmG6ES8uVepCpzzYmwKyxvmyR7gCLcB/s320/kvs-logo-with-bg.png",
+            "url": "",
+            "roles": [
+              {
+                "title": "12th",
+                "description": "Scored 84%",
+                "startDate": "XX-XX-2013",
+                "endDate": "XX-XX-2014",
+                "location": "Sector-14 Gurgaon",
+                "Rating":"Scored 83.6%"
+              }
+            ]
+          },{
+            "companyName": "KV",
+            "logo": "https://smedia2.intoday.in/aajtak/images/stories/112014/kendriya-vidyalaya_650_110214102713.jpg",
+            "url": "",
+            "roles": [
+              {
+                "title": "10th",
+                "description": "",
+                "startDate": "XX-XX-2011",
+                "endDate": "XX-XX-2012",
+                "location": "Sector-14 Gurgaon",
+                "Rating":"Scored 83.6%"
+              }
+            ]
+          }]
+}

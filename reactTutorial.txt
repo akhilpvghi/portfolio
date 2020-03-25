@@ -124,6 +124,8 @@ s4e1---this.state--->render and react written in class only-->state can be writt
 
 S4e2--->state will always be object--->event like onClick can call custom fn but inorder to access this we need arrow fn or bind keyword 
 
+<button onClick={()=>saveToProfileData()}>SUBMIT</button>
+
 s4e3---->react-fragment---->changing state
 
 s4e4---4. Changing State From Another Component
@@ -251,9 +253,15 @@ login to firebase---command----->firebase login---->
 then init command-------->command----->firebase init--->then confirm it by pressing (Y)---->then selesct hosting 
 by arrow key and select by pressing space bar---then hit enter----->
 
+to create build---npm run build---->this will create build folder with needed build
+
 
 if you dont want to use public as your directory--->then enter build-----
 --->otherwise enter location like dist by putting build into dist folder
+
+rewrite all urls to /index.html----N
+
+overwrite 404.html----->N
 
 don't rewrite index.html press (N)
 
@@ -602,3 +610,12 @@ mutaion mode--->div.style.color = 'red';
 persistent mode----->
 
 view = createView()----->
+
+
+-______________________________________________________
+
+https://zacjones.io/handle-multiple-inputs-in-react-with-hooks
+
+
+multiple input target with hooks tutorial above
+______________________________________________________

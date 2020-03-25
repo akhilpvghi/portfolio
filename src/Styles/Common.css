@@ -17,7 +17,8 @@
 }
 
 .col-md-12.Appmodal {
-    position: fixed;
+    /* position: fixed; */
+    position: absolute; 
     z-index: 999;
 }
 
@@ -138,7 +139,9 @@ i.fa.fa-chevron-circle-left.fa-3x.floaty-left {
 }
 
 .controlOverflow{
-  overflow: scroll;
+  /* overflow: scroll; */
+  position: fixed !important;
+  z-index: 9999;
 }
 
 .imgSpinner{

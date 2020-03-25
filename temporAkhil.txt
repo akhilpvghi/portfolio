@@ -1,0 +1,21 @@
+margin: 1.75rem auto;
+
+@media (min-width: 576px)
+<style>
+.modal-dialog {
+    max-width: 500px;
+    /* margin: 1.75rem auto; */
+}
+
+controlOverflow
+
+.col-md-12.Appmodal.padd0 {
+    position: absolute;
+}
+
+div#myModal {
+    position: fixed;
+    z-index: inherit;
+}
+
+Experience

@@ -28,6 +28,7 @@ const[following,setFollowing] =  useState(null);
 const[followers,setFollowers] =  useState(null);
 const[showModal,setShowModal] =  useState(false);
 const[component,setComponent] =  useState(null);
+const[childMessage,setChildMessage] =  useState("null");
 const[instaData,setInstaData] =  useState(null);
 const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
 const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
@@ -65,9 +66,12 @@ const getContentFromHome = ()=>{
 
 const showModalfn=(componentToLoad)=>{
    if(componentToLoad.includes("gall")){
-      setModalComponent('gallery')
+      setChildMessage('How Do you Like them ?');
+      setModalComponent('gallery');
+      
    }else if(componentToLoad.includes("tab")){
-      setModalComponent('table')
+      setChildMessage('Soon... ');
+      setModalComponent('table');
    }
    setShowModal(true);
 console.log("isshowmodal true")
@@ -109,7 +113,7 @@ useEffect(()=>{
 
 let content=( <div className="row marg0">
 <div className="col-md-12 Appmodal padd0">
-   {showModal? <AppModal  isClosedFromAppModal={isClosedFromAppModal} componentToLoad={modalComponent}></AppModal>:null}
+   {showModal? <AppModal  isClosedFromAppModal={isClosedFromAppModal} componentToLoad={modalComponent} messageToChild={childMessage}></AppModal>:null}
 </div>
 
 <div className="col-md-12 padd0">
@@ -176,11 +180,12 @@ let content=( <div className="row marg0">
                         Gallery
                      </p>
                   </div>
-                  <div className="oneDiv row">
-                  <div className="col-sm-1 md-3 MobLogoAdjust">
-                        <img src={Phonelogo} alt="Logo" className="container icon"/>
+                  {/* mobNoMargin  MobLogoAdjust row oneDiv container icon style={{display: 'unset'}}*/}
+                  <div className="row oneDiv fixeed">
+                  <div className="col-sm-3 md-3 bottomm">
+                        <img src={Phonelogo} alt="Logo" className="icon"/>
                   </div>   
-                  <div className="col-sm-11 md-9 mobNoMargin"> <h5 style={{display: 'unset'}}>+91-8799717085</h5></div>
+                  <div className="col-sm-9 md-9 rightt"> <h5 >+91-8799717085</h5></div>
                   </div>
                </div>
             </div>
@@ -209,7 +214,6 @@ let content=( <div className="row marg0">
 </div>
 <div className="col-md-8 sm-12">
 <div className="card bg-primary mainContent">
-Akhil
 {component ? component : getContentFromHome()}
 </div>
 </div>
