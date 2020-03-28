@@ -8,7 +8,7 @@
       state={
         showModal: true,
         componentToLoad: null,
-
+        iconToLoad:null,
         isModalBodyRequire: true
         // messgaeTochild: 'Loading...'
     }
@@ -24,7 +24,60 @@
       // compo =(<div className="spinner-border text-secondary" role="status"></div>)=>{
       //   return compo;
       //   }
+
+
+      updateAndNotify=()=>{
+        let successRes =(<div className=" processing" role="status" >
+        <i className="fa fa-check-circle text-success" style={{fontSize: 41+"px"}}></i>
+        </div>);
+  
+  let errorRes =(<div className=" processing" role="status" >
+  <i className="fa  fa-times-circle text-danger" style={{fontSize: 41+"px"}}></i>
+  </div>);
+  
+  
+          let processing =(
+            <div className="a">
+            <div className="spinner-grow text-primary" role="status">
+                  </div>
+                  <div className="spinner-grow text-secondary" role="status">
+                  </div>
+                  <div className="spinner-grow text-success" role="status">
+                  </div>
+                  <div className="spinner-grow text-danger" role="status">
+                  </div>
+                  <div className="spinner-grow text-warning" role="status">
+                  </div>
+                  <div className="spinner-grow text-info" role="status">
+                  </div>
+                  <div className="spinner-grow text-dark" role="status">
+                  </div>
+                  </div>) ;
+                  
+                  // this.setState({mesgFromCompo: this.props.messageToChild})
+          console.log("after slicing-------->",this.props.messageToChild.slice(0,4))
+          switch(this.props.messageToChild.toLowerCase().slice(0,4)){
+            case 'succ': this.setState({iconToLoad: successRes});
+            break;
+            case 'erro': this.setState({iconToLoad : errorRes});
+            break;
+            case 'proc': this.setState({iconToLoad : processing});
+            break;
+          }
+      }
+
+      componentDidUpdate=(prevProps)=>{
+
+        if (prevProps.messageToChild !== this.props.messageToChild) {
+          this.updateAndNotify();
+        }
+        
+  
+
+      }
       componentDidMount=(props)=>{
+
+        
 
         // this.setState({messgaeTochild: this.props.messagetoChild});
         if(this.props.componentToLoad.includes('gall')){
@@ -37,6 +90,10 @@
           
           // })
         }
+        this.updateAndNotify();
+        
+        
+        // {(!this.props.messageToChild.includes('succ'))?(this.props.messageToChild.includes('Err'))?errorRes: processing:successRes}
         // bi bi-check
         // spinner-border text-primary
         // console.log('componentToLoadcomponentToLoad from appModal ',this.props.messagetoChild)
@@ -77,32 +134,6 @@
         // this.setState({show:this.props.isShowModal});
         // this.state.show=this.props.isShowModal;
 
-        let successRes =(<div className=" processing" role="status" >
-      <i className="fa fa-check-circle text-success" style={{fontSize: 41+"px"}}></i>
-      </div>);
-
-let errorRes =(<div className=" processing" role="status" >
-<i className="fa  fa-times-circle text-danger" style={{fontSize: 41+"px"}}></i>
-</div>);
-
-
-        let processing =(
-          <div className="a">
-          <div className="spinner-grow text-primary" role="status">
-                </div>
-                <div className="spinner-grow text-secondary" role="status">
-                </div>
-                <div className="spinner-grow text-success" role="status">
-                </div>
-                <div className="spinner-grow text-danger" role="status">
-                </div>
-                <div className="spinner-grow text-warning" role="status">
-                </div>
-                <div className="spinner-grow text-info" role="status">
-                </div>
-                <div className="spinner-grow text-dark" role="status">
-                </div>
-                </div>) ;
 
           return(
             
@@ -111,7 +142,7 @@ let errorRes =(<div className=" processing" role="status" >
                   <div className="modal-content incWidth controlOverflow">
                     <div className="modal-header">
                         <h4 className="modal-title">{this.props.messageToChild}</h4>
-                        {(!this.props.messageToChild.includes('succ'))?(this.props.messageToChild.includes('Err'))?errorRes: processing:successRes}
+                        {/* here modal */} {this.state.iconToLoad}
                         <div className="primary fa fa-times-circle fa-2x cursrPointer" onClick={()=>{this.checkShow("close")}}>
                         </div>
                     </div>

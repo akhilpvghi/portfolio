@@ -260,7 +260,7 @@ if you dont want to use public as your directory--->then enter build-----
 --->otherwise enter location like dist by putting build into dist folder
 
 rewrite all urls to /index.html----N
-
+  
 overwrite 404.html----->N
 
 don't rewrite index.html press (N)
@@ -619,3 +619,26 @@ https://zacjones.io/handle-multiple-inputs-in-react-with-hooks
 
 multiple input target with hooks tutorial above
 ______________________________________________________
+Regex: ^1?([1-9])(\d{9})
+
+NODE                     EXPLANATION
+--------------------------------------------------------------------------------
+  ^                        the beginning of the string
+--------------------------------------------------------------------------------
+  1?                       '1' (optional (matching the most amount
+                           possible))
+--------------------------------------------------------------------------------
+  (                        group and capture to \1:
+--------------------------------------------------------------------------------
+    [1-9]                    any character of: '1' to '9'
+--------------------------------------------------------------------------------
+  )                        end of \1
+--------------------------------------------------------------------------------
+  (                        group and capture to \2:
+--------------------------------------------------------------------------------
+    \d{9}                    digits (0-9) (9 times)
+--------------------------------------------------------------------------------
+  )                        end of \2
+  _________________________________________________________________________________
+
+  

@@ -1,21 +1,45 @@
-margin: 1.75rem auto;
+    display: table-cell;
 
-@media (min-width: 576px)
-<style>
-.modal-dialog {
-    max-width: 500px;
-    /* margin: 1.75rem auto; */
+display: unset;
+
+linear-gradient(to right,lightblue,lightgreen)
+
+background: linear-gradient(to right,blue,lightblue)
+
+____________________________________________________________________________________________________
+
+switch (name) {
+            case 'name': 
+              error.name = userInput.name.length < 5 ? 'Name can not be blank!' : '';
+              break;
+            case 'email': 
+              error.email = 
+                validEmailRegex.test(newValue)
+                  ? ''
+                  : 'Email is not valid!';
+              break;
+            case 'mno': 
+              error.mno = userInput.name.length < 10  ? 'mobile must be 10 digit !' : '';
+              break;
+              case 'dob': 
+              error.dob = userInput.name.charAt(4) !== '/'  ? 'DOB must be in yyyy/mm/dd format' : '';
+              break;
+            default:
+              break;
+          }
+
+          ____________________________________________________________________________________________________
+          
+              error.name = userInput.name.length < 5 ? 'Name can not be blank!' : '';
+
+              error.mno = userInput.name.length < 10  ? 'mobile must be 10 digit !' : '';
+
+              error.dob = userInput.name.charAt(4) !== '/'  ? 'DOB must be in yyyy/mm/dd format' : '';
+
+              error.email = validEmailRegex.test(newValue) ? '' : 'Email is not valid!';
+
+              ____________________________________________________________________________________________________
+
+                  margin-top: -10px;
+    margin-bottom: 15px;
 }
-
-controlOverflow
-
-.col-md-12.Appmodal.padd0 {
-    position: absolute;
-}
-
-div#myModal {
-    position: fixed;
-    z-index: inherit;
-}
-
-Experience

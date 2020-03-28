@@ -2,3 +2,38 @@
     margin: 18px;
     display: grid;
 }
+
+.adjustWidth {
+    width: 85%;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+.fixedDisplay {
+    display: inline;
+}
+
+.displayUnset{
+    display: unset;
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+    font-weight: 900;
+}
+@keyframes blinkingText{
+    0%{     color: rgb(255, 0, 0);    }
+    49%{    color: rgb(255, 0, 0);; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: rgb(255, 0, 0);;    }
+}
+
+p.addIner.blinking {
+    margin-left: 37px;
+    margin-top: -17px;
+}
+
+button.fixedDisplay.adjustWidth.mt-15 {
+    margin-top: 15px;
+}

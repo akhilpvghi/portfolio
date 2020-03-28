@@ -18,9 +18,26 @@
             SystemUrl:''
         }
     );
+    const validEmailRegex = 
+  RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+  const validMnoRegex  = RegExp(/^1?([1-9])(\d{9})/);
+  const [error, setError] = useReducer(
+        (state, newState) => ({...state, ...newState}),
+        {
+            name :'',
+            dob :'',
+            mno :'',
+            email :'',
+            SystemUrl:''
+        }
+    );
 
-    const showModalfn=(componentToLoad)=>{
+    // let a=()=>{setChildMessage('Processing...')}
+
+    const showModalfn=(componentToLoad) =>{
             setModalComponent('null')
+            
+            
             setChildMessage('Processing...')
         setShowModal(true);
     //  console.log("isshowmodal true")     
@@ -31,6 +48,7 @@
         const name = evt.target.name;
         const newValue = evt.target.value;
         setUserInput({[name]: newValue});
+        
     }
 
     const isClosedFromAppModal=(data_from_appModal)=>{
@@ -38,8 +56,18 @@
         setShowModal(false);
      }
 
-        let saveToProfileData=()=>{
-            showModalfn("null")
+        let saveToProfileData=(userInput)=>{
+            
+              error.name = userInput.name.length < 5 ? 'Name can not be blank!' : '';
+              error.mno = validMnoRegex.test(userInput.mno)   ? '':'mobile must be 10 digit !' ;
+              error.dob = userInput.dob.charAt(4) !== '/'  ? 'DOB must be in yyyy/mm/dd format' : '';
+              error.email = validEmailRegex.test(userInput.email) ? '' : 'Email is not valid!';
+              setError(error);
+               if(!(error.name ==''&& error.mno ==''&& error.dob ==''&& error.email =='')){
+                console.log("inside dave to profile ifff")   
+                return;
+               }
+               showModalfn("null")
             // console.log("hello save");
             // console.log("selectedFile ")
             axios.defaults.baseURL = userInput.SystemUrl;
@@ -88,20 +116,25 @@
 </div> :
                      <h4>{followers}</h4>} */}
        </AppModal>:null} 
-       <div className="row">
-                <div className="col-md-12 addIn"><label>CheckURL:</label><input name="SystemUrl" value={userInput.SystemUrl} onChange ={handleChange} placeholder="PASTE URL" type="text"/></div>
+       <div className="row displayUnset">
+                <div className="col-md-12 addIn"><label className="fixedDisplay">CheckURL:</label><input className="adjustWidth" name="SystemUrl" value={userInput.SystemUrl} onChange ={handleChange} placeholder="PASTE URL" type="text"/></div>
                 
                 {/* onMouseLeaves={onChangeHandler} */}
                 {/* onFocus={onChangeHandler}  */}
                 {/* onMouseOut */}
                 {/* <button className="col-md-12 addIn" onClick={()=>checkProfileDataURL()}>SUBMIT</button> */}
                 
-                <div className="col-md-12 addIn"><label>Name:</label><input name="name" value={userInput.name} onChange ={handleChange} type="text"/></div>
-                <div className="col-md-12 addIn"><label>DOB:</label><input  name="dob" value={userInput.dob} onChange ={handleChange} type="text"/></div>
-                <div className="col-md-12 addIn"><label>Mobile No:</label><input  name="mno" value={userInput.mno} onChange ={handleChange} type="text"/></div>
-                <div className="col-md-12 addIn"><label>Email:</label><input   name="email" value={userInput.email} onChange ={handleChange} type="text"/></div>
+                <div className="col-md-12 addIn"><label className="fixedDisplay">Name:</label><input className="adjustWidth"  name="name" value={userInput.name} onChange ={handleChange} type="text"/></div>
+                <p className="blinking addIner">{error.name} </p>
                 
-                <button className="col-md-12 addIn" onClick={()=>saveToProfileData()}>SUBMIT</button>
+                <div className="col-md-12 addIn"><label className="fixedDisplay">DOB:</label><input className="adjustWidth"  name="dob" value={userInput.dob} onChange ={handleChange} placeholder="e.g. (YYYY/MM/DD)" type="text"/></div>
+                <p className="addIner blinking">{error.dob} </p>
+                <div className="col-md-12 addIn"><label className="fixedDisplay">Mobile No:</label><input className="adjustWidth"  name="mno" value={userInput.mno} onChange ={handleChange} placeholder="10 digit only" type="text"/></div>
+                <p className="addIner blinking">{error.mno} </p>
+                <div className="col-md-12 addIn"><label className="fixedDisplay">Email:</label><input className="adjustWidth" name="email" value={userInput.email} onChange ={handleChange} type="text"/></div>
+                <p className="addIner blinking">{error.email} </p>
+                <div className="col-md-12 addIn"><button className="fixedDisplay adjustWidth mt-15" onClick={()=>saveToProfileData(userInput)}>SUBMIT</button></div>
+               
             </div>
             </div>
             
@@ -110,3 +143,5 @@
     }
 
     export default GetInTouch;
+
+    

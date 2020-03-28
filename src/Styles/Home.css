@@ -21,9 +21,11 @@
 }
 
 .card.bg-primary.mainContent {
-    height: 63vh;
-    overflow: scroll;
+    /* height: 68vh; */
+    /* overflow: scroll; */
+    overflow: inherit;
     margin: 25px;
+    background:  linear-gradient(to right,lightblue,white);
 }
 
 .rotatingFrontCard {
