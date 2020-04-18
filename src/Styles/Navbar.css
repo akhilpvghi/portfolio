@@ -8,3 +8,14 @@
 .Navbar > a {
     padding-right: 24px;
 }
+
+i.fa.fa-database.color_n_size {
+    color: rgb(172, 178, 189);
+    font-size: 30px;
+    padding-left: 8px;
+  }*
+
+  i.fa.fa-circle.text-danger.status_size {
+    font-size: 20px;
+    /* z-index: 9999999; */
+}

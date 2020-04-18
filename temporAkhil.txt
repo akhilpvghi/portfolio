@@ -1,3 +1,7 @@
+   
+   
+
+   
     display: table-cell;
 
 display: unset;
@@ -43,3 +47,7 @@ switch (name) {
                   margin-top: -10px;
     margin-bottom: 15px;
 }
+
+____________________________________________________________________________________________________
+
+https://stackoverflow.com/questions/47833995/add-status-icon-using-css/47834506

@@ -5,6 +5,7 @@
 
       const Navbar=(props)=>{
         const[date_n_time,setDate_n_time]=useState("")
+        const[backendStatus,setBackendStatus]=useState(false);
         const[collapsed,SetCollapsed]=useState(true);
         let windowWidth=useWindowWidth()
         const tick=()=>{
@@ -13,7 +14,7 @@
         }
 
       const getLink=(event)=>{
-          console.log("akhilll",event)
+          
           props.loadComponent(event);
           // this.setState({collapsed: true});
           SetCollapsed(true)
@@ -26,9 +27,12 @@
         // this.setState({collapsed: !this.state.collapsed});
     }
 
+
+
     useEffect(()=>{
 
       // setWindowWidth(windowWidth)
+      
       if(windowWidth==undefined){
         windowWidth=windowWidth+1
       }
@@ -37,8 +41,19 @@
     
     ,[windowWidth])
 
+  //   let getBadgeClasses=() => {
+  //     let classes;
+  //     console.log("akhilll56565656","backendStatus")
+  //     props.statusfomBackend?classes ="fa fa-circle text-success status_size":classes ="fa fa-circle text-danger status_size";
+  //     return classes;
+  // }
+
 
         useEffect(()=>{
+          // getBadgeClasses();
+          
+          // setBackendStatus(props.statusfomBackend);
+          
           let intervalID=setInterval(()=>tick(),1000)
           return ()=>{
             clearInterval(intervalID);
@@ -53,8 +68,12 @@
           
           <span className="navbar-toggler-icon"></span>
         </button>
-      {windowWidth<987?<div className="date_n_time"> {date_n_time}</div>:null} 
-        <div className={(collapsed  ? "collapse" : "") + ' navbar-collapse'} id="navbarSupportedContent">
+      {windowWidth<987?<div className="date_n_time"> {date_n_time}
+      <i className={(!collapsed  ? "collapse" : "")+' fa fa-database color_n_size'} aria-hidden="true"></i>
+    <i className={(!collapsed  ? "collapse" : "")+ `fa fa-circle text-${props.statusfomBackend ? "success " : "danger "}` + `status_size`} aria-hidden="true"></i>
+     
+      </div>:null} 
+         <div className={(collapsed  ? "collapse" : "") + ' navbar-collapse'} id="navbarSupportedContent">
           <ul className="navbar-nav">
           
             {props.navbarElements.map((link,index)=>{
@@ -66,10 +85,25 @@
                           )
                       })}
           </ul>
-          {windowWidth>987?<div className="date_n_time"> {date_n_time}</div>:null}
+         
+          {windowWidth>987?<div className="date_n_time"> {date_n_time}
+          
+          </div>:null}
+           
+          {/* {props.statusFomBackend[0]} */}
           <form className="form-inline my-2 my-lg-0">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
+            <div>
+    {/* <i className="fa fa-database color_n_size" aria-hidden="true"></i>
+    <i className="fa fa-circle text-success status_size" aria-hidden="true"></i> */}
+    {/* <i className="fa fa-database color_n_size" aria-hidden="true"></i>
+    <i className={getBadgeClasses()} aria-hidden="true"></i> */}
+     <i className={(!collapsed  ? "collapse " : "")+"fa fa-database color_n_size"} aria-hidden="true"></i>
+    <i className={(!collapsed  ? "collapse " : "")+`fa fa-circle text-${props.statusfomBackend ? "success " : "danger "}`+`status_size`} aria-hidden="true"></i>
+  </div>
+
+
           </form>
         </div>
       </nav>

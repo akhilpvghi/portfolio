@@ -449,6 +449,25 @@ const style = {
 <div className={classLevelStyles} style={style} />
 
 ______________________________________________________________________________
+Dynamically changing CSS classes--->https://www.andreasreiterer.at/dynamically-add-classes/
+
+
+render() {
+  const { isBoxVisible } = this.state;
+
+  return (
+    <div className="App">
+      <button onClick={this.toggleBox}>Show Box</button>
+
+      <div className={`box ${isBoxVisible ? "" : "hidden"}`}>
+        <p>I'm the box</p>
+      </div>
+
+    </div>
+  );
+}
+
+______________________________________________________________________________
 
 
 colors
@@ -641,4 +660,39 @@ NODE                     EXPLANATION
   )                        end of \2
   _________________________________________________________________________________
 
+OBSERVABLES
+
+INTERVAL
+While interval emits the first event after a given time and then continuously with the same interval
   
+  TIMER
+   timer starts after a given time to emit events every x time. For our two updates per second we can start by using timer(0, 500). 
+   This will start firing events right of the bat and after that twice a second.
+
+.timer(10000, 5000)
+    // stop this observable chain if stopTimer$ emits a value
+    .takeUntil(stopTimer$)
+    // select the model
+
+
+   pipe can have multiple function as parameter like ,filter,map
+
+   ______________________________________________________
+  
+  sites design awesome and Rxjs well explained
+  https://fireship.io/lessons/rxjs-basic-pro-tips/
+
+  ______________________________________________________________________________
+  concat always creates new array ehile push mutates to existing array
+
+  ______________________________________________________________________________
+  store array in hooks
+
+  useEffect(()=>{
+         
+            
+               if(spreadSheet.length!=0)
+               {setSpreadSheetData(spreadSheetData => [...spreadSheetData, spreadSheet]);
+                  }
+               
+            },[spreadSheet.length])

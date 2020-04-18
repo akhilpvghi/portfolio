@@ -19,7 +19,10 @@
         }
     );
     const validEmailRegex = 
-  RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+//   RegExp(^(([^<>()[].,;:s@"]+(.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$i);
+//   RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+  RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i);
+  
   const validMnoRegex  = RegExp(/^1?([1-9])(\d{9})/);
   const [error, setError] = useReducer(
         (state, newState) => ({...state, ...newState}),
@@ -63,16 +66,17 @@
               error.dob = userInput.dob.charAt(4) !== '/'  ? 'DOB must be in yyyy/mm/dd format' : '';
               error.email = validEmailRegex.test(userInput.email) ? '' : 'Email is not valid!';
               setError(error);
-               if(!(error.name ==''&& error.mno ==''&& error.dob ==''&& error.email =='')){
+               if(!(error.name ===''&& error.mno ===''&& error.dob ===''&& error.email ==='')){
                 console.log("inside dave to profile ifff")   
                 return;
                }
                showModalfn("null")
             // console.log("hello save");
             // console.log("selectedFile ")
-            axios.defaults.baseURL = userInput.SystemUrl;
+            axios.defaults.baseURL = localStorage.getItem('mainURL');
+            // userInput.SystemUrl;
             let url_system="/data/new?name="+userInput.name+"&mobNo="+userInput.mno+"&email="+userInput.email+"&dob="+userInput.dob;
-            console.log("Systemurl "+url_system)
+            console.log("Systemurl "+axios.defaults.baseURL)
             
             axios.post(url_system)
         .then((res)=>{
@@ -117,8 +121,8 @@
                      <h4>{followers}</h4>} */}
        </AppModal>:null} 
        <div className="row displayUnset">
-                <div className="col-md-12 addIn"><label className="fixedDisplay">CheckURL:</label><input className="adjustWidth" name="SystemUrl" value={userInput.SystemUrl} onChange ={handleChange} placeholder="PASTE URL" type="text"/></div>
-                
+                {/* <div className="col-md-12 addIn"><label className="fixedDisplay">CheckURL:</label><input className="adjustWidth" name="SystemUrl" value={userInput.SystemUrl} onChange ={handleChange} placeholder="PASTE URL" type="text"/></div>
+                 */}
                 {/* onMouseLeaves={onChangeHandler} */}
                 {/* onFocus={onChangeHandler}  */}
                 {/* onMouseOut */}

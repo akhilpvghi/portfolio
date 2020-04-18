@@ -1,8 +1,18 @@
+____________________________________________________________________________________________________________
 https://www.downvids.ne-------->for downloading youtube playlist
 
 
 sanandreas ----->change fm using INSERT and track by FN + F5------------->VROCKPOKEY--->for car----->W,A,S,D for driving car
 
+____________________________________________________________________________________________________________
+program basics
+https://www.thecrazyprogrammer.com/plsql-programs-examples
+
+live sql-----https://livesql.oracle.com/
+____________________________________________________________________________________________________________
+
+cd C:\Users\mini\Desktop\"abc.extension"
+https://www.minitool.com/news/how-to-open-a-file-folder-cmd.html
 ____________________________________________________________________________________________________________
 
 
@@ -37,6 +47,11 @@ alt + up and down----->move line up and down
 
 alt + numbers --------->to switch tabs-
 
+ctrl + {,}--------> to move line with tab(8) spaces
+-
+ctrl +shift + {,}----->to hide unhide function block
+
+alt + side arrow(<- , ->)----->to jump to code 
 
 ____________________________________________________________________________________________________________
 
@@ -86,4 +101,12 @@ ________________________________________________________________________________
 https://www.booleanworld.com/curl-command-tutorial-examples/
 
 ____________________________________________________________________________________________________________
+
+https://www.freecodecamp.org/news/cjn-google-sheets-as-json-endpoint/-----to use spreadsheet as json
+
+   https://json-csv.com/-----json to excel converter
+
+   https://jsonformatter.org/---json beautifier and viewer
+
+   ____________________________________________________________________________________________________________
 

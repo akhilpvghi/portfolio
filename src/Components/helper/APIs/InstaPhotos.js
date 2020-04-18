@@ -7,18 +7,24 @@ export const useHttp = (url) =>{
   
   useEffect(() => {
     
-    console.log("sending http request");
+    // console.log("sending http request");
     axios.get(url)
     .then((res)=>{
           // res.data.data.map((element)=>{
             // InstaImg.push(element.images.standard_resolution.url)
+            if(!url.includes('spre'))
             setData(res.data.data)
+            else
+           {
+             setData(res.data);
+            console.log(" res.data spre ",res.data)
+           } 
           // })
           
-          console.log("isDataLoadedOnce");
+          // console.log("url  ",url,"  res.data ",res.data);
     } ).catch((err)=>{console.log('insta error',err)})
         
-  }, [url])
+  }, [url,data.length])
 
   
 

@@ -3,7 +3,7 @@
    import '../../Styles/Common.css';
    import Navbar from "../NavBar";
    import Footer from "../Footer";
-   import DP from '../../Assets/Images/B5216.jpg'
+   import DP from '../../Assets/Images/B5216.jpg';
    import Phonelogo from '../../Assets/Images/sh_call_icon.png';
    import AboutMe from '../AboutMe';
    import Experience from '../Experience';
@@ -12,37 +12,64 @@
    import Downloads from '../Downloads';
    import GetInTouch from '../GetInTouch';
    import axios from 'axios';
+
+   // // import { from } from 'rxjs';
+   
    import {Link} from 'react-router-dom';
    import {useHttp} from '../helper/APIs/InstaPhotos';
-import { resolve } from "url";
-import { reject } from "q";
+   import {useObservable} from '../helper/APIs/ObservableHit';
    // import Slider  from '../helper/slider'
     const Home = () =>{
-      const[followingData]=useHttp('https://api.instagram.com/v1/users/self/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e')
+        const[followingData]=useHttp('https://api.instagram.com/v1/users/self/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e')
       const[InstaImg] = useHttp('https://api.instagram.com/v1/users/self/media/recent/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e');
       const[followersData] = useHttp('https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables=%7B%22id%22%3A%227926815114%22%2C%22include_reel%22%3Atrue%2C%22fetch_mutual%22%3Atrue%2C%22first%22%3A24%7D');
+      // const[backendStatus] = useHttp('http://localhost:8080/checkStatus')
       const[ listOfFollowers,setListOfFollowers] =  useState([]);
       const[gallerySize,setGallerySze]=useState(null);
-   const[modalComponent,setModalComponent]=useState(null);
-const[following,setFollowing] =  useState(null);
-const[followers,setFollowers] =  useState(null);
-const[showModal,setShowModal] =  useState(false);
-const[component,setComponent] =  useState(null);
-const[childMessage,setChildMessage] =  useState("null");
-const[instaData,setInstaData] =  useState(null);
-const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
-const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
+      const[modalComponent,setModalComponent]=useState(null);
+      const[following,setFollowing] =  useState(null);
+      const[followers,setFollowers] =  useState(null);
+      const[showModal,setShowModal] =  useState(false);
+      const[component,setComponent] =  useState(null);
+      const[childMessage,setChildMessage] =  useState("null");
+      const[statusFromBackend,setStatusFromBackend] =  useState(false);
+      const[instaData,setInstaData] =  useState(null);
+      const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
+      const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
+      
+      const[observableData]= useObservable();
+      
+      // let getBackendURL=()=>{
+      //    console.log('backendCheckURLbackendCheckURL   ',backendCheckURL)
+      //    if(backendCheckURL!='' && backendCheckURL!=undefined)
+      //    return backendCheckURL;
+      // }
+      
+      useEffect(()=>{
+   
+         console.log("observable lengthhhh ",observableData[0])
+         if(observableData[0])
+            setStatusFromBackend(true);
+         if(observableData[1]!=5){
+            
+            console.log("bye bye bye  ",statusFromBackend);
+         }
+      },[observableData])
 
-const loadComponent = (data_from_navbar) =>{
-   console.log('akhilbvbvbb',data_from_navbar)
+
+         
+         
+         
+         const loadComponent = (data_from_navbar) =>{
+         console.log('akhilbvbvbb',data_from_navbar)
    if(data_from_navbar.includes("About")){
          setComponent(<AboutMe />)
-   }else if(data_from_navbar.includes("Exper")){
+      }else if(data_from_navbar.includes("Exper")){
          setComponent(<Experience />)
-   }else if(data_from_navbar.includes("Get")){
-      setComponent(<GetInTouch />)
+      }else if(data_from_navbar.includes("Get")){
+         setComponent(<GetInTouch />)
    }else if(data_from_navbar.includes("Hobbi")){
-      setComponent( <Hobbies />)   
+     setComponent( <Hobbies />)   
    }else if(data_from_navbar.includes("Down")){
          setComponent(<Downloads />)
    }else{
@@ -52,7 +79,7 @@ const loadComponent = (data_from_navbar) =>{
    
 }
 
-const isClosedFromAppModal=(data_from_appModal)=>{
+   const isClosedFromAppModal=(data_from_appModal)=>{
    if(data_from_appModal.includes("clos"))
    setShowModal(false);
 }
@@ -68,7 +95,6 @@ const showModalfn=(componentToLoad)=>{
    if(componentToLoad.includes("gall")){
       setChildMessage('How Do you Like them ?');
       setModalComponent('gallery');
-      
    }else if(componentToLoad.includes("tab")){
       setChildMessage('Soon... ');
       setModalComponent('table');
@@ -78,14 +104,19 @@ console.log("isshowmodal true")
 
 }
 
+
+   
+   
+      
+   
+
+
+
 useEffect(()=>{
      if(followingData.length!=0){
          setFollowing(followingData.counts.follows)
-         setFollowers(followingData.counts.followed_by)
-         
+         setFollowers(followingData.counts.followed_by) 
    }
-         
-
 },followingData.length)
 
 useEffect(()=>{
@@ -93,7 +124,7 @@ useEffect(()=>{
    InstaImg.map((element)=>{
       InstaPhoto.push(element.images.standard_resolution.url)
     })
-    console.log("InstaPhotoInstaPhoto",InstaPhoto);
+   //  console.log("InstaPhotoInstaPhoto",InstaPhoto);
     if(InstaPhoto.length!=0){
       setGallerySze(InstaPhoto.length)
       localStorage.setItem("galleryImages",JSON.stringify(InstaPhoto));
@@ -112,12 +143,13 @@ useEffect(()=>{
 
 
 let content=( <div className="row marg0">
+   {/* <useObservable {...spreadSheetData} /> */}
 <div className="col-md-12 Appmodal padd0">
    {showModal? <AppModal  isClosedFromAppModal={isClosedFromAppModal} componentToLoad={modalComponent} messageToChild={childMessage}></AppModal>:null}
 </div>
 
 <div className="col-md-12 padd0">
-<Navbar   navbarElements={navbarElementsFromHome} loadComponent={loadComponent}/>
+<Navbar   navbarElements={navbarElementsFromHome} statusfomBackend={statusFromBackend} loadComponent={loadComponent}/>
 </div>
 {/* <div className="bgImg">
 <img src={the_movement_bg} alt="Logo" className="container rounded-circle dpDimension"/>
@@ -220,7 +252,7 @@ let content=( <div className="row marg0">
 <div className="col-md-12 pt-4">
 <Footer footerElements={FooterElementsFromHome}/>
 </div>
-</div>)
+</div>)  
 
 return content;
 
