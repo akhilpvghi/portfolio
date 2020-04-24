@@ -533,6 +533,11 @@ Regular Expression
 "(888)555-1212"
 "(888)555-1212 ext. 532"
 "(800)FLOWERS"
+
+
+https://regex101.com/    -------------->to check regEx
+
+https://digitalfortress.tech/tricks/top-15-commonly-used-regex/
 _________________________________________________________________________________
 
 Run command-line as an Administrator. Then run the below mention command. type your port number in yourPortNumber

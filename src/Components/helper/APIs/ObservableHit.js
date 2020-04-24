@@ -55,16 +55,18 @@
 
 
                   setBackendCheckURL({
-                     url: elemm2.gsx$baseurl.$t + 'checkStatus'
+                     url: elemm2.gsx$baseurl.$t + '/checkStatus'
                   });
                }
                // if(index){
-
+               pair.textfield=elemm2.gsx$textfields.$t
                pair.label = elemm2.gsx$getintouchfieldstitle.$t;
-               pair.placeholde = elemm2.gsx$getintouchfieldsplaceholder.$t;
+               pair.placeholder = elemm2.gsx$getintouchfieldsplaceholder.$t;
                pair.validationtypedesc = elemm2.gsx$getintouchfieldsvalidationtypedesc.$t;
                pair.position = elemm2.gsx$getintouchfieldsposition.$t;
                pair.fieldstype = elemm2.gsx$getintouchfieldstype.$t;
+               pair.errorMessage=elemm2.gsx$getintoucherrormessages.$t
+               pair.regExp=elemm2.gsx$getintouchfieldsvalidationregex.$t
                setGetInfoData((hello) => [...hello, pair])
 
                // console.log("spreadSheet.length ", spreadSheet.length);
@@ -123,7 +125,7 @@
                   console.log("dsfds dfv dafs statusfromBackend count[0]", count[0], "count[1] ", count[1]);
                   if (count[0] !== false)
                      setData(count)
-                  return count[1] !== 5 && count[0] === false;
+                  return count[1] !== 3 && count[0] === false;
                })
             ).subscribe((val) => setData(val))
             //console.log("fgfhhhhhhhhhhhhhhhhhhh",data)

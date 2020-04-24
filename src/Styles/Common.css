@@ -17,7 +17,7 @@
 }
 
 .col-md-12.Appmodal {
-    /* position: fixed; */
+    position: fixed;
     /* position: absolute;  */
     z-index: 999;
 }

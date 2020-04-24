@@ -33,7 +33,7 @@ const Downloads=()=>{
              {/* className="item" */}
              {/* lassName={`${isBoxVisible ? "item" : ""}`}  */}
         <div  className="item" id='profile'  >
-          <div  className="btn" ><i className="fa fa-user"></i>Profile</div>
+          <div  className="btnDownload" ><i className="fa fa-user"></i>Profile</div>
           <div className={`${isBoxVisible ? "smenu" : "disNone"}`}  >
           {/* className="smenu" */}
             <div >Posts</div>
@@ -42,7 +42,7 @@ const Downloads=()=>{
         </div>
         {/* className="item" */}
         <div  id="messages" ref={profile} onClick={activeSubmenu}>
-          <div  className="btn"><i className="fa fa-envelope"></i>Messages</div>
+          <div  className="btnDownload"><i className="fa fa-envelope"></i>Messages</div>
           <div  className="smenu">
             <div >new</div>
             <div >Sent</div>
@@ -51,7 +51,7 @@ const Downloads=()=>{
         </div>
 
         <div className="item" id="settings">
-          <div  className="btn"><i className="fa fa-cog"></i>Settings</div>
+          <div  className="btnDownload"><i className="fa fa-cog"></i>Settings</div>
           <div className="smenu">
             <div >Password</div>
             <div >Language</div>
@@ -59,7 +59,7 @@ const Downloads=()=>{
         </div>
 
         <div className="item">
-          <div className="btn" ><i className="fa fa-sign-out-alt"></i>Logout</div>
+          <div className="btnDownload" ><i className="fa fa-sign-out-alt"></i>Logout</div>
         </div>
       </div>
 </div>

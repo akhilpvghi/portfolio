@@ -71,7 +71,17 @@ taskkill /im explorer.exe -f
 
 taskkill /F /IM explorer.exe & start explorer
 
-taskkill /f /fi "WINDOWTITLE eq Photos*" /t
+taskkill /f /fi "WINDOWTITLE eq Photos*" /t  
+
+
+ Run command-line as an Administrator. Then run the below mention command. type your port number in yourPortNumber
+
+netstat -ano | findstr :<yourPortNumber>
+
+Then you execute this command after identify the PID.
+taskkill /PID <typeyourPIDhere> /F
+
+if access is denied --->run as administrator
 
 ____________________________________________________________________________________________________________
 

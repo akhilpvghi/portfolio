@@ -59,10 +59,13 @@
           console.log("after slicing-------->",this.props.messageToChild.slice(0,4))
           switch(this.props.messageToChild.toLowerCase().slice(0,4)){
             case 'succ': this.setState({iconToLoad: successRes});
+            this.setState({isProcessing:false})
             break;
             case 'erro': this.setState({iconToLoad : errorRes});
+            this.setState({isProcessing:false})
             break;
             case 'proc': this.setState({iconToLoad : processing});
+                        this.setState({isProcessing:true})
             break;
           }
       }
@@ -88,7 +91,7 @@
           this.setState({isModalBodyRequire : false});
           // this.setState({componentToLoad: 
           
-          this.setState({isProcessing : this.props.messageToChild.toLowerCase().slice(0,4).includes('proc')});
+          // this.setState({isProcessing : this.props.messageToChild.toLowerCase().slice(0,4).includes('proc')});
           // })
         }
         this.updateAndNotify();
@@ -145,7 +148,7 @@
                         <h4 className="modal-title">{this.props.messageToChild}</h4>
                         {/* here modal */} 
                         {this.state.iconToLoad}
-                        {this.isProcessing? <div className="primary fa fa-times-circle fa-2x cursrPointer" onClick={()=>{this.checkShow("close")}}>
+                        {!this.state.isProcessing? <div className="primary fa fa-times-circle fa-2x cursrPointer" onClick={()=>{this.checkShow("close")}}>
                         </div>:null}
                         
                     </div>
@@ -157,7 +160,7 @@
                     
                     
                     <div className="modal-footer">
-                      {this.isProcessing?<button type="button" className="btn btn-danger" onClick={()=>{this.checkShow("close")}} >Close</button>
+                      {!this.state.isProcessing?<button type="button" className="btn btn-danger" onClick={()=>{this.checkShow("close")}} >Close</button>
                         :null}
                           </div>
                     </div>

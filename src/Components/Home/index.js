@@ -92,8 +92,9 @@
 
 const getContentFromHome = ()=>{
    return(<div>
-{/* <h1>Home</h1> */}
-<Downloads></Downloads>
+ <h1>Home</h1>
+{/* <Downloads></Downloads> */}
+ {/* <GetInTouch get_in_touch_info={getInTouchInfo}/> */}
    </div>)
 }
 
