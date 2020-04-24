@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from '../Home';
+// import Downloads from '../Downloads';
 import AboutMe from '../AboutMe';
 import Experience from '../Experience';
 

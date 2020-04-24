@@ -71,6 +71,8 @@ taskkill /im explorer.exe -f
 
 taskkill /F /IM explorer.exe & start explorer
 
+taskkill /f /fi "WINDOWTITLE eq Photos*" /t
+
 ____________________________________________________________________________________________________________
 
 
@@ -107,6 +109,8 @@ https://www.freecodecamp.org/news/cjn-google-sheets-as-json-endpoint/-----to use
    https://json-csv.com/-----json to excel converter
 
    https://jsonformatter.org/---json beautifier and viewer
+
+   https://developers.google.com/gdata/samples/spreadsheet_sample
 
    ____________________________________________________________________________________________________________
 

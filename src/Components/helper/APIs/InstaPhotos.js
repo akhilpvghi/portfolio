@@ -17,7 +17,7 @@ export const useHttp = (url) =>{
             else
            {
              setData(res.data);
-            console.log(" res.data spre ",res.data)
+            // console.log(" res.data spre ",res.data)
            } 
           // })
           

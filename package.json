@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://fbdab2d8.ngrok.io",
   "dependencies": {
+    "async": "^3.2.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "font-awesome": "^4.7.0",

@@ -36,7 +36,7 @@
       if(windowWidth==undefined){
         windowWidth=windowWidth+1
       }
-      console.log("window.innerWidthwindow.innerWidth",windowWidth)
+      // console.log("window.innerWidthwindow.innerWidth",windowWidth)
     }
     
     ,[windowWidth])

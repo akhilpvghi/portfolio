@@ -466,6 +466,13 @@ render() {
     </div>
   );
 }
+______________________________________________________
+var heading = document.getElementById('heading');
+ if (computerChoice <= 0.33) {
+     heading.innerHTML = "This is a good!";
+     heading.setAttribute("class", "pink");
+
+https://stackoverflow.com/questions/21816359/add-class-and-change-html
 
 ______________________________________________________________________________
 
@@ -677,6 +684,36 @@ While interval emits the first event after a given time and then continuously wi
 
    pipe can have multiple function as parameter like ,filter,map
 
+
+   or
+
+   const timer = Rx.Observable.timer(1000);
+
+timer
+  .finally(() => console.log('All done!'))
+  .subscribe()
+// wait 1 second...
+// All done!
+Others will run forever, such as interval…
+
+const interval = Rx.Observable.interval(1000);
+interval
+  .finally(()  => console.log('All done!'))
+  .subscribe(x => console.log(x))
+// 0
+// 1
+// and so on...
+
+
+{
+
+flatmap or merge map----sequential
+
+forkjoin----->for parallel request
+
+https://www.youtube.com/watch?v=2wSgZ6hDGec
+
+ }
    ______________________________________________________
   
   sites design awesome and Rxjs well explained
@@ -696,3 +733,80 @@ While interval emits the first event after a given time and then continuously wi
                   }
                
             },[spreadSheet.length])
+
+
+store object even in hooks
+
+var element = {}, cart = [];
+element.id = id;
+element.quantity = quantity;
+cart.push(element);            
+
+ ______________________________________________________________________________
+
+ useReducer uses.....to add multiple input element into states 
+
+ const [userInput, setUserInput] = useReducer(
+        (state, newState) => ({...state, ...newState}),
+        {
+            name :'',
+            dob :'',
+            mno :'',
+            email :'',
+            SystemUrl:''
+        }
+    );
+
+
+    const handleChange = evt => {
+        const name = evt.target.name;
+        const newValue = evt.target.value;
+        setUserInput({[name]: newValue});
+        
+    }
+
+     <div className="col-md-12 addIn"><label className="fixedDisplay">Email:</label><input className="adjustWidth" name="email" value={userInput.email} onChange ={handleChange} type="text"/></div>
+               
+another linkkkkk---->https://levelup.gitconnected.com/clean-components-with-react-hooks-part-2-41b92f64f8b3
+    ____________________________________________________________________________________________________________________________
+
+style={{ border: "1px solid red" }}>
+
+______________________________________________________________________________
+
+https://usehooks.com/page/3
+
+______________________________________________________
+
+componentDidUpdate works whenever props changes --->change css or something with that props
+______________________________________________________________________________
+
+object in javascript
+
+
+let obj1={};
+               // obj1.push({name: elemm2.gs$cell.inputValue});
+               // obj1.ad
+               obj1={name: elemm2.gs$cell.inputValue} ;  
+               console.log("elemm2.gs$cell.inputValue akhilldfsdfsd",JSON.stringify(obj1))
+
+
+               var obj = {key1: "value1", key2: "value2"};
+var pair = {key3: "value3"};
+obj = {...obj, ...pair};
+
+document.body.innerHTML = JSON.stringify(obj);
+
+______________________________________________________
+
+Array map
+
+https://futurestud.io/tutorials/node-js-how-to-run-an-asynchronous-function-in-array-map
+
+
+______________________________________________________
+
+https://javascript.info/async-iterators-generators
+
+______________________________________________________________________________
+if multiple statement are rendered on view then return statement is required in map...

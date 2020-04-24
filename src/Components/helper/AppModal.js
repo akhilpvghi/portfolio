@@ -9,7 +9,8 @@
         showModal: true,
         componentToLoad: null,
         iconToLoad:null,
-        isModalBodyRequire: true
+        isModalBodyRequire: true,
+        isProcessing: false
         // messgaeTochild: 'Loading...'
     }
       constructor(props){
@@ -78,7 +79,6 @@
       componentDidMount=(props)=>{
 
         
-
         // this.setState({messgaeTochild: this.props.messagetoChild});
         if(this.props.componentToLoad.includes('gall')){
           this.setState({componentToLoad: <Slider />});
@@ -88,6 +88,7 @@
           this.setState({isModalBodyRequire : false});
           // this.setState({componentToLoad: 
           
+          this.setState({isProcessing : this.props.messageToChild.toLowerCase().slice(0,4).includes('proc')});
           // })
         }
         this.updateAndNotify();
@@ -142,9 +143,11 @@
                   <div className="modal-content incWidth controlOverflow">
                     <div className="modal-header">
                         <h4 className="modal-title">{this.props.messageToChild}</h4>
-                        {/* here modal */} {this.state.iconToLoad}
-                        <div className="primary fa fa-times-circle fa-2x cursrPointer" onClick={()=>{this.checkShow("close")}}>
-                        </div>
+                        {/* here modal */} 
+                        {this.state.iconToLoad}
+                        {this.isProcessing? <div className="primary fa fa-times-circle fa-2x cursrPointer" onClick={()=>{this.checkShow("close")}}>
+                        </div>:null}
+                        
                     </div>
                     
                     {this.state.isModalBodyRequire ? 
@@ -154,8 +157,9 @@
                     
                     
                     <div className="modal-footer">
-                          <button type="button" className="btn btn-danger" onClick={()=>{this.checkShow("close")}} >Close</button>
-                        </div>
+                      {this.isProcessing?<button type="button" className="btn btn-danger" onClick={()=>{this.checkShow("close")}} >Close</button>
+                        :null}
+                          </div>
                     </div>
                     </div>
                     </div>

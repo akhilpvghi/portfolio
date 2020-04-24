@@ -1,74 +1,78 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import '../../Styles/Download.css';
 const Downloads=()=>{
-    const [totalImg,setTotalImg]=useState([])
-    const [count,setcount]=useState(1)
-    const [show,setShow]=useState(true)
-    // let show=false;
-    const style = {
-        width:  150  + 'px',
-        height: 150+ 'px',
-        border: '10px solid green',
-         borderRightColor: 'red' 
-    };
 
-    useEffect(() => {
-        axios(`/img%20%28${count}%29.jpg`,{
-//             method: "GET",
-//   headers: {
-//     'Content-type':'image/jpeg',
-// //     // "Accept": "*/*",
-// //     // "Cache-Control": "no-cache",
-// //     // "Postman-Token": "8bfad07a-a4fd-4b2c-8339-43f896da013b,e4e3bade-2860-43d4-9d84-7ff90355ea45",
-//     'Access-Control-Allow-Origin': '*' ,
-// //     // 'Access-Control-Allow-Credentials': true
-// //     // "cache-control": "no-cache"
-//   }
-    //          headers:{    
-    //             'Access-Control-Allow-Origin': '*' ,
-    //             "Access-Control-Allow-Methods": "GET",
-    //             "Access-Control-Allow-Headers": "Origin, Methods, Content-Type"
-    // }
-        })
-    .then(
-        (res)=>{
-            setTotalImg([]);
-            // setTotalImg([1,2,3,4,5,6,7]);
-        console.log("import axios from 'axios';",res.status,totalImg)
-        setTotalImg([...totalImg, count])
-        // totalImg.push(count);
-        setcount(count+1);
+  const[isBoxVisible,setIsBoxVisible]=useState(false);
+    const profile = useRef(0);
+    let status=false;
+    let activeSubmenu=()=>{
+      // setIsBoxVisible(true);
+        // console.log("current use ref");
+        // profile.current.height=200 +'px';
+
+        profile.current.setAttribute("class", "item")
+      //  console.log(profile.current) 
+        // .style ={maxHeight: 25+'em'}
+        //  color:"red";
+        // .item .smenu{
+        //     maxHeight: "25em";
+        //   }
     }
-     ).catch((err)=>{console.log('insta error',err)
-     setShow(true);})
-    
-    }, [count])
-
-    
     
     let content=(
-            <div className="Downloads">
-
-            <h1>Downloads</h1>
-            <input type="text"></input>
-            {/* key={index} src={image} */}
-            {/* src={require(`${image}`)} */}
-           {/* src={`${localhost:8000/img%20%28{ele}%29.jpg}`} */}
-            <div className="container">
-{
-    show?
-    totalImg.map((ele)=>
-
-    <img key ={ele} src={`img%20%28${ele}%29.jpg`}   style={style} alt=""/>
-
-    ):null
-
-}
+        <div>
+             {/* className="middle" */}
+             <div className="row">
+             <div className="col-sm-2">
+             {/* <h1>akhil1</h1> */}
 </div>
+             <div className="col-sm-8 addIn">
+             {/* <h1>akhil2</h1> */}
+             <div className="menu">
+             {/* className="item" */}
+             {/* lassName={`${isBoxVisible ? "item" : ""}`}  */}
+        <div  className="item" id='profile'  >
+          <div  className="btn" ><i className="fa fa-user"></i>Profile</div>
+          <div className={`${isBoxVisible ? "smenu" : "disNone"}`}  >
+          {/* className="smenu" */}
+            <div >Posts</div>
+            <div >Picture</div>
+          </div>
+        </div>
+        {/* className="item" */}
+        <div  id="messages" ref={profile} onClick={activeSubmenu}>
+          <div  className="btn"><i className="fa fa-envelope"></i>Messages</div>
+          <div  className="smenu">
+            <div >new</div>
+            <div >Sent</div>
+            <div >Spam</div>
+          </div>
         </div>
 
-        
+        <div className="item" id="settings">
+          <div  className="btn"><i className="fa fa-cog"></i>Settings</div>
+          <div className="smenu">
+            <div >Password</div>
+            <div >Language</div>
+          </div>
+        </div>
+
+        <div className="item">
+          <div className="btn" ><i className="fa fa-sign-out-alt"></i>Logout</div>
+        </div>
+      </div>
+</div>
+<div className="col-sm-2">
+{/* <h1>akhil3</h1> */}
+</div>
+
+             </div>
+
+
+
+     
+    </div>
         )
         return content;
     

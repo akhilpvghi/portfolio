@@ -27,6 +27,7 @@
       const[ listOfFollowers,setListOfFollowers] =  useState([]);
       const[gallerySize,setGallerySze]=useState(null);
       const[modalComponent,setModalComponent]=useState(null);
+      const[componentName,setComponentName]=useState("null");
       const[following,setFollowing] =  useState(null);
       const[followers,setFollowers] =  useState(null);
       const[showModal,setShowModal] =  useState(false);
@@ -37,7 +38,7 @@
       const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
       const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
       
-      const[observableData]= useObservable();
+      const[observableData,getInTouchInfo]= useObservable();
       
       // let getBackendURL=()=>{
       //    console.log('backendCheckURLbackendCheckURL   ',backendCheckURL)
@@ -46,28 +47,33 @@
       // }
       
       useEffect(()=>{
-   
-         console.log("observable lengthhhh ",observableData[0])
+         // console.log("observable lengthhhh ",observableData[0])
+         
+         console.log("getInTouchInfo getInTouchInfo ",getInTouchInfo)
+         loadComponent(componentName)
          if(observableData[0])
-            setStatusFromBackend(true);
+         setStatusFromBackend(true);
          if(observableData[1]!=5){
             
-            console.log("bye bye bye  ",statusFromBackend);
+            // console.log("bye bye bye  ",statusFromBackend);
          }
       },[observableData])
 
+      // useEffect(()=>{
+      // },[getInTouchInfo])
 
          
          
          
          const loadComponent = (data_from_navbar) =>{
-         console.log('akhilbvbvbb',data_from_navbar)
+            setComponentName(data_from_navbar);
+         // console.log('akhilbvbvbb',data_from_navbar)
    if(data_from_navbar.includes("About")){
          setComponent(<AboutMe />)
       }else if(data_from_navbar.includes("Exper")){
          setComponent(<Experience />)
       }else if(data_from_navbar.includes("Get")){
-         setComponent(<GetInTouch />)
+         setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
    }else if(data_from_navbar.includes("Hobbi")){
      setComponent( <Hobbies />)   
    }else if(data_from_navbar.includes("Down")){
@@ -86,7 +92,8 @@
 
 const getContentFromHome = ()=>{
    return(<div>
-<h1>Home</h1>
+{/* <h1>Home</h1> */}
+<Downloads></Downloads>
    </div>)
 }
 
@@ -135,7 +142,7 @@ useEffect(()=>{
 
 useEffect(()=>{
    
-      console.log("  dasadd",followersData.user);
+      // console.log("  dasadd",followersData.user);
       localStorage.setItem("instaFollowers",JSON.stringify(followersData));
       
 },[followersData.length])
