@@ -18,15 +18,6 @@ import { pairs } from "rxjs";
     const [userInput, setUserInput] = useReducer(
         (state, newState) => ({...state, ...newState}),
         textFieldObject
-        // {
-        //     name :'',
-        //     dob :'',
-        //     mno :'',
-
-        
-        //     email :'',
-        //     SystemUrl:''
-        // }
     );
     const validEmailRegex = 
 // //   RegExp(^(([^<>()[].,;:s@"]+(.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[].,;:s@"]+.)+[^<>()[].,;:s@"]{2,})$i);
@@ -128,11 +119,14 @@ import { pairs } from "rxjs";
                      url_system+=property+"="+userInput[property]+"&";// Do things here
                     // }
                 }
+
                 setError(error);
+                for (var property in textFieldObject) {
                 if(!(error[property] ==='')){
                     console.log("inside dave to profile ifff")   
                     return;
                 }
+            }
                  showModalfn("null")
                 
             // textFieldObject.map((ele)=>{
@@ -198,7 +192,7 @@ import { pairs } from "rxjs";
            </div>) })
            : 
         //    showModal? 
-           <AppModal  isClosedFromAppModal={isClosedFromAppModal} componentToLoad={"modalComponent"} messageToChild="processing">
+           <AppModal  componentToLoad={"modalComponent"} messageToChild="processing">
        
            </AppModal>
         //    :null

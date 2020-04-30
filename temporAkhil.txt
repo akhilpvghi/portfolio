@@ -99,3 +99,142 @@ const Downloads=()=>{
 }
 
 export default Downloads;
+
+
+
+____________________________________________________________________________________________________
+import React, {useState, useEffect, useRef} from 'react';
+import axios from 'axios';
+import '../../Styles/Download.css';
+import AppModal from '../helper/AppModal';
+const Downloads=(props)=>{
+
+  const[isBoxVisible,setIsBoxVisible]=useState(true);
+  const[dataForNavDownload,setDataForNavDownload]=useState({});
+  const[showSubmenu,setShowSubmenu]=useState({});
+    const menu = useRef([]);
+    const profile = useRef(0);
+    let status=false;
+    
+    useEffect(() => {
+      if(props.getDownloadMenuData.length!=0){
+
+        setDataForNavDownload(props.getDownloadMenuData)
+        // menu.current = new Array(props.getDownloadNavData[0].length);
+      }
+      // submenuContent()
+      // return () => {
+        // console.log("hillll  ",props.getDownloadMenuData)
+        // for(var property in dataForNavDownload){
+        //   console.log("hillllppppppp  ",property)
+        // }
+      //   cleanup
+      // }
+    }, [props.getDownloadMenuData])
+
+    // useEffect(() => {
+    //   if(props.getDownloadMenuData.length!=0){
+
+    //     setDataForNavDownload(props.getDownloadMenuData)
+    //     // menu.current = new Array(props.getDownloadNavData[0].length);
+    //   }
+      
+    // }, [input])
+
+    // let submenuContent=(
+    //    props.getDownloadSubmenuData.map((ele,index)=>{
+    //    if(Object.keys(props.getDownloadSubmenuData[index])[0].includes(value)&&isBoxVisible){
+
+    //      console.log("slsllslslslslsl",props.getDownloadSubmenuData[index])
+    //    return(  <div  className="smenu">
+    //        {Object.entries(props.getDownloadSubmenuData[index]).forEach(([key,value])=>
+    //          <div>{value}</div>
+    //        )}
+    //        </div>)
+
+    //    }
+    //    else{
+    //     return null;
+    //    }
+    //     // props.getDownloadSubmenuData[index][0]
+    //   })
+    // )
+
+
+    let activeSubmenu=(index,value)=>{
+
+      // console.log("menu.current[index].name",menu.current[index],value)
+     
+      // console.log("value tooo value",value)
+      //    (<div  className="smenu">
+      //     {Object.entries(props.getDownloadSubmenuData[index]).forEach(([key,values])=>
+      //       <div>{values}</div>
+      //     )}
+      //     </div>)
+      props.getDownloadSubmenuData.map((ele,index)=>{
+         (Object.keys(props.getDownloadSubmenuData[index])[0].includes({value})&&isBoxVisible) ?
+           
+        
+        setShowSubmenu((props.getDownloadSubmenuData[index])[0])
+        :setShowSubmenu({});
+      
+         // props.getDownloadSubmenuData[index][0]
+       })
+     
+     
+      setIsBoxVisible(!isBoxVisible)
+        isBoxVisible ? menu.current[index].setAttribute("class", "item") : menu.current[index].setAttribute("class", "")
+
+      // childNodes[2].className==""
+    }
+    
+    
+    let content=(
+        <div>
+             <div className="row">
+             <div className="col-sm-2">
+</div>
+             <div className="col-sm-8 addIn">
+
+               <div className="menu">
+               {
+
+                 // for(var property in props.getDownloadNavData){
+        //   console.log("hillllppppppp  ",props.getDownloadNavData[property])
+        // }
+        // ref={key => menu.current[index] = key} 
+        (props.getDownloadMenuData[0]!=undefined)?
+                  Object.entries(props.getDownloadMenuData[0]).map(([key,value],index) => {
+                    console.log("index index index",index)
+                    return !value.includes(null) ?(
+                    <div key={index}  id="messages" ref={el=> menu.current[index]=el} onClick={()=>activeSubmenu(index,value)}>
+                    <div  className="btnDownload"><i className="fa fa-envelope"></i>{value}</div>
+                   
+                  ):null
+                }
+                  )
+                  : <AppModal   componentToLoad={"modalComponent"} messageToChild="processing">
+       
+                  </AppModal>
+               }
+               (<div  className="smenu">
+           {Object.entries(props.getDownloadSubmenuData[index]).forEach(([key,values])=>
+            <div>{values}</div>
+            )}
+            </div>) 
+        </div> 
+
+</div> 
+
+<div className="col-sm-2">
+</div>
+     
+    </div> 
+    </div>
+        )
+        return content;
+    
+}
+
+export default Downloads;
+____________________________________________________________________________________________________

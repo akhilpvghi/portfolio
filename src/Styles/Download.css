@@ -5,7 +5,8 @@
 	transform: translate(-50%,-50%);
   }
   .menu{
-	width: 300px;
+	width: 254px;
+	/* width: 300px; */
 	border-radius: 8px;
 	overflow: hidden;
   }
@@ -41,11 +42,12 @@
   }
   .smenu div{
 	display: block;
-	padding: 16px 26px;
 	color: white;
 	font-size: 14px;
-	margin: 4px 0;
 	position: relative;
+	/* new added */
+	/* margin: 4px 0; */
+	/* padding: 16px 26px; */
   }
   .smenu div:before{
 	content: "";
@@ -71,7 +73,22 @@
 
 .item .smenu{ 
 	max-height: 25em;
+	/* new added */
+	padding: 0;
+    margin: 0;
+    overflow: overlay;
  }
+
+ 
+
+/* .smenu  .item{ 
+	max-height: 25em; */
+	/* new added */
+	/* padding: 0;
+    margin: 0;
+    overflow: overlay; */
+ /* } */
+ 
  
  .disNone{
 	 display: none;

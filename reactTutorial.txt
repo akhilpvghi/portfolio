@@ -250,11 +250,13 @@ npm install -g firebase-tools----to install firebase tool
 
 login to firebase---command----->firebase login---->
 
+to create build---npm run build---->this will create build folder with needed build
+
+
 then init command-------->command----->firebase init--->then confirm it by pressing (Y)---->then selesct hosting 
 by arrow key and select by pressing space bar---then hit enter----->
 
-to create build---npm run build---->this will create build folder with needed build
-
+if  Error: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
 
 if you dont want to use public as your directory--->then enter build-----
 --->otherwise enter location like dist by putting build into dist folder
@@ -815,3 +817,77 @@ https://javascript.info/async-iterators-generators
 
 ______________________________________________________________________________
 if multiple statement are rendered on view then return statement is required in map...
+
+______________________________________________________
+using variable in className
+<div className={`${isBoxVisible ? "smenu" : "disNone"}`}  >
+
+ ______________________________________________________
+
+ iterate over object
+
+ for (var prop in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        // do stuff
+    }
+
+    // Object.entries(props.getDownloadNavData).forEach(([key, value]) => console.log("akkkkkkk",key))
+       
+       
+        // for (const value of Object.values(props.getDownloadNavData)) { 
+        //   console.log("hillllppppppp  ",value)
+        // }
+
+        // for (const [key, value] of Object.entries(props.getDownloadNavData[0])) {console.log("hillllppppppp  ",value) }
+        
+        
+        //Object.values(props.getDownloadNavData[0]).forEach(value => console.log("hillllppppppp  ",value))
+        
+        
+        // for(var property in props.getDownloadNavData){
+        //   console.log("hillllppppppp  ",props.getDownloadNavData[property])
+        // }
+
+
+in template
+Object.entries(props.getDownloadNavData[0]).map(([key,value]) => {
+                    return !value.includes(null) ?(
+                    <div   id="messages" ref={profile}>
+                    <div  className="btnDownload"><i className="fa fa-envelope"></i>{value}</div>
+                    <div  className="smenu">
+                      <div >new</div>
+                      <div >Sent</div>
+                      <div >Spam</div>
+                    </div>
+                  </div>
+                  ):null
+                }
+    ______________________________________________________
+
+    
+    ______________________________________________________
+tips react by akhil
+when we use arrow function in onClick then it does not call/sense automatically
+
+ 
+     whenever loop or map returns the same value there may be chances of overridden of values having same key name
+ 
+ useReducer is only for multiple state
+
+
+ sequence does matter in JS
+
+ 5) each statement takes sometime in reactJs
+
+ 6) don't use anything which is unknkown
+    ______________________________________________________  
+
+
+  hyperLink on same page or request on same page using
+
+  window.location.href=getModifiedString(value)[1]
+
+  in javascript
+
+  to next tab
+  window.open('http://stackoverflow.com', '_blank');

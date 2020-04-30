@@ -124,3 +124,11 @@ https://www.freecodecamp.org/news/cjn-google-sheets-as-json-endpoint/-----to use
 
    ____________________________________________________________________________________________________________
 
+
+GIT STASH
+
+git stash save “Your stash message”.
+
+git stash list
+
+git stash apply

@@ -38,7 +38,7 @@
       const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
       const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
       
-      const[observableData,getInTouchInfo]= useObservable();
+      const[observableData,getInTouchInfo,getDownloadMenuData,getDownloadSubmenuData]= useObservable();
       
       // let getBackendURL=()=>{
       //    console.log('backendCheckURLbackendCheckURL   ',backendCheckURL)
@@ -49,7 +49,9 @@
       useEffect(()=>{
          // console.log("observable lengthhhh ",observableData[0])
          
-         console.log("getInTouchInfo getInTouchInfo ",getInTouchInfo)
+         // console.log("getInTouchInfo getInTouchInfo ",getInTouchInfo)
+         console.log("getDownloadMenuData getDownloadMenuData ",getDownloadMenuData)
+         console.log("getDownloadSubmenuData getDownloadSubmenuData ",getDownloadSubmenuData)
          loadComponent(componentName)
          if(observableData[0])
          setStatusFromBackend(true);
@@ -77,7 +79,7 @@
    }else if(data_from_navbar.includes("Hobbi")){
      setComponent( <Hobbies />)   
    }else if(data_from_navbar.includes("Down")){
-         setComponent(<Downloads />)
+         setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
    }else{
          setComponent(null)
    }
@@ -92,8 +94,8 @@
 
 const getContentFromHome = ()=>{
    return(<div>
- <h1>Home</h1>
-{/* <Downloads></Downloads> */}
+ {/* <h1>Home</h1> */}
+ {/* <Downloads getDownloadNavData={getDownloadNavData} getDownloadSubmenuData={getDownloadSubmenuData}></Downloads> */}
  {/* <GetInTouch get_in_touch_info={getInTouchInfo}/> */}
    </div>)
 }
@@ -178,9 +180,11 @@ let content=( <div className="row marg0">
             </div>
          </div>
          <div className="user" >
+         {/* style={{display : "none"}} */}
             <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/>
          </div>
-         <div className="content">
+         <div className="content" >
+         {/* style={{display : "none"}} */}
             <div className="main">
                <h3 className="name">Akhil Kumar</h3>
                <p className="profession">Software Engineer</p>
