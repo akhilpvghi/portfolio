@@ -4,6 +4,7 @@
     import '../../Styles/GetinTouch.css';
     import '../../Styles/Common.css';
 import { pairs } from "rxjs";
+import { element } from "prop-types";
     const GetInTouch =(props) =>{
 
     const[modalComponent,setModalComponent]=useState("gallery");
@@ -55,7 +56,7 @@ import { pairs } from "rxjs";
          if(props.get_in_touch_info.length!=0)
         {
             setInfoDataFromObserval(props.get_in_touch_info) 
-        console.log("setInfoDataFromObserval setInfoDataFromObserval",infoDataFromObserval)
+        console.log("setInfoDataFromObserval setInfoDataFromObserval",infoDataFromObserval,props.get_in_touch_info)
         props.get_in_touch_info.map((ele)=>{
             pair[ele.textfield]=" ";
             tempError[ele.textfield]=ele.errorMessage;
@@ -72,10 +73,10 @@ import { pairs } from "rxjs";
     }, [props.get_in_touch_info])
 
     const handleChange = evt => {
-        console.log("TextFieldObject",textFieldObject);
+        // console.log("TextFieldObject",textFieldObject);
         const name = evt.target.name;
         const newValue = evt.target.value;
-        console.log("name newValue ",name,newValue)
+        // console.log("name newValue ",name,newValue)
         setUserInput({[name]: newValue});
         
     }
@@ -101,19 +102,29 @@ import { pairs } from "rxjs";
         setShowModal(false);
      }
 
+     const callForSelectTag=(element)=>{
+ let options=element.placeholder.split('_option_');
+
+console.log("element element element",element,options)
+
+        return (
+            <div className="col-md-12 addIn">
+            <select className="adjustWidth" name={element.textfield} onChange ={handleChange}>
+            {options.map((item,index)=> 
+      (index==0)?<option  value={userInput.textfield} selected disabled hidden >{item}</option>:<option  value={userInput.textfield} >{item}</option>
+)}
+            </select>
+            <p className="addIner blinking">{error[element.textfield]} </p>
+            </div>
+        )
+     }
+
         let saveToProfileData=(userInput)=>{
             let url_system="";
             for (var property in textFieldObject) {
                 // if (textFieldObject.hasOwnProperty(property)) {
-                    console.log("property property property",userInput[property]," errorFieldObject[property] ", errorFieldObject[property],
-                    "regExObject[property] ",regExObject[property]);
-
-                    // error[property] = userInput[property].length < 5 ?  errorFieldObject[property]: '';
-                    // error.email = validEmailRegex.test(userInput.email) ? '' : 'Email is not valid!';
-
-                    // const abh =RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i);
-                    // const abh =RegExp();
-                    
+                    // console.log("property property property",userInput[property]," errorFieldObject[property] ", errorFieldObject[property],
+                    // "regExObject[property] ",regExObject[property]);
                     error[property] = RegExp(regExObject[property],'g').test(userInput[property]) ? '':errorFieldObject[property] ;
                     
                      url_system+=property+"="+userInput[property]+"&";// Do things here
@@ -123,26 +134,13 @@ import { pairs } from "rxjs";
                 setError(error);
                 for (var property in textFieldObject) {
                 if(!(error[property] ==='')){
-                    console.log("inside dave to profile ifff")   
+                    // console.log("inside dave to profile ifff")   
                     return;
                 }
             }
                  showModalfn("null")
-                
-            // textFieldObject.map((ele)=>{
-            // })
-            
-            //   error.name = userInput.name.length < 5 ? 'Name can not be blank!' : '';
-            //   error.mno = validMnoRegex.test(userInput.mno)   ? '':'mobile must be 10 digit !' ;
-            //   error.dob = userInput.dob.charAt(4) !== '/'  ? 'DOB must be in yyyy/mm/dd format' : '';
-            //   error.email = validEmailRegex.test(userInput.email) ? '' : 'Email is not valid!';
-            // console.log("hello save");
-            // console.log("selectedFile ")
             axios.defaults.baseURL = localStorage.getItem('mainURL');
             url_system="/data/new?"+url_system;
-            // userInput.SystemUrl;
-            
-            // console.log("Systemurl "+axios.defaults.baseURL)
             
             axios.post(url_system)
         .then((res)=>{
@@ -152,28 +150,10 @@ import { pairs } from "rxjs";
             }
 
         } ).catch((err)=>{console.log(' error from get in touch',err);
-        // if(err.response.status>250){
             setChildMessage('Error '+' Try Again...') 
-            // checkForData(userInput.mno);
-            // +err.response.status
-        // }
         
     })
         }
-        
-        // let checkForData =(mobNo)=>{
-        //     axios.get("/dfpByMobNo/"+mobNo).then((res)=>{
-        //         console.log("checkForData---->",res.data);
-        //         if(!res.data){
-        //             setChildMessage('Error '+' Try Again...') 
-        //         }
-        //     }).catch((err)=>{
-        //         setChildMessage('Error '+' Try Again...') 
-        //     })
-        // }
-
-
-
 
         let content =(
             
@@ -185,13 +165,19 @@ import { pairs } from "rxjs";
 
        <div className="row displayUnset">
        {    
-           (infoDataFromObserval.length!=0) ? infoDataFromObserval.map((ele,key)=>{ return( <div key={key} className="col-md-12 addIn">
+           
+
+           (infoDataFromObserval.length!=0) ? infoDataFromObserval.map((ele,key)=>{
+               {
+                  return (ele.type!='options')?
+
+                       <div key={key} className="col-md-12 addIn">
            <label className="fixedDisplay">{ele.label}:</label>
            <input className="adjustWidth" placeholder={ele.placeholder}  name={ele.textfield} value={userInput.textfield} onChange ={handleChange} type="text"/>
-           <p className="addIner blinking">{error[ele.textfield]} </p>
-           </div>) })
-           : 
-        //    showModal? 
+           <p className="addIner blinking">{error[ele.textfield]} </p> 
+           </div> 
+           : callForSelectTag(ele)} 
+            }): 
            <AppModal  componentToLoad={"modalComponent"} messageToChild="processing">
        
            </AppModal>
@@ -200,28 +186,6 @@ import { pairs } from "rxjs";
         //    showForm()
            }
         
-           {/* {props.get_in_touch_info.map((ele)=>{ ( <div className="col-md-12 addIn"><label className="fixedDisplay">{ele.label}:</label><input className="adjustWidth" placeholder={ele.placeholde}  name="name" value={userInput.name} onChange ={handleChange} type="text"/></div>)
-    //  <p className="blinking addIner">{ele.label}</p> 
-     : (<h1>Sorry</h1>)
-           })} */}
-                {/* <div className="col-md-12 addIn"><label className="fixedDisplay">CheckURL:</label><input className="adjustWidth" name="SystemUrl" value={userInput.SystemUrl} onChange ={handleChange} placeholder="PASTE URL" type="text"/></div>
-                 */}
-                {/* onMouseLeaves={onChangeHandler} */}
-                {/* onFocus={onChangeHandler}  */}
-                {/* onMouseOut */}
-                {/* <button className="col-md-12 addIn" onClick={()=>checkProfileDataURL()}>SUBMIT</button> */}
-                
-                {/* <div className="col-md-12 addIn"><label className="fixedDisplay">Name:</label><input className="adjustWidth"  name="name" value={userInput.name} onChange ={handleChange} type="text"/></div>
-                <p className="blinking addIner">{error.name} </p>
-                
-                <div className="col-md-12 addIn"><label className="fixedDisplay">DOB:</label><input className="adjustWidth"  name="dob" value={userInput.dob} onChange ={handleChange} placeholder="e.g. (YYYY/MM/DD)" type="text"/></div>
-                <p className="addIner blinking">{error.dob} </p>
-                <div className="col-md-12 addIn"><label className="fixedDisplay">Mobile No:</label><input className="adjustWidth"  name="mno" value={userInput.mno} onChange ={handleChange} placeholder="10 digit only" type="text"/></div>
-                <p className="addIner blinking">{error.mno} </p>
-                <div className="col-md-12 addIn"><label className="fixedDisplay">Email:</label><input className="adjustWidth" name="email" value={userInput.email} onChange ={handleChange} type="text"/></div>
-                <p className="addIner blinking">{error.email} </p>
-                <div className="col-md-12 addIn"><button className="fixedDisplay adjustWidth mt-15" onClick={()=>saveToProfileData(userInput)}>SUBMIT</button></div>
-                */}
                 <div className="col-md-12 addIn"><button className="fixedDisplay adjustWidth mt-15" onClick={()=>saveToProfileData(userInput)}>SUBMIT</button></div>
                
             </div>

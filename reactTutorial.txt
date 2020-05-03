@@ -540,6 +540,8 @@ Regular Expression
 https://regex101.com/    -------------->to check regEx
 
 https://digitalfortress.tech/tricks/top-15-commonly-used-regex/
+
+http://regexlib.com/UserPatterns.aspx?authorid=98d94464-5cb5-46bf-97e8-3fd4cec2e19c
 _________________________________________________________________________________
 
 Run command-line as an Administrator. Then run the below mention command. type your port number in yourPortNumber
@@ -891,3 +893,15 @@ when we use arrow function in onClick then it does not call/sense automatically
 
   to next tab
   window.open('http://stackoverflow.com', '_blank');
+
+  ______________________________________________________________________________
+
+  random number
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+  ______________________________________________________________________________
+
+
+  remove first item from array
+  setManageState(temp.splice(temp[temp.length-1], 1)[temp.length-1])
+  ______________________________________________________

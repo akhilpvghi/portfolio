@@ -23,8 +23,9 @@
    export const useObservable = () => {
       const [spreadSheet] = useHttp('https://spreadsheets.google.com/feeds/list/1DDMh6FsdoxN7a6GO4eQlpXQjIqanz6Ckam5RpQtIQEA/1/public/full?alt=json');
       const [data, setData] = useState([])
-      const [backendCheckURL, setBackendCheckURL] = useState({
-         url: ''
+      const [siteHandler, setSiteHandler] = useState({
+         url: '',
+         componentToLoad: ''
       });
       const [spreadSheetData, setSpreadSheetData] = useState([]);
       const [getInfoDataSingleData, setGetInfoDataSingleData] = useState({});
@@ -114,19 +115,18 @@
          spreadSheet.feed.entry.map((elemm2, index) => {
             let pair = {};
             if (index == 0) {
-               console.log("mainURL", elemm2.gsx$fieldone.$t);
-               localStorage.setItem("mainURL", elemm2.gsx$fieldone.$t);
-
-
-               setBackendCheckURL({
-                  url: elemm2.gsx$fieldone.$t + '/checkStatus'
+               console.log("mainURL", elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0]);
+               localStorage.setItem("mainURL", elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0]);
+               setSiteHandler({
+                  url: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0] + '/checkStatus',
+                  componentToLoad: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[1]
                });
             }
             if (elemm2.gsx$fieldtwo.$t.includes('textfield')) {
                pair.textfield = elemm2.gsx$fieldtwo.$t
                pair.label = elemm2.gsx$fieldthree.$t;
                pair.placeholder = elemm2.gsx$fieldfour.$t;
-               pair.position = elemm2.gsx$fieldeight.$t;
+               pair.type = elemm2.gsx$fieldeight.$t;
                pair.fieldstype = elemm2.gsx$fieldnine.$t;
                pair.errorMessage = elemm2.gsx$fieldfive.$t
                pair.regExp = elemm2.gsx$fieldseven.$t
@@ -173,12 +173,8 @@
 
    useEffect(() => {
       let pair = {}
-      url = backendCheckURL.url;
+      url = siteHandler.url;
       console.log("props of observa ", url);
-
-
-
-
       if (url != '' && url != undefined) {
          timer(0, 2000).pipe(
             map(() => {
@@ -199,13 +195,13 @@
                console.log("dsfds dfv dafs statusfromBackend count[0]", count[0], "count[1] ", count[1]);
                if (count[0] !== false)
                   setData(count)
-               return count[1] !== 3 && count[0] === false;
+               return count[1] !== 5 && count[0] === false;
             })
          ).subscribe((val) => setData(val))
          //console.log("fgfhhhhhhhhhhhhhhhhhhh",data)
       }
-   }, [count, backendCheckURL])
+   }, [count, siteHandler])
 
    //console.log("fgfggggggggggggggggggg",data)
-   return [data, getInfoData,getDownloadMenuData, getDownloadSubmenuData];
+   return [data, getInfoData,getDownloadMenuData, getDownloadSubmenuData, siteHandler.componentToLoad];
    }

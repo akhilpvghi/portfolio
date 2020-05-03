@@ -11,6 +11,7 @@
    import AppModal from '../helper/AppModal';
    import Downloads from '../Downloads';
    import GetInTouch from '../GetInTouch';
+   import useWindowWidth from '../helper/WindowWidth'
    import axios from 'axios';
 
    // // import { from } from 'rxjs';
@@ -33,12 +34,13 @@
       const[showModal,setShowModal] =  useState(false);
       const[component,setComponent] =  useState(null);
       const[childMessage,setChildMessage] =  useState("null");
+      let windowWidth=useWindowWidth()
       const[statusFromBackend,setStatusFromBackend] =  useState(false);
       const[instaData,setInstaData] =  useState(null);
       const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
       const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
       
-      const[observableData,getInTouchInfo,getDownloadMenuData,getDownloadSubmenuData]= useObservable();
+      const[observableData,getInTouchInfo,getDownloadMenuData,getDownloadSubmenuData,componentToLoadFromBackend]= useObservable();
       
       // let getBackendURL=()=>{
       //    console.log('backendCheckURLbackendCheckURL   ',backendCheckURL)
@@ -48,10 +50,11 @@
       
       useEffect(()=>{
          // console.log("observable lengthhhh ",observableData[0])
+         console.log("componentToLoadFromBackend ",componentToLoadFromBackend)
          
          // console.log("getInTouchInfo getInTouchInfo ",getInTouchInfo)
-         console.log("getDownloadMenuData getDownloadMenuData ",getDownloadMenuData)
-         console.log("getDownloadSubmenuData getDownloadSubmenuData ",getDownloadSubmenuData)
+         // console.log("getDownloadMenuData getDownloadMenuData ",getDownloadMenuData)
+         // console.log("getDownloadSubmenuData getDownloadSubmenuData ",getDownloadSubmenuData)
          loadComponent(componentName)
          if(observableData[0])
          setStatusFromBackend(true);
@@ -61,6 +64,10 @@
          }
       },[observableData])
 
+      // useEffect(() => {
+      //    if(componentToLoadFromBackend!="")
+      //    loadComponent(componentToLoadFromBackend)
+      // }, [componentToLoadFromBackend])
       // useEffect(()=>{
       // },[getInTouchInfo])
 
@@ -93,11 +100,28 @@
 }
 
 const getContentFromHome = ()=>{
-   return(<div>
+  if (componentToLoadFromBackend!="" && componentToLoadFromBackend!=undefined) 
+   if(componentToLoadFromBackend.includes("about")){
+      setComponent(<AboutMe />)
+      }else if(componentToLoadFromBackend.includes("exper")){
+         setComponent(<Experience />)
+      }else if(componentToLoadFromBackend.includes("getin")){
+         setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
+   }else if(componentToLoadFromBackend.includes("hobbi")){
+      setComponent( <Hobbies />)   
+   }else if(componentToLoadFromBackend.includes("down")){
+      setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
+   }
+   
+      return(<div>
+      <h1>Home</h1>
+       </div>) 
+         // setComponent(null)
+   
+
  {/* <h1>Home</h1> */}
- {/* <Downloads getDownloadNavData={getDownloadNavData} getDownloadSubmenuData={getDownloadSubmenuData}></Downloads> */}
+ {/* <Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}></Downloads> */}
  {/* <GetInTouch get_in_touch_info={getInTouchInfo}/> */}
-   </div>)
 }
 
 
@@ -164,6 +188,8 @@ let content=( <div className="row marg0">
 {/* <div className="bgImg">
 <img src={the_movement_bg} alt="Logo" className="container rounded-circle dpDimension"/>
 </div> */}
+
+{windowWidth>987||!component?
 <div className="col-md-4 sm-12">
 
 <div className="rotatingFrontCard">
@@ -255,7 +281,7 @@ let content=( <div className="row marg0">
    </div>
 </div>
 </div>
-</div>
+</div>:null}
 <div className="col-md-8 sm-12">
 <div className="card bg-primary mainContent">
 {component ? component : getContentFromHome()}
