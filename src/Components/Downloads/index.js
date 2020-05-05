@@ -24,19 +24,20 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 		  '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
 		  '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', 
 		  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
-const Downloads=(props)=>{
-
-  const[isBoxVisible,setIsBoxVisible]=useState(true);
-  const [valueToCheck, setValueToCheck]=useState("");
-  const [menuIndex, setMenuIndex]=useState(null);
-  const [menuCount, setMenuCount]=useState(2);
-  const [manageState, setManageState] = useState([]);
-  const [changedMenu, setChangedMenu] = useState({});
-  const [randomColor, setRandomColor] = useState({color1: 4,
-  color2:1});
-  const [pageNoStatus, setPageNoStatus] = useState(0);
-  const [atmenu, setAtmenu] = useState(true);
-    const menu = useRef([]);
+      const Downloads=(props)=>{
+        
+        const[isBoxVisible,setIsBoxVisible]=useState(true);
+        const [valueToCheck, setValueToCheck]=useState("");
+        const [menuIndex, setMenuIndex]=useState(null);
+        const [menuCount, setMenuCount]=useState(2);
+        const [manageState, setManageState] = useState([]);
+        const [changedMenu, setChangedMenu] = useState({});
+        const [randomColor, setRandomColor] = useState({color1: 4,
+          color2:1});
+          const [pageNoStatus, setPageNoStatus] = useState(0);
+          const [atmenu, setAtmenu] = useState(true);
+          const menu = useRef([]);
+          let insert={};
     const menu2 = useRef([]);
     // const temp=[];
     let temp=[]
@@ -55,11 +56,12 @@ const Downloads=(props)=>{
         props.getDownloadSubmenuData.map((ele,indexed)=>{
           if(Object.keys(props.getDownloadSubmenuData[indexed])[0].includes(valueToCheck)){
             setAtmenu(false);
-            setChangedMenu(props.getDownloadSubmenuData[indexed])
+            const returnedTarget = Object.assign(insert, props.getDownloadSubmenuData[indexed]);
+            setChangedMenu(returnedTarget)
             setRandomColor({color1:getRandomInt(colorArray.length),
               color2:getRandomInt(colorArray.length)})
               setPageNoStatus(pageNoStatus+1)
-              // console.log("props.getDownloadSubmenuData[indexed] valueToCheck setChangedMenu",props.getDownloadSubmenuData[indexed],valueToCheck,changedMenu)
+              console.log("props.getDownloadSubmenuData[indexed] valueToCheck setChangedMenu",props.getDownloadSubmenuData[indexed],valueToCheck,changedMenu)
               
             }
             // else if(props.getDownloadSubmenuData[indexed].length<1){
@@ -76,7 +78,9 @@ const Downloads=(props)=>{
           window.open(getModifiedString(valueToCheck)[1], '_blank');
         }
       
-    }, [valueToCheck,changedMenu])
+    }, [valueToCheck])
+
+    // #removed changedMenu from useEffect array as it was calling recursively whenever we two submenu of same name found
 
 
     let getModifiedString=(convertString)=>{

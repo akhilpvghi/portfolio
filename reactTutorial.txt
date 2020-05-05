@@ -905,3 +905,14 @@ when we use arrow function in onClick then it does not call/sense automatically
   remove first item from array
   setManageState(temp.splice(temp[temp.length-1], 1)[temp.length-1])
   ______________________________________________________
+
+  Merge two object in one
+
+  const object3 = {...object1, ...object2 }
+If both objects have a property with the same name, then the second object property overwrites the first.
+
+soln
+const returnedTarget = Object.assign(insert, props.getDownloadSubmenuData[indexed]);
+            setChangedMenu(returnedTarget)
+
+            ______________________________________________________________________________

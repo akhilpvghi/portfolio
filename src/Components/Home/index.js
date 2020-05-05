@@ -28,7 +28,7 @@
       const[ listOfFollowers,setListOfFollowers] =  useState([]);
       const[gallerySize,setGallerySze]=useState(null);
       const[modalComponent,setModalComponent]=useState(null);
-      const[componentName,setComponentName]=useState("null");
+      const[componentName,setComponentName]=useState("Home");
       const[following,setFollowing] =  useState(null);
       const[followers,setFollowers] =  useState(null);
       const[showModal,setShowModal] =  useState(false);
@@ -55,74 +55,71 @@
          // console.log("getInTouchInfo getInTouchInfo ",getInTouchInfo)
          // console.log("getDownloadMenuData getDownloadMenuData ",getDownloadMenuData)
          // console.log("getDownloadSubmenuData getDownloadSubmenuData ",getDownloadSubmenuData)
-         loadComponent(componentName)
+         // loadComponent(componentName)
          if(observableData[0])
          setStatusFromBackend(true);
          if(observableData[1]!=5){
-            
             // console.log("bye bye bye  ",statusFromBackend);
          }
       },[observableData])
 
-      // useEffect(() => {
-      //    if(componentToLoadFromBackend!="")
-      //    loadComponent(componentToLoadFromBackend)
-      // }, [componentToLoadFromBackend])
-      // useEffect(()=>{
-      // },[getInTouchInfo])
-
-         
-         
-         
-         const loadComponent = (data_from_navbar) =>{
-            setComponentName(data_from_navbar);
-         // console.log('akhilbvbvbb',data_from_navbar)
-   if(data_from_navbar.includes("About")){
-         setComponent(<AboutMe />)
-      }else if(data_from_navbar.includes("Exper")){
-         setComponent(<Experience />)
-      }else if(data_from_navbar.includes("Get")){
-         setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
-   }else if(data_from_navbar.includes("Hobbi")){
-     setComponent( <Hobbies />)   
-   }else if(data_from_navbar.includes("Down")){
-         setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
-   }else{
-         setComponent(null)
-   }
-
-   
+      
+      useEffect(()=>{
+         if(componentName.includes("About")){
+            setComponent(<AboutMe />)
+         }else if(componentName.includes("Exper")){
+            setComponent(<Experience />)
+         }else if(componentName.includes("Get")){
+            setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
+         }else if(componentName.includes("Hobbi")){
+            setComponent( <Hobbies />)   
+         }else if(componentName.includes("Download")){
+            // if(getDownloadSubmenuData.length!=0) 3 commenting as it was doesnot loading download 
+            setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
+}else{
+// setComponentName("Home")
+setComponent(null)
+getContentFromHome()
 }
 
-   const isClosedFromAppModal=(data_from_appModal)=>{
-   if(data_from_appModal.includes("clos"))
-   setShowModal(false);
-}
+      },[componentName])
 
-const getContentFromHome = ()=>{
-  if (componentToLoadFromBackend!="" && componentToLoadFromBackend!=undefined) 
-   if(componentToLoadFromBackend.includes("about")){
-      setComponent(<AboutMe />)
-      }else if(componentToLoadFromBackend.includes("exper")){
-         setComponent(<Experience />)
-      }else if(componentToLoadFromBackend.includes("getin")){
-         setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
-   }else if(componentToLoadFromBackend.includes("hobbi")){
-      setComponent( <Hobbies />)   
-   }else if(componentToLoadFromBackend.includes("down")){
-      setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
+         
+      
+      
+      const loadComponent = (data_from_navbar) =>{
+         // if(componentToLoadFromBackend=="" && componentToLoadFromBackend==undefined)
+         setComponentName(data_from_navbar);
+            // staticFnToLoadCompo(data_from_navbar);
+            // console.log('akhilbvbvbb',data_from_navbar)
+            
+            
+            
+         }
+         
+         const isClosedFromAppModal=(data_from_appModal)=>{
+            if(data_from_appModal.includes("clos"))
+            setShowModal(false);
+         }
+         
+         
+
+useEffect(() => {
+   // effect
+   if (componentToLoadFromBackend!=""  && component==null) {
+      // staticFnToLoadCompo(componentToLoadFromBackend);
+      setComponentName(componentToLoadFromBackend)
    }
-   
-      return(<div>
+}, [componentToLoadFromBackend])
+
+const getContentFromHome =()=>{
+   return(<div>
       <h1>Home</h1>
        </div>) 
-         // setComponent(null)
-   
-
- {/* <h1>Home</h1> */}
- {/* <Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}></Downloads> */}
- {/* <GetInTouch get_in_touch_info={getInTouchInfo}/> */}
 }
+
+
+
 
 
 const showModalfn=(componentToLoad)=>{
@@ -189,7 +186,7 @@ let content=( <div className="row marg0">
 <img src={the_movement_bg} alt="Logo" className="container rounded-circle dpDimension"/>
 </div> */}
 
-{windowWidth>987||!component?
+{windowWidth>987||componentName.includes("Home")?
 <div className="col-md-4 sm-12">
 
 <div className="rotatingFrontCard">

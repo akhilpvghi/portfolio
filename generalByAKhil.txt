@@ -78,6 +78,9 @@ taskkill /f /fi "WINDOWTITLE eq Photos*" /t
 
 netstat -ano | findstr :<yourPortNumber>
 
+
+last column is PID
+
 Then you execute this command after identify the PID.
 taskkill /PID <typeyourPIDhere> /F
 
