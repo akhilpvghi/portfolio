@@ -7,10 +7,14 @@
     width: 85%;
     margin-top: -10px;
     margin-bottom: 15px;
+    border-radius: 50PX;
+    height: 41px;
+    padding-left: 11px;
 }
 
 .fixedDisplay {
     display: inline;
+    padding-left: 20px;
 }
 
 .displayUnset{
@@ -36,4 +40,7 @@ p.addIner.blinking {
 
 button.fixedDisplay.adjustWidth.mt-15 {
     margin-top: 15px;
+    border-radius: 50PX;
+    height: 41px;
+    padding-left: 11px;
 }

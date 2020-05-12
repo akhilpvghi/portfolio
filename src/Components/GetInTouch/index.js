@@ -111,7 +111,7 @@ console.log("element element element",element,options)
             <div className="col-md-12 addIn">
             <select className="adjustWidth" name={element.textfield} onChange ={handleChange}>
             {options.map((item,index)=> 
-      (index==0)?<option  value={userInput.textfield} selected disabled hidden >{item}</option>:<option  value={userInput.textfield} >{item}</option>
+      (index==0)?<option  value="" selected disabled hidden >{item}</option>:<option  value={userInput.textfield} >{item}</option>
 )}
             </select>
             <p className="addIner blinking">{error[element.textfield]} </p>

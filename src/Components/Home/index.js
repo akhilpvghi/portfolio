@@ -194,15 +194,16 @@ let content=( <div className="row marg0">
    <div className="card">
       <div className="front">
       {/* <i className="fa fa-sync" /> */}
-      <i className="fa fa-sync"></i>
+      {/* <i className="fa fa-sync"></i> */}
       {/* <i class="fa fa-sync"></i> */}
          <div className="cover" >
+         <i className="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
             {/* <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg"/> */}
             <div className="profilePicture" >
                {/* <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/> */}
             </div>
          </div>
-         <div className="user" >
+         <div className="user " >
          {/* style={{display : "none"}} */}
             <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/>
          </div>

@@ -128,6 +128,11 @@ https://www.freecodecamp.org/news/cjn-google-sheets-as-json-endpoint/-----to use
    ____________________________________________________________________________________________________________
 
 
+before push the code   ..........git remote set-url origin <https://abc.xyz/USERNAME/REPOSITORY.git> 
+
+
+
+
 GIT STASH
 
 git stash save “Your stash message”.

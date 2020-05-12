@@ -916,3 +916,6 @@ const returnedTarget = Object.assign(insert, props.getDownloadSubmenuData[indexe
             setChangedMenu(returnedTarget)
 
             ______________________________________________________________________________
+
+            uninstall packeage in npm
+            npm un -g localtunnel
