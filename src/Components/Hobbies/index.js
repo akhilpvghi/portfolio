@@ -12,9 +12,7 @@ const Hobbies=()=>{
     const onClickHandler = () => {
         const data = new FormData()
         data.append('file', selectedFile)
-        // console.log('akjjjdf',data)
         axios.post("http://192.168.43.1:8000/", data, { 
-           // receive two    parameter endpoint url ,form data
        })
      .then(res => { // then print response status
          console.log(res.statusText)

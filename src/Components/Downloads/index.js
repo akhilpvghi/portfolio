@@ -51,26 +51,17 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 
 
     useEffect((e) => {
-      // console.log("useEfeect called valueToCheck",changedMenu,props.getDownloadMenuData[0],valueToCheck,props.getDownloadSubmenuData)
       if(menu.current[menuIndex]!=undefined && valueToCheck!="null"){
         props.getDownloadSubmenuData.map((ele,indexed)=>{
           if(Object.keys(props.getDownloadSubmenuData[indexed])[0].includes(valueToCheck)){
+            setManageState(hello=>[...hello,valueToCheck])
             setAtmenu(false);
             const returnedTarget = Object.assign(insert, props.getDownloadSubmenuData[indexed]);
             setChangedMenu(returnedTarget)
             setRandomColor({color1:getRandomInt(colorArray.length),
               color2:getRandomInt(colorArray.length)})
-              setPageNoStatus(pageNoStatus+1)
-              console.log("props.getDownloadSubmenuData[indexed] valueToCheck setChangedMenu",props.getDownloadSubmenuData[indexed],valueToCheck,changedMenu)
-              
+              setPageNoStatus(pageNoStatus+1) 
             }
-            // else if(props.getDownloadSubmenuData[indexed].length<1){
-
-            //     setMenuCount(menuCount+1)
-            // }
-            // else{
-            //   // if(changedMenu.length!=0 &&)
-            // }
           })
           isBoxVisible ? menu.current[menuIndex].setAttribute("class", "item") : menu.current[menuIndex].setAttribute("class", "")
           setIsBoxVisible(!isBoxVisible)
@@ -94,12 +85,11 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
     const manageBackButton=()=>{
       temp = manageState.filter((v, i, a) => a.indexOf(v) === i);
       setMenuCount(menuCount+1);
-      console.log("temp menucount",temp,menuCount)
       if(temp[temp.length-menuCount]!="" && temp[temp.length-menuCount]!=undefined){
-
         setValueToCheck(temp[temp.length-menuCount])
         setMenuIndex(temp.length-menuCount)
-      }else{
+      }
+      else{
         setChangedMenu(props.getDownloadMenuData[0])
         setValueToCheck("null")
         setManageState([]);
@@ -107,6 +97,8 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
         setMenuCount(2);
         setAtmenu(true);
       }
+
+      console.log("value to check on back button --->",valueToCheck,changedMenu);
     }
     
 
@@ -124,7 +116,6 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
                         ()=> {
                         setValueToCheck(value)
                           setMenuIndex(index) 
-                          setManageState(hello=>[...hello,value])
                         }}
                         ><i  className={`${ getModifiedString(value)[1]!=undefined ? "fa fa-hdd-o": "fa fa-angle-double-right" }`}></i>{getModifiedString(value)[0]}</div>
                        

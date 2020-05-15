@@ -30,29 +30,16 @@
 
 
     useEffect(()=>{
-
-      // setWindowWidth(windowWidth)
       
       if(windowWidth==undefined){
         windowWidth=windowWidth+1
       }
-      // console.log("window.innerWidthwindow.innerWidth",windowWidth)
     }
     
     ,[windowWidth])
 
-  //   let getBadgeClasses=() => {
-  //     let classes;
-  //     console.log("akhilll56565656","backendStatus")
-  //     props.statusfomBackend?classes ="fa fa-circle text-success status_size":classes ="fa fa-circle text-danger status_size";
-  //     return classes;
-  // }
-
 
         useEffect(()=>{
-          // getBadgeClasses();
-          
-          // setBackendStatus(props.statusfomBackend);
           
           let intervalID=setInterval(()=>tick(),1000)
           return ()=>{

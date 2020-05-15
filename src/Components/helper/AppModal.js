@@ -54,9 +54,7 @@
                   <div className="spinner-grow text-dark" role="status">
                   </div>
                   </div>) ;
-                  
-                  // this.setState({mesgFromCompo: this.props.messageToChild})
-          console.log("after slicing-------->",this.props.messageToChild.slice(0,4))
+
           switch(this.props.messageToChild.toLowerCase().slice(0,4)){
             case 'succ': this.setState({iconToLoad: successRes});
             this.setState({isProcessing:false})
@@ -95,37 +93,16 @@
           // })
         }
         this.updateAndNotify();
-        
-        
-        // {(!this.props.messageToChild.includes('succ'))?(this.props.messageToChild.includes('Err'))?errorRes: processing:successRes}
-        // bi bi-check
-        // spinner-border text-primary
-        // console.log('componentToLoadcomponentToLoad from appModal ',this.props.messagetoChild)
-        // this.props.componentToLoad
       }
 
       
 
       setShow = (setVal) => {
-        
-          //
-          //     show: setVal
-          // })
-          // this.state.show=setVal;
-          // console.log("setShoww",this.state.show,setVal,"this.checkShow()",this.checkShow());
           this.setState({});
       }
 
     handleClose = () => this.setShow(false);
     handleShow = () => this.setShow(true);
-
-    //  componentDidUpdate(prevProps, prevState) {
-    //   // only update chart if the data has changed
-    //   // if (prevProps.isShowModal !==  this.state.show) {
-    //     this.state.show=false;
-    //     return
-    //   // }
-    // }
 
     checkShow=(event)=>{
       this.props.isClosedFromAppModal(event);

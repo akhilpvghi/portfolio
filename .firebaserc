@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "portfolio-fd8ac"
+  },
+  "targets": {
+    "akhilpvghi": {
+      "hosting": {
+        "akhil": [
+          "akhilpvghi"
+        ],
+        "portfolio": [
+          "portfolio-fd8ac"
+        ]
+      }
+    }
   }
 }

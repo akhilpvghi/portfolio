@@ -16,32 +16,11 @@ import axios from 'axios';
   const [arrowNext, setarrowNext] = useState(arrowRight)
   const [arrowPrev, setarrowPrev] = useState(arrowLeft);
   const [largeWidth, setLargeWidth] = useState({});
-  // let LargeWidth=({
-  //   // width:  258  + 'px',
-  //   // height: 216  + 'px',
-  // });
- 
+  
 
-//   let LargeWidth = {
-//     width:  this.calcWidth()  + 'px',
-//     height: this.calcHeight() + 'px',
-// };
-
-  /* .LargeWidth{
-  width: 285px;
-  height: 216px;
-  } */
-
-  //  const prepareData=()=>{
-  //   let InstaPhoto=[];
-    
-  //   console.log("InstaPhoto",InstaPhoto)
-  //   return InstaPhoto
-  //  }
+  
 
   useEffect(()=>{
-
-    console.log("windowWidthwindowWidthwindowWidth from slider comp",windowWidth)
     if(windowWidth<576){
       
       setLargeWidth({

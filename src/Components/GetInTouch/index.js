@@ -56,8 +56,7 @@ import { element } from "prop-types";
          if(props.get_in_touch_info.length!=0)
         {
             setInfoDataFromObserval(props.get_in_touch_info) 
-        console.log("setInfoDataFromObserval setInfoDataFromObserval",infoDataFromObserval,props.get_in_touch_info)
-        props.get_in_touch_info.map((ele)=>{
+            props.get_in_touch_info.map((ele)=>{
             pair[ele.textfield]=" ";
             tempError[ele.textfield]=ele.errorMessage;
             tempRegEx[ele.textfield]=ele.regExp;
@@ -68,15 +67,11 @@ import { element } from "prop-types";
             setRegExObject({...regExObject,...tempRegEx})
         })
     } 
-    // console.log("TextFieldObject",textFieldObject);
-
     }, [props.get_in_touch_info])
 
     const handleChange = evt => {
-        // console.log("TextFieldObject",textFieldObject);
         const name = evt.target.name;
         const newValue = evt.target.value;
-        // console.log("name newValue ",name,newValue)
         setUserInput({[name]: newValue});
         
     }
@@ -104,9 +99,6 @@ import { element } from "prop-types";
 
      const callForSelectTag=(element)=>{
  let options=element.placeholder.split('_option_');
-
-console.log("element element element",element,options)
-
         return (
             <div className="col-md-12 addIn">
             <select className="adjustWidth" name={element.textfield} onChange ={handleChange}>
@@ -122,9 +114,6 @@ console.log("element element element",element,options)
         let saveToProfileData=(userInput)=>{
             let url_system="";
             for (var property in textFieldObject) {
-                // if (textFieldObject.hasOwnProperty(property)) {
-                    // console.log("property property property",userInput[property]," errorFieldObject[property] ", errorFieldObject[property],
-                    // "regExObject[property] ",regExObject[property]);
                     error[property] = RegExp(regExObject[property],'g').test(userInput[property]) ? '':errorFieldObject[property] ;
                     
                      url_system+=property+"="+userInput[property]+"&";// Do things here
@@ -133,8 +122,7 @@ console.log("element element element",element,options)
 
                 setError(error);
                 for (var property in textFieldObject) {
-                if(!(error[property] ==='')){
-                    // console.log("inside dave to profile ifff")   
+                if(!(error[property] ==='')){ 
                     return;
                 }
             }
@@ -144,7 +132,6 @@ console.log("element element element",element,options)
             
             axios.post(url_system)
         .then((res)=>{
-            console.log("---------> url_system "+url_system);
             if(res.data.includes('succe')){
                 setChildMessage(res.data)   
             }
@@ -170,7 +157,6 @@ console.log("element element element",element,options)
            (infoDataFromObserval.length!=0) ? infoDataFromObserval.map((ele,key)=>{
                {
                   return (ele.type!='options')?
-
                        <div key={key} className="col-md-12 addIn">
            <label className="fixedDisplay">{ele.label}:</label>
            <input className="adjustWidth" placeholder={ele.placeholder}  name={ele.textfield} value={userInput.textfield} onChange ={handleChange} type="text"/>

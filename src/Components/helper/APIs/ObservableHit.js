@@ -59,9 +59,6 @@
                let elemm3=elemm2;
                let tempsubmenuData = {};
                   if (elemm2.gsx$fieldtwo.$t.includes('subM')) {
-                     // if (getDownloadMenuData[0][property2] == elemm2.gsx$fieldtwo.$t.slice(5)) {
-                        
-                        console.log("elemm2.gsx$fieldthree.$t; bingaro",tempsubmenuData)
                         tempsubmenuData['submenu_' + elemm2.gsx$fieldtwo.$t.slice(5)+length++] = elemm3.gsx$fieldthree.$t;
                         tempsubmenuData['submenu_' + elemm2.gsx$fieldtwo.$t.slice(5)+length++] = elemm3.gsx$fieldfour.$t;
                         tempsubmenuData['submenu_' + elemm2.gsx$fieldtwo.$t.slice(5)+length++] = elemm3.gsx$fieldfive.$t
@@ -89,7 +86,6 @@
 
    let createMenuData = ((elemm2, entry) => {
       if (elemm2.gsx$fieldtwo.$t.includes('menu')) {
-         // console.log("elemm2.gsx$fieldtwo.$t elemm2.gsx$fieldtwo.$t chttt", elemm2.gsx$fieldtwo.$t);
          tempMenuData['menu' + length++] = elemm2.gsx$fieldthree.$t;
          tempMenuData['menu' + length++] = elemm2.gsx$fieldfour.$t;
          tempMenuData['menu' + length++] = elemm2.gsx$fieldeight.$t;
@@ -99,9 +95,6 @@
          tempMenuData['menu' + length++] = elemm2.gsx$fieldsix.$t
          setDownloadMenuData((prevdata) => [...prevdata, tempMenuData])
       }
-      // console.log("elemm2.gsx$fieldthree.$t; getDownloadSubmenuData ", getDownloadSubmenuData)
-
-
    })
 
 
@@ -132,20 +125,7 @@
                pair.regExp = elemm2.gsx$fieldseven.$t
                setGetInfoData((prevdata) => [...prevdata, pair])
             }
-
             createMenuData(elemm2, spreadSheet.feed.entry)
-
-
-
-
-
-
-            // switch(elemm2.gsx$fieldtwo.$t){
-            //    case :
-            // }
-            // console.log("spreadSheet.length ", spreadSheet.length);
-            // console.log("spreadSheetData ", spreadSheetData);
-            // console.log("getInfoData---------->", getInfoData)
          })
          // })
          // }
