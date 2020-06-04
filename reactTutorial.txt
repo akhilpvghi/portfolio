@@ -274,74 +274,18 @@ don't rewrite index.html press (N)
 
 then---> command----->firebase deploy
 
-
-firebase target:apply hosting target-name resource-name
-
-Where the parameters are:
-
-target-name — a unique identifier (that you've defined yourself) for the Hosting site that you're deploying to
-
-resource-name — the name of the Hosting site as listed in your Firebase project
-
-For example, if you've created two sites (myapp-blog and myapp-app) in your Firebase project, you could apply a unique target name to each site (blog and app, respectively) by running the following commands:
-
-firebase target:apply hosting blog myapp-blog
-
-firebase target:apply hosting app myapp-app
-
-The settings for deploy targets are stored in the .firebaserc file in your project directory, so you only need to set up deploy targets one time per project.
-
-
-Step 4: Define the hosting configuration for each site
-Use a site's applied target name when you're defining its hosting configuration in your firebase.json file.
-
-If your firebase.json file defines the configuration for multiple sites, use an array format:
-
-{
-  "hosting": [ {
-      "target": "blog",  // "blog" is the applied target name for the Hosting site "myapp-blog"
-      "public": "blog/dist",  // contents of this folder are deployed to the site "myapp-blog"
-
-      // ...
-    },
-    {
-      "target": "app",  // "app" is the applied target name for the Hosting site "myapp-app"
-      "public": "app/dist",  // contents of this folder are deployed to the site "myapp-app"
-
-      // ...
-
-      "rewrites": [...]  // You can define specific Hosting configurations for each site
-    }
-  ]
-}
-
-
-Step 5: Deploy to your sites or serve locally
-Run any of the following commands from the root of your project directory.
-
-Command	Description
-firebase deploy	Creates a release of all deployable resources in your project directory
-firebase deploy --only hosting:target-name	Creates a release of only the resources for the specified Hosting target
-firebase serve	Serves your Firebase project locally
-firebase serve --only hosting:target-name	Serves locally only the resources for the specified Hosting target
-
-
-firebase target:clear hosting portfolio
-
-
-
-https://firebase.google.com/docs/hosting/multisites
-
+OR
 
 {
   "hosting": {
-    "site": "akhilpvghi",
+    "site": "adarshpvghi",
     "public": "public",
     ...
   }
 }
 
-firebase deploy --only hosting:akhilpvghi
+
+firebase projects:list
 
 
 
@@ -611,6 +555,13 @@ Regular Expression
 "(888)555-1212 ext. 532"
 "(800)FLOWERS"
 
+[a-zA-Z]+
+([12]\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01]))
+^[0-9]{10,10}$
+^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$
+^(?:Male|Female)$
+^(?!\s*$).+
+
 
 https://regex101.com/    -------------->to check regEx
 
@@ -865,7 +816,7 @@ ______________________________________________________
 componentDidUpdate works whenever props changes --->change css or something with that props
 ______________________________________________________________________________
 
-object in javascript
+add more key value to same object in javascript
 
 
 let obj1={};
@@ -994,3 +945,21 @@ const returnedTarget = Object.assign(insert, props.getDownloadSubmenuData[indexe
 
             uninstall packeage in npm
             npm un -g localtunnel
+
+            _________________________________________________________________________________
+            pass another parameter with evevnt
+            <fieldset onChange={(e) => this.props.handleChange("tags", e)}>
+
+            ____________________________________________________________________________________
+          iteraate over html collection
+          
+            Array.from(MultiSelectRef.current.selectedOptions).forEach(function (element) { 
+            calculateValue+=element.label+",";
+          }); 
+
+______________________________________________________________________________
+typeof object == 'object'
+
+
+
+           

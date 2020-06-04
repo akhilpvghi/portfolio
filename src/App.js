@@ -3,6 +3,7 @@ import './App.css';
 import './Styles/Common.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css'; 
+// import 'react-select/dist/react-select.css';
 import Routes from './Components/Router';
 function App() {
   return (

@@ -13,8 +13,13 @@ export const useHttp = (url) =>{
             else
            {
              setData(res.data);
+            // setData();
            } 
-    } ).catch((err)=>{console.log('insta error',err)})
+    } ).catch((err)=>{console.log('insta error',err)
+  
+    // setData();
+  })
+    
         
   }, [url,data.length])
 

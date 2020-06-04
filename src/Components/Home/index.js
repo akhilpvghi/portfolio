@@ -192,7 +192,8 @@ let content=( <div className="row marg0">
 <div className="rotatingFrontCard">
 <div className="card-container">
    <div className="card">
-      <div className="front">
+      <div className="front" >
+      {/* style={{display : "none"}} */}
       {/* <i className="fa fa-sync" /> */}
       {/* <i className="fa fa-sync"></i> */}
       {/* <i class="fa fa-sync"></i> */}

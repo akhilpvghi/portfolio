@@ -12,6 +12,16 @@
     padding-left: 11px;
 }
 
+.adjustWidthForMultiSelect {
+    width: 85%;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    /* border-radius: 50PX; */
+    padding-left: 11px;
+}
+
+
+
 .fixedDisplay {
     display: inline;
     padding-left: 20px;
