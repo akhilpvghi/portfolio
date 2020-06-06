@@ -1,6 +1,7 @@
       import React, {Component,useState,useEffect} from 'react';
       import '../../Styles/Navbar.css';
       import useWindowWidth from '../helper/WindowWidth'
+import AppModal from '../helper/AppModal';
       // import {Link} from 'react-router-dom';
 
       const Navbar=(props)=>{
@@ -9,8 +10,13 @@
         const[collapsed,SetCollapsed]=useState(true);
         let windowWidth=useWindowWidth()
         const tick=()=>{
-          setDate_n_time(new Date().toLocaleString())
+          setDate_n_time(new Date().toString().split('GMT')[0])
+          // new Date().toUTCString()
           // this.setState({date_n_time : new Date().toLocaleString()})
+        }
+
+        const askForAdminLogin=(event)=>{
+          props.navBarNotificationForAdminLogin(event);
         }
 
       const getLink=(event)=>{
@@ -56,7 +62,7 @@
           <span className="navbar-toggler-icon"></span>
         </button>
       {windowWidth<987?<div className="date_n_time"> {date_n_time}
-      <i className={(!collapsed  ? "collapse" : "")+' fa fa-database color_n_size'} aria-hidden="true"></i>
+      <i className={(!collapsed  ? "collapse" : "")+' fa fa-database color_n_size'} aria-hidden="true" onClick={()=>askForAdminLogin("InitiateLoginSessionForAdminMessage")}></i>
     <i className={(!collapsed  ? "collapse" : "")+ `fa fa-circle text-${props.statusfomBackend ? "success " : "danger "}` + `status_size`} aria-hidden="true"></i>
      
       </div>:null} 
@@ -86,7 +92,7 @@
     <i className="fa fa-circle text-success status_size" aria-hidden="true"></i> */}
     {/* <i className="fa fa-database color_n_size" aria-hidden="true"></i>
     <i className={getBadgeClasses()} aria-hidden="true"></i> */}
-     <i className={(!collapsed  ? "collapse " : "")+"fa fa-database color_n_size"} aria-hidden="true"></i>
+     <i className={(!collapsed  ? "collapse " : "")+"fa fa-database color_n_size"} aria-hidden="true" onClick={()=>askForAdminLogin("InitiateLoginSessionForAdminMessage")}></i>
     <i className={(!collapsed  ? "collapse " : "")+`fa fa-circle text-${props.statusfomBackend ? "success " : "danger "}`+`status_size`} aria-hidden="true"></i>
   </div>
 

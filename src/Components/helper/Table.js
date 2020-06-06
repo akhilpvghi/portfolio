@@ -1,226 +1,73 @@
-    // import '../../Styles/Download.css';
-    // import React, {useEffect, useState} from 'react';
+import ReactTable from 'react-table-6';
+import React,  {  useState, useEffect } from "react";
+import 'react-table-6/react-table.css';
+import axios from 'axios';
 
+const Table =(props)=>{
+    const[columns,setColumns] =  useState([]);
+    const[data,setData] =  useState([]);
 
+       useEffect(() => {
+       
+       if(props.columns.length!==0){
+           Object.entries(props.columns).map(([key,val])=>{
+            let data={};
+               console.log("props props ===>",val);
+               data={
+                Header: () => (
+                    <span>
+                     <h4>{val}</h4>
+                    </span>
+                  ),
+                accessor: key,
+               }
+               setColumns(addHeader=>[...addHeader,data])
+           }) 
+       }
+       
+   }, [props.columns])
+
+   useEffect(() => {
+    axios.get(localStorage.getItem("mainURL")+"/dfpByDate?date="+localStorage.getItem("formCreatedOn"))
+    .then((res)=>{
+     console.log("url hit from table ",localStorage.getItem("mainURL")+"?data="+localStorage.getItem("formCreatedOn"),"\n",res)
+     res.data.map((ele)=>{
+       setData((dataRecord)=>[...dataRecord,ele])
+     })
+ 
+    })
+    .catch((err)=>{
+      console.log("err from table----> ",err);
+    })
+     
+   }, [])
+
+   
     
+        // const data = [{
+        //   name: 'Tanner Linsley',
+        //   age: 26,
+        //   friend: {
+        //     name: 'Jason Maurer',
+        //     age: 23,
+        //   }
+        // }]
+       
+        // const columns = [{}];
+       
+        let content = (
+            // <div className="a">ak</div>
+        <ReactTable
+          data={data}
+          columns={columns}
+          defaultPageSize={5}
+        />
+        )
 
-    // const Table=()=>{
+        return content;
+      
+      
 
-    //     const [instaFollowers,SetInstaFollowers]=useState([])
-    //     // useEffect(() => {
-    //     //     // let instaFollowers= JSON.parse(localStorage.getItem("instaFollowers"))
-    //     //     SetInstaFollowers(JSON.parse(localStorage.getItem("instaFollowers")).user.edge_followed_by)
-    //     //     console.log("sdjashkjhdsa insta data from table",instaFollowers.edges)
-           
-    //     // }, [instaFollowers.length])
-
-
-    //     let content =(
-    //         <React.Fragment>
-    //     <div className="row">
-    //     <div className="col-lg-12">
-    //         <div className="main-box clearfix">
-    //             <div className="table-responsive">
-    //                 <table className="table user-list">
-    //                     <thead>
-    //                         <tr>
-    //                             <th><span>User</span></th>
-    //                             <th><span>Created</span></th>
-    //                             <th className="text-center"><span>Status</span></th>
-    //                             <th><span>Email</span></th>
-    //                             <th>&nbsp;</th>
-    //                         </tr>
-    //                     </thead>
-    //                     <tbody>
-    //                         <tr>
-    //                             <td>
-    //                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2aS5hSBQcw1COcojdKhRfFUE4fxKgKxaC3cx5BsOpBniqE-_Zww" alt="" />
-    //                                 <a href="#" className="user-link">Vasu Dev Arora</a>
-    //                                 <span className="user-subhead">Super Admin</span>
-    //                             </td>
-    //                             <td>
-    //                                 2013/08/08
-    //                             </td>
-    //                             <td className="text-center">
-    //                                 <span className="label label-default">Inactive</span>
-    //                             </td>
-    //                             <td>
-    //                                 <a href="#">vasudevarora1786@gmail.com</a>
-    //                             </td>
-    //                             <td >
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link danger">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                             </td>
-    //                         </tr>
-    //                         <tr>
-    //                             <td>
-    //                                 <img src="https://pbs.twimg.com/profile_images/773085621552230405/3be4Qpaf_400x400.jpg" alt="" />
-    //                                 <a href="#" className="user-link">Deshna Sachan</a>
-    //                                 <span className="user-subhead">Admin</span>
-    //                             </td>
-    //                             <td>
-    //                                 2013/08/08
-    //                             </td>
-    //                             <td className="text-center">
-    //                                 <span className="label label-default">Inactive</span>
-    //                             </td>
-    //                             <td>
-    //                                 <a href="#">mila@kunis.com</a>
-    //                             </td>
-    //                             <td >
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link danger">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                             </td>
-    //                         </tr>
-    //                         <tr>
-    //                             <td>
-    //                                 <img src="https://www.static-contents.youth4work.com/y4w/Images/UserThumbImage/160_160/20190529175614.png?v=20190529175614" alt="" />
-    //                                 <a href="#" className="user-link">Neeti Mehra</a>
-    //                                 <span className="user-subhead">Admin</span>
-    //                             </td>
-    //                             <td>
-    //                                 2013/08/08
-    //                             </td>
-    //                             <td className="text-center">
-    //                                 <span className="label label-default">Inactive</span>
-    //                             </td>
-    //                             <td>
-    //                                 <a href="#">mila@kunis.com</a>
-    //                             </td>
-    //                             <td >
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link danger">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                             </td>
-    //                         </tr>
-    //                         <tr>
-    //                             <td>
-    //                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
-    //                                 <a href="#" className="user-link">Prateek Pandey</a>
-    //                                 <span className="user-subhead">Admin</span>
-    //                             </td>
-    //                             <td>
-    //                                 2013/08/08
-    //                             </td>
-    //                             <td className="text-center">
-    //                                 <span className="label label-default">Inactive</span>
-    //                             </td>
-    //                             <td>
-    //                                 <a href="#">mila@kunis.com</a>
-    //                             </td>
-    //                             <td >
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link danger">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                             </td>
-    //                         </tr>
-    //                         <tr>
-    //                             <td>
-    //                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
-    //                                 <a href="#" className="user-link">Smiley Chaudhary</a>
-    //                                 <span className="user-subhead">Admin</span>
-    //                             </td>
-    //                             <td>
-    //                                 2013/08/08
-    //                             </td>
-    //                             <td className="text-center">
-    //                                 <span className="label label-default">Inactive</span>
-    //                             </td>
-    //                             <td>
-    //                                 <a href="#">mila@kunis.com</a>
-    //                             </td>
-    //                             <td >
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                                 <a href="#" className="table-link danger">
-    //                                     <span className="fa-stack">
-    //                                         <i className="fa fa-square fa-stack-2x"></i>
-    //                                         <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-    //                                     </span>
-    //                                 </a>
-    //                             </td>
-    //                         </tr>
-    //                     </tbody>
-    //                 </table>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
-    // </React.Fragment>);
-
-    // return content;
-    // }
-
-    // export default Table;
+}
+ 
+export default Table;

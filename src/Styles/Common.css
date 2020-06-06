@@ -182,5 +182,15 @@ height: 180px;
   .date_n_time {
     color: white;
     margin: auto;
+    /* font-size: 19px; */
     font-size: x-large;
+}
+
+@media (max-width: 570px){
+  .date_n_time {
+    color: white;
+    margin: auto;
+    font-size: 19px;
+    /* font-size: x-large; */
+}
 }

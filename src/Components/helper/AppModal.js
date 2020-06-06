@@ -2,21 +2,26 @@
   import Slider from './slider';
   import InstaPhotos from '../helper/APIs/InstaPhotos';
   import Table from '../helper/Table';
+import Auth from './Auth';
   class AppModal extends Component{
 
       // const [show, setShow] = useState(false);
+      // const[isAuthenticated,setIsAuthenticated] =  useState(false);
       state={
         showModal: true,
         componentToLoad: null,
         iconToLoad:null,
         isModalBodyRequire: true,
-        isProcessing: false
+        isProcessing: false,
+        columns: null,
+        isAuthenticated: false
         // messgaeTochild: 'Loading...'
     }
       constructor(props){
         super(props);
         this.checkShow = this.checkShow.bind(this);
         this.setState({show: this.props.isShowModal})
+        // this.setState({columns: })
         
       }
 
@@ -25,6 +30,10 @@
       // compo =(<div className="spinner-border text-secondary" role="status"></div>)=>{
       //   return compo;
       //   }
+      funcToFindIsUserAuthenticated=(isAuthenticatedreplyFromAuthComp)=>{
+        this.setState({isAuthenticated: isAuthenticatedreplyFromAuthComp});
+        this.props.isAuthenticatedEventToAuth(true);
+     }
 
 
       updateAndNotify=()=>{
@@ -77,6 +86,8 @@
   
 
       }
+
+      
       componentDidMount=(props)=>{
 
         
@@ -84,7 +95,9 @@
         if(this.props.componentToLoad.includes('gall')){
           this.setState({componentToLoad: <Slider />});
         }else if(this.props.componentToLoad.includes('tabl')){
-          this.setState({componentToLoad: <Table />})
+          this.setState({componentToLoad: <Table columns={this.props.textFieldObjectcolumns}></Table>})
+        }else if(this.props.componentToLoad.includes('Auth')){
+          this.setState({componentToLoad: <Auth isAuthenticatedEventToAuth={this.funcToFindIsUserAuthenticated}></Auth>})
         }else {
           this.setState({isModalBodyRequire : false});
           // this.setState({componentToLoad: 
@@ -117,7 +130,7 @@
 
 
           return(
-            
+            <div className="col-md-12 Appmodal padd0"> 
             <div className= "" id="myModal">
               <div className="modal-dialog incWidth">
                   <div className="modal-content incWidth controlOverflow">
@@ -140,6 +153,7 @@
                       {!this.state.isProcessing?<button type="button" className="btn btn-danger" onClick={()=>{this.checkShow("close")}} >Close</button>
                         :null}
                           </div>
+                    </div>
                     </div>
                     </div>
                     </div>

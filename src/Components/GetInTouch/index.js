@@ -59,12 +59,12 @@ import { element } from "prop-types";
         {
             setInfoDataFromObserval(props.get_in_touch_info) 
             props.get_in_touch_info.map((ele)=>{
-            pair[ele.textfield]=" ";
+            pair[ele.textfield]=ele.label;
             tempError[ele.textfield]=ele.errorMessage;
             tempRegEx[ele.textfield]=ele.regExp;
             // obj = {...obj, ...pair};
             setUserInput({[ele.textfield]: ""});
-            setTextFieldObject({...textFieldObject,...pair})
+            setTextFieldObject({...textFieldObject,...pair}) //{textField1: label1#name, ...}
             setErrorFieldObject({...errorFieldObject,...tempError})
             setRegExObject({...regExObject,...tempRegEx})
         })

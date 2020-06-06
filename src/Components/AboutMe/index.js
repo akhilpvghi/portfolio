@@ -1,11 +1,14 @@
 import React,  {  useState, useEffect } from "react";
+import Table from "../helper/Table";
 
-const AboutMe = () =>{
+const AboutMe = (props) =>{
+
 
     let content = (
 
         <div className="afgfdgdf">
-            <h1>ABout Me</h1>
+            <h1>Data</h1>
+            {/* <Table></Table> */}
         </div>
     ) 
 

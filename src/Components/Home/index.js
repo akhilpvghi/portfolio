@@ -25,7 +25,7 @@
       const[InstaImg] = useHttp('https://api.instagram.com/v1/users/self/media/recent/?access_token=7926815114.1d6d81e.0ccb90e8ef9948f79f51929e5754493e');
       const[followersData] = useHttp('https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables=%7B%22id%22%3A%227926815114%22%2C%22include_reel%22%3Atrue%2C%22fetch_mutual%22%3Atrue%2C%22first%22%3A24%7D');
       // const[backendStatus] = useHttp('http://localhost:8080/checkStatus')
-      const[ listOfFollowers,setListOfFollowers] =  useState([]);
+      // const[ listOfFollowers,setListOfFollowers] =  useState([]);
       const[gallerySize,setGallerySze]=useState(null);
       const[modalComponent,setModalComponent]=useState(null);
       const[componentName,setComponentName]=useState("Home");
@@ -36,7 +36,11 @@
       const[childMessage,setChildMessage] =  useState("null");
       let windowWidth=useWindowWidth()
       const[statusFromBackend,setStatusFromBackend] =  useState(false);
-      const[instaData,setInstaData] =  useState(null);
+      const[isLoginForAdminIntiated,setIsLoginForAdminIntiated] =  useState(null);
+      const[isAuthenticated,setIsAuthenticated] =  useState(false);
+      const[textFieldObject,setTextFieldObject] =  useState({});
+    const[columns,setColumns] =  useState({});
+      // const[instaData,setInstaData] =  useState(null);
       const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
       const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
       
@@ -63,10 +67,25 @@
          }
       },[observableData])
 
+
+      
+    
+    useEffect(() => {
+        let pair={};
+        console.log("props.get_in_touch_info.length from about===>",getInTouchInfo);
+        if(getInTouchInfo!==0)
+       {
+         getInTouchInfo.map((ele) => {
+           pair[ele.textfield]=ele.label;
+           setTextFieldObject({...textFieldObject,...pair}) //{textField1: label1#name, ...}
+       })
+   } 
+   }, [getInTouchInfo])
+
       
       useEffect(()=>{
          if(componentName.includes("About")){
-            setComponent(<AboutMe />)
+            setComponent(<AboutMe get_in_touch_info={getInTouchInfo}/>)
          }else if(componentName.includes("Exper")){
             setComponent(<Experience />)
          }else if(componentName.includes("Get")){
@@ -99,6 +118,8 @@ getContentFromHome()
          
          const isClosedFromAppModal=(data_from_appModal)=>{
             if(data_from_appModal.includes("clos"))
+            setIsLoginForAdminIntiated(false);
+            setIsAuthenticated(false);
             setShowModal(false);
          }
          
@@ -127,7 +148,6 @@ const showModalfn=(componentToLoad)=>{
       setChildMessage('How Do you Like them ?');
       setModalComponent('gallery');
    }else if(componentToLoad.includes("tab")){
-      setChildMessage('Soon... ');
       setModalComponent('table');
    }
    setShowModal(true);
@@ -162,6 +182,11 @@ useEffect(()=>{
     }
 },[InstaImg.length])
 
+const initiateLoginForAdminInHomeCompo=(messageFromNavbar)=>{
+   console.log("message from home by ",messageFromNavbar);
+   setIsLoginForAdminIntiated(true);
+}
+
 
 
 useEffect(()=>{
@@ -171,23 +196,31 @@ useEffect(()=>{
       
 },[followersData.length])
 
+const funcToFindIsUserAuthenticated=(isAuthenticatedreplyFromAuthComp)=>{
+   setIsAuthenticated(isAuthenticatedreplyFromAuthComp);
+}
 
 
 let content=( <div className="row marg0">
    {/* <useObservable {...spreadSheetData} /> */}
-<div className="col-md-12 Appmodal padd0">
    {showModal? <AppModal  isClosedFromAppModal={isClosedFromAppModal} componentToLoad={modalComponent} messageToChild={childMessage}></AppModal>:null}
-</div>
+
 
 <div className="col-md-12 padd0">
-<Navbar   navbarElements={navbarElementsFromHome} statusfomBackend={statusFromBackend} loadComponent={loadComponent}/>
+<Navbar   navbarElements={navbarElementsFromHome} statusfomBackend={statusFromBackend} loadComponent={loadComponent} navBarNotificationForAdminLogin={initiateLoginForAdminInHomeCompo}/>
 </div>
 {/* <div className="bgImg">
 <img src={the_movement_bg} alt="Logo" className="container rounded-circle dpDimension"/>
 </div> */}
+{/* funcToFindIsUserAuthenticated
+isAuthenticatedreplyFromAuthComp */}
+{isLoginForAdminIntiated && !isAuthenticated ? <AppModal  isAuthenticatedEventToAuth={funcToFindIsUserAuthenticated} isClosedFromAppModal={isClosedFromAppModal} componentToLoad="Auth" messageToChild="Admin Login"></AppModal>:null}
+{isAuthenticated ? <AppModal  textFieldObjectcolumns={textFieldObject} isClosedFromAppModal={isClosedFromAppModal} componentToLoad="table" messageToChild="Data Records"></AppModal>:null}
+
 
 {windowWidth>987||componentName.includes("Home")?
 <div className="col-md-4 sm-12">
+
 
 <div className="rotatingFrontCard">
 <div className="card-container">

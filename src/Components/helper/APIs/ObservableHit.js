@@ -108,9 +108,12 @@
          // spreadSheet.map((elemm) => {
          spreadSheet.feed.entry.map((elemm2, index) => {
             let pair = {};
+            let calulateTimeInISOFormat;
             if (index == 0) {
                console.log("mainURL", elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0]);
                localStorage.setItem("mainURL", elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0]);
+               calulateTimeInISOFormat= new Date(elemm2.gsx$fieldone.$t.split('_created_On_')[1]).toISOString(); 
+               localStorage.setItem("formCreatedOn",calulateTimeInISOFormat);
                setSiteHandler({
                   url: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0] + '/checkStatus',
                   componentToLoad: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[1]

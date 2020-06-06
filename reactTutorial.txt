@@ -960,6 +960,20 @@ const returnedTarget = Object.assign(insert, props.getDownloadSubmenuData[indexe
 ______________________________________________________________________________
 typeof object == 'object'
 
++_________________________________________________________________________________
 
+From child to parent communication in react js---->but makesure calling should be arrow function in child component
 
-           
+Short Answer
+
+Parent:
+
+<div className="col-sm-9">
+     <SelectLanguage onSelectLanguage={this.handleLanguage} /> 
+</div>
+Child:
+
+handleLangChange = () => {
+    var lang = this.dropdown.value;
+    this.props.onSelectLanguage(lang);            
+}
