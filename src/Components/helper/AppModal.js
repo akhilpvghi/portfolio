@@ -1,7 +1,9 @@
   import React, {Component} from 'react';
   import Slider from './slider';
+  import Processing from './processing';
+
   import InstaPhotos from '../helper/APIs/InstaPhotos';
-  import Table from '../helper/Table';
+  import TableCompo from '../helper/Table';
 import Auth from './Auth';
   class AppModal extends Component{
 
@@ -46,23 +48,7 @@ import Auth from './Auth';
   </div>);
   
   
-          let processing =(
-            <div className="a">
-            <div className="spinner-grow text-primary" role="status">
-                  </div>
-                  <div className="spinner-grow text-secondary" role="status">
-                  </div>
-                  <div className="spinner-grow text-success" role="status">
-                  </div>
-                  <div className="spinner-grow text-danger" role="status">
-                  </div>
-                  <div className="spinner-grow text-warning" role="status">
-                  </div>
-                  <div className="spinner-grow text-info" role="status">
-                  </div>
-                  <div className="spinner-grow text-dark" role="status">
-                  </div>
-                  </div>) ;
+          
 
           switch(this.props.messageToChild.toLowerCase().slice(0,4)){
             case 'succ': this.setState({iconToLoad: successRes});
@@ -71,7 +57,7 @@ import Auth from './Auth';
             case 'erro': this.setState({iconToLoad : errorRes});
             this.setState({isProcessing:false})
             break;
-            case 'proc': this.setState({iconToLoad : processing});
+            case 'proc': this.setState({iconToLoad : <Processing />});
                         this.setState({isProcessing:true})
             break;
           }
@@ -95,7 +81,7 @@ import Auth from './Auth';
         if(this.props.componentToLoad.includes('gall')){
           this.setState({componentToLoad: <Slider />});
         }else if(this.props.componentToLoad.includes('tabl')){
-          this.setState({componentToLoad: <Table columns={this.props.textFieldObjectcolumns}></Table>})
+          this.setState({componentToLoad: <TableCompo columns={this.props.textFieldObjectcolumns}></TableCompo>})
         }else if(this.props.componentToLoad.includes('Auth')){
           this.setState({componentToLoad: <Auth isAuthenticatedEventToAuth={this.funcToFindIsUserAuthenticated}></Auth>})
         }else {
@@ -131,9 +117,10 @@ import Auth from './Auth';
 
           return(
             <div className="col-md-12 Appmodal padd0"> 
-            <div className= "" id="myModal">
+            <div  id="myModal">
               <div className="modal-dialog incWidth">
                   <div className="modal-content incWidth controlOverflow">
+                  {/* style={{display: 'inline-table'}} */}
                     <div className="modal-header">
                         <h4 className="modal-title">{this.props.messageToChild}</h4>
                         {/* here modal */} 

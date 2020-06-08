@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://fbdab2d8.ngrok.io",
   "dependencies": {
+    "namor": "^1.1.2",
     "async": "^3.2.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
@@ -14,8 +15,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
     "react-select": "^3.1.0",
-    "react-table-6": "^6.11.0",
-    "rxjs-hooks": "^0.6.2"
+    "react-table": "^7.1.0",
+    "rxjs-hooks": "^0.6.2",
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

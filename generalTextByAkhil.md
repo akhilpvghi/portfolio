@@ -267,3 +267,244 @@ ___________________________________________________
 reactJs important Component
 
 https://projects.wojtekmaj.pl/
+
+_____________________________________________________
+
+Code useful lines
+
+System.out.println("");
+console.log("");
+
+Server
+eval "$(ssh-agent -s)" 
+ssh-add ~/alexa_projecth/keys/bitbucket
+
+
+https://alexa.amazon.co.uk/spa/index.html#cards
+https://developer.amazon.com/alexa
+bengamble7@gmail.com
+..1q2w3e
+ 
+ 
+http://console.aws.amazon.com
+bengamble7@gmail.com
+..1q2w3e
+region: N virginia
+Lamda
+ 
+skill Steps branch(alexa-sdk-for-java-login):
+1) Create skill
+2) copy skill id and paste in alexa-skills-kit-sdk-for-java-2.0.x/samples/helloworld/src/Nova/NovaSpeechletRequestStreamHandler.java
+3) Create jar to upload on aws labda
+3.1) mvn clean
+3.2) mvn install
+3.3) mvn assembly:assembly -DdescriptorId=jar-with-dependencies package
+3.4) upload Target/java-with-dependencies.jar to aws
+4) copy that lamda function id to alexa skill.
+ 
+for Server to deploy code (branch - master)
+1) ssh -i ~/Desktop/Key/NovoBox.pem ec2-user@34.254.155.50
+2) sudo mvn clean install
+3) sudo pkill -9 java
+4) sudo nohup java -jar target/alexa-springboot-server.war &sudo tail -n 200 -f nohup.out
+ssh -i ~/Desktop/Keys/NovoBox.pem ec2-user@34.254.155.50
+
+https://kshitiz.club/jsonCommand
+body--->{"chairID":"9XL4ZK"}
+
+
+ssh -i ./server1.pem bgamble@104.130.115.40---------->HaveAGreatDay---->86fxTvm!$eV
+
+
+DNS: Alexa.humantouch.com
+IP: 104.130.115.40
+
+
+To remove an empty directory use the -d option.
+
+rm -d dirname
+Copy
+To remove non-empty directories and all the files within them, use the r (recursive) option.
+
+rm -r dirname
+
+----->handlingException (latest on server)
+@RequestMapping(value = "/getStyleType", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public DeferredResult<ResponseEntity<alexa.model.Response>> getStyleType(HttpServletRequest httpRequest) throws JsonParseException, JsonMappingException, IOException 
+	{
+	DeferredResult<ResponseEntity<Response>> result = new DeferredResult<>();	
+	StyleTypes getStyleTypeRequest = new StyleTypes();
+	getStyleTypeRequest.setDeferredResult(result);
+	MessageQueue.offer(getStyleTypeRequest);
+	return result;
+	}
+
+    --->ALexaCodeNewMsgAdded------>branch for alexa skill
+
+    
+    SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'tbl_user_master' AND COLUMN_NAME = 'command_type';
+	test on alexa
+	ask novo start virtual therapist
+	Hello. This is the NOVO Virtual Therapist. Please tell me what your name is
+	ask novo my name is akhil
+	Hello Akhil As you are a new client, I’m going to ask you some questions that will help me prescribe your massage treatment. First, please tell me: How tall you are in inches?
+	ask novo i am eighty inches tall
+	“OK, got it, 80 inches tall. How long a massage do you typically like? the options are 10, 20, and 30 minutes
+	ask novo i would like twenty minutes
+	Ok, we'll perform a 20 minute massage. Now here's the best part! What would you say is your goal for today’s massage? You can ask for more energy, to Relax, or Relieve Back Pain, to recover, or for better performance
+	ask novo relieve pain
+	Would you say the pain is in your upper or lower back?
+	ask novo upper back
+	OK good... And what style of massage do you feel like today? The options are, Swedish, Shiatsu, Thai Style, and Sports. Or, soft, medium, or hard. and if you're not sure just say: You choose
+	ask novo thai
+	OK, We'll apply your massage in a Thai style... It looks like we're all set. Please relax and we'll get started. If you need any help during your treatment, just say: Alexa, ask my NOVO for help
+
+
+
+name = ?
+
+currentUser
+
+
+String updateCommandType = "update `user_model` set command_type = ?, currentTime= CURRENT_TIMESTAMP where name = ? and admin_id = "+accessToken;
+		int a =this.jdbcTemplate.update(updateCommandType, commandId, currentUser);
+
+
+		mysql -u root -p alexa_spring < ./alexa_spring.sql.sql;
+
+		Drop DATABASE alexa_spring;
+
+
+		Open the MySQL command line
+Type the path of your mysql bin directory and press Enter
+Paste your SQL file inside the bin folder of mysql server.
+Create a database in MySQL.
+Use that particular database where you want to import the SQL file.
+Type source databasefilename.sql and Enter
+Your SQL file upload successfully.
+
+
+scp -i ~/Desktop/Keys/NovoBox.pem ec2-user@34.254.155.50:alexa_projecth/alexaspring/server/sql/alexa_spring.sql /home/quincus/Desktop/akhil/
+
+
+scp -i ~/Desktop/akhil/alexa.humantouch.com_SSL/server1.pem /home/quincus/Desktop/akhil/bitbucket bgamble@104.130.115.40:~/key
+
+ scp -i ~/Desktop/APIbluerhino.pem  ec2-user@artemis.concept.quincus.com:/home/ec2-user/AlgoAPI/service/reqSaudi.txt
+
+scp -i security_file_location source.txt destiation
+
+scp -i "Desktop\Quincus\APIbluerhino (3).pem" ec2-user@artemis.concept.quincus.com:/home/ec2-user/AlgoAPI/service/reqSaudi.txt
+
+this is when you are not logged into the server
+
+
+eval "$(ssh-agent -s)"
+
+mysqldump -u root -p alexa_spring > alexa_sspring_backup.sql
+
+sudo service mysql start
+use mysql;
+uninstall plugin validate_password;
+update user set authentication_string=password('root') where user='root';
+SET PASSWORD FOR root@'localhost' = PASSWORD('your_password');
+FLUSH PRIVILEGES;
+
+
+https://kshitiz.club/jsonCommand	
+
+
+		
+
+		Thimgs tried
+		List< Ship > shipObject = Arrays.asList( new ObjectMapper().readValue(dataToJson(arrNode), Ship.class));
+
+
+
+
+		 Ship ship =  new ObjectMapper().readValue(dataToJson(arrNode), Ship.class);
+                ArrayList<Ship> shipObject = null;
+//                shipObject.add(ship);
+
+
+com.fasterxml.jackson.databind.JsonMappingException: Can not deserialize
+ instance of com.quincus.model.Ship
+ out of START_ARRAY token
+
+
+
+
+
+
+
+				
+	ssh -i ~/Desktop/akhil/Alexa_humanTouch/alexa.humantouch.com_SSL ec2-user@104.130.115.40
+The authenticity of host '104.130.115.40 (104.130.115.40)' can't be established.
+ECDSA key fingerprint is SHA256:nBKUjjlGNRRMB6ETj4DFH97LEwGKi+zxWHhRodbfHdc.
+Are you sure you want to continue connecting (yes/no)? 	
+
+
+
+https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files	
+
+
+https://tecadmin.net/convert-ppk-to-pem-using-command/
+
+https://linuxize.com/post/install-java-on-ubuntu-18-04/
+
+
+sudo -H /bin/bash
+cd /etc/apt
+do your editing of files
+exit
+
+
+
+keytool -import -alias ssl -keystore keystore.jks -file javaappperfomance.crt
+
+
+~/Desktop/checkout/Google_OR_tool/binary_or_tool/or-tools_ubuntu-18.04_v7.1.6720/
+or-tools_Ubuntu-18.04-64bit_v7.1.6720$
+ make run SOURCE=~/Desktop/checkout/Google_OR_tool/src/my_program.java
+
+
+cd ~/Desktop/checkout/Google_OR_tool/binary_or_tool/or-tools_ubuntu-18.04_v7.1.6720/or-tools_Ubuntu-18.04-64bit_v7.1.6720
+ make run SOURCE=~/Desktop/checkout/Google_OR_tool/src/my_program.java
+
+
+
+ make clean
+git pull
+./autogen.sh
+./configure --enable-debug
+make
+sudo make install
+
+cost is the same as distance, but in other problems the total cost might involve additional factors.
+
+Vehicle Routing Problem
+
+https://alexa.humantouch.com
+
+https://www.javacodegeeks.com/2012/09/simple-rest-client-in-java.html
+
+
+INTELLIJ IDEA COMMUNITY:
+$ sudo snap install intellij-idea-community --classic --edge
+INTELLIJ IDEA ULTIMATE:
+$ sudo snap install intellij-idea-ultimate --classic --edge
+
+
+----->to remove license file in intellij--rm -rf ~/.IdeaIC* ~/.IntelliJIdea* ~/.ideaLibSources
+
+
+
+
+Install java in ubuntu-->https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04
+
+   sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+
+
