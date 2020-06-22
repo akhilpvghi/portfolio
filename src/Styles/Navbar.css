@@ -13,6 +13,7 @@ i.fa.fa-database.color_n_size {
     color: rgb(172, 178, 189);
     font-size: 30px;
     padding-left: 8px;
+    cursor: pointer;
   }*
 
   i.fa.fa-circle.text-danger.status_size {

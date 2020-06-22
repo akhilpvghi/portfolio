@@ -23,6 +23,8 @@
 }
 
 
+
+
 /* for slider
  */
  * {box-sizing: border-box}
@@ -161,6 +163,8 @@ i.fa.fa-chevron-circle-left.fa-3x.floaty-left {
 .padd0{
   padding-left:0px !important; 
   padding-right:0px !important;
+  display: flex;
+  flex-direction: column;
 }
 
 .marg0{

@@ -1,15 +1,31 @@
 .addIn {
     margin: 18px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
 }
 
 .adjustWidth {
     width: 85%;
     margin-top: -10px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     border-radius: 50PX;
     height: 41px;
     padding-left: 11px;
+    border: 1px solid grey;
+}
+
+.adjustWidth:hover {
+    outline: 0;
+    border-color: #2684FF;
+    /* border-radius: 50PX; */
+    border: teal 1.5px dashed;
+}
+
+.adjustWidth:focus {
+    outline: 0;
+    border-color: #2684FF;
+    /* border-radius: 50PX; */
+    border: #2684FF 1.5px solid;
 }
 
 .adjustWidthForMultiSelect {

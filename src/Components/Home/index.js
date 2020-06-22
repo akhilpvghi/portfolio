@@ -93,7 +93,7 @@
          }else if(componentName.includes("Hobbi")){
             setComponent( <Hobbies />)   
          }else if(componentName.includes("Download")){
-            // if(getDownloadSubmenuData.length!=0) 3 commenting as it was doesnot loading download 
+            // if(getDownloadSubmenuData.length!=0) 3 commenting as it  doesnot loading download 
             setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
 }else{
 // setComponentName("Home")
@@ -283,11 +283,14 @@ isAuthenticatedreplyFromAuthComp */}
                      </p>
                   </div>
                   {/* mobNoMargin  MobLogoAdjust row oneDiv container icon style={{display: 'unset'}}*/}
-                  <div className="row oneDiv fixeed">
-                  <div className="col-sm-3 md-3 bottomm">
+                  <div className="row oneDiv ">
+                  {/* fixeed */}
+                  <div >
+                  {/* className="col-sm-3 md-3" */}
                         <img src={Phonelogo} alt="Logo" className="icon"/>
                   </div>   
-                  <div className="col-sm-9 md-9 rightt"> <h5 >+91-8799717085</h5></div>
+                  <div > <h5 >+91-8799717085</h5></div>
+                  {/* className="col-sm-9 md-9 rightt" */}
                   </div>
                </div>
             </div>
