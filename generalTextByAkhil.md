@@ -571,6 +571,12 @@ cout<<(*q)<<endl;
 }
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+to get multiple cursor in edit plus
+
+alt + hold and drag mouse
+
 
 //     for(iter_ii=vI2Matrix.begin(); iter_ii!=vI2Matrix.end(); iter_ii++)
 

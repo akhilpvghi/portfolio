@@ -16,7 +16,7 @@ i.fa.fa-database.color_n_size {
     cursor: pointer;
   }*
 
-  i.fa.fa-circle.text-danger.status_size {
+  i.fa.fa-circle.status_size {
     font-size: 20px;
     /* z-index: 9999999; */
 }

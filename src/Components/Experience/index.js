@@ -24,6 +24,8 @@ const Experience =() =>{
     //const [img, setImg] = useState()
 
     let contentExperience = (
+        <div className="col-md-8 sm-12">
+        <div className="card bg-primary mainContent">
         <div className="Experience">
             <h1>Experience</h1>
 
@@ -67,6 +69,7 @@ const Experience =() =>{
   <div class="panel-footer">Panel Footer</div>
 </div> */}
          </div>
+         </div></div>
 
 
     );

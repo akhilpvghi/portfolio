@@ -6,6 +6,7 @@
    import DP from '../../Assets/Images/B5216.jpg';
    import Phonelogo from '../../Assets/Images/sh_call_icon.png';
    import AboutMe from '../AboutMe';
+   import Bluff from '../bluff_master';
    import Experience from '../Experience';
    import Hobbies from '../Hobbies';
    import AppModal from '../helper/AppModal';
@@ -41,10 +42,10 @@
       const[textFieldObject,setTextFieldObject] =  useState({});
     const[columns,setColumns] =  useState({});
       // const[instaData,setInstaData] =  useState(null);
-      const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads"];
+      const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads","Games"];
       const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
       
-      const[observableData,getInTouchInfo,getDownloadMenuData,getDownloadSubmenuData,componentToLoadFromBackend]= useObservable();
+      const[observableData,getInTouchInfo,getDownloadMenuData,getDownloadSubmenuData,siteHandlerData]= useObservable();
       
       // let getBackendURL=()=>{
       //    console.log('backendCheckURLbackendCheckURL   ',backendCheckURL)
@@ -54,7 +55,7 @@
       
       useEffect(()=>{
          // console.log("observable lengthhhh ",observableData[0])
-         console.log("componentToLoadFromBackend ",componentToLoadFromBackend)
+         console.log("componentToLoadFromBackend ",siteHandlerData)
          
          // console.log("getInTouchInfo getInTouchInfo ",getInTouchInfo)
          // console.log("getDownloadMenuData getDownloadMenuData ",getDownloadMenuData)
@@ -92,6 +93,8 @@
             setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
          }else if(componentName.includes("Hobbi")){
             setComponent( <Hobbies />)   
+         }else if(componentName.includes("Games")){
+            setComponent( <Bluff urlToPlay={siteHandlerData.gamePlayURL}/>)   
          }else if(componentName.includes("Download")){
             // if(getDownloadSubmenuData.length!=0) 3 commenting as it  doesnot loading download 
             setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)
@@ -127,11 +130,11 @@ getContentFromHome()
 
 useEffect(() => {
    // effect
-   if (componentToLoadFromBackend!=""  && component==null) {
+   if (siteHandlerData!=""  && component==null) {
       // staticFnToLoadCompo(componentToLoadFromBackend);
-      setComponentName(componentToLoadFromBackend)
+      setComponentName(siteHandlerData.componentToLoad)
    }
-}, [componentToLoadFromBackend])
+}, [siteHandlerData])
 
 const getContentFromHome =()=>{
    return(<div>
@@ -218,7 +221,7 @@ isAuthenticatedreplyFromAuthComp */}
 {isAuthenticated ? <AppModal  textFieldObjectcolumns={textFieldObject} isClosedFromAppModal={isClosedFromAppModal} componentToLoad="table" messageToChild="Data Records"></AppModal>:null}
 
 
-{windowWidth>987||componentName.includes("Home")?
+{(windowWidth>987||componentName.includes("Home")) && !componentName.includes("Game") ?
 <div className="col-md-4 sm-12">
 
 
@@ -317,11 +320,8 @@ isAuthenticatedreplyFromAuthComp */}
 </div>
 </div>
 </div>:null}
-<div className="col-md-8 sm-12">
-<div className="card bg-primary mainContent">
+
 {component ? component : getContentFromHome()}
-</div>
-</div>
 <div className="col-md-12 pt-4">
 <Footer footerElements={FooterElementsFromHome}/>
 </div>

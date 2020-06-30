@@ -663,6 +663,28 @@ bcoz we dont trust api in js------>
 
 restful-react <RestfulProvider>----->package------->it has data,loading and error--------always use id-------->
 
+==========================================
+
+07:48:00
+
+we are ready gif====>
+
+7:59:00
+
+ms. becca====>
+
+react State
+
+state-conflict
+
+people===>the Newbie
+
+=======>The loyalist
+
+state===>setState or useState
+
+
+
 ______________________________________________________________________________
 
 sofie bitts---->our own environment--->
@@ -1001,3 +1023,21 @@ ______________________________________________________
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
+
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    delete property in object
+    
+    x={"a":"1","b":"2"}
+	delete x.a
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+to change state from its previous value
+
+setSeconds(seconds => seconds + 1);
+
+
+
+
+

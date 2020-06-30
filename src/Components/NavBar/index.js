@@ -93,7 +93,7 @@ import AppModal from '../helper/AppModal';
     {/* <i className="fa fa-database color_n_size" aria-hidden="true"></i>
     <i className={getBadgeClasses()} aria-hidden="true"></i> */}
      <i className={(!collapsed  ? "collapse " : "")+"fa fa-database color_n_size"} aria-hidden="true" onClick={()=>askForAdminLogin("InitiateLoginSessionForAdminMessage")}></i>
-    <i className={(!collapsed  ? "collapse " : "")+`fa fa-circle text-${props.statusfomBackend ? "success " : "danger "}`+`status_size`} aria-hidden="true"></i>
+    <i className={(!collapsed  ? "collapse " : "")+`fa fa-circle text-${props.statusfomBackend ? "success " : "danger "} status_size`} aria-hidden="true"></i>
   </div>
 
 

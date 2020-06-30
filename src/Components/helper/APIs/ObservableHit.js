@@ -27,7 +27,8 @@
       const [data, setData] = useState([])
       const [siteHandler, setSiteHandler] = useState({
          url: '',
-         componentToLoad: ''
+         componentToLoad: '',
+         gamePlayURL:''
       });
       const [getInfoDataSingleData, setGetInfoDataSingleData] = useState({});
       const [getInfoData, setGetInfoData] = useState([]);
@@ -116,7 +117,9 @@
                localStorage.setItem("formCreatedOn",calulateTimeInISOFormat);
                setSiteHandler({
                   url: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[0] + '/checkStatus',
-                  componentToLoad: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[1]
+                  componentToLoad: elemm2.gsx$sitehandler.$t.split('_siteHandler_')[1],
+                  gamePlayURL:elemm2.gsx$sitehandler.$t.split('_siteHandler_')[2]
+
                });
             }
             if (elemm2.gsx$fieldtwo.$t.includes('textfield')) {
@@ -187,5 +190,5 @@
    }, [count, siteHandler])
 
    //console.log("fgfggggggggggggggggggg",data)
-   return [data, getInfoData,getDownloadMenuData, getDownloadSubmenuData, siteHandler.componentToLoad];
+   return [data, getInfoData,getDownloadMenuData, getDownloadSubmenuData, siteHandler];
    }

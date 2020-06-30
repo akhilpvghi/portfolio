@@ -221,6 +221,8 @@ const GetInTouch = (props) => {
   };
 
   let content = (
+    <div className="col-md-8 sm-12">
+<div className="card bg-primary mainContent">
     <div className="col-md-12  padd0">
       {showModal ? (
         <AppModal
@@ -269,6 +271,7 @@ const GetInTouch = (props) => {
           </button>
         </div>
     </div>
+    </div></div>
   );
   return content;
 };
