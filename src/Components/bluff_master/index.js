@@ -41,13 +41,13 @@ import React, {
       let playerNumber = 0;
       let AccessURL="";
       console.log('creating one time socket');
-      AccessURL =`${window.location.href.split('//')[1].split(':')[0]}:1234`
+      AccessURL =`ws://${window.location.href.split('//')[1].split(':')[0]}:1234`
       if(props.urlToPlay!="")
       {
-          AccessURL= props.urlToPlay ;//urlToPlay;
+          AccessURL= `wss://${props.urlToPlay}` ;//urlToPlay;
           console.log("AccessURL AccessURL AccessURL",AccessURL)
       }
-      socket.current = new WebSocket(`ws://${AccessURL}`);
+      socket.current = new WebSocket(`${AccessURL}`);
       socket.current.onopen = () => console.log("ws opened");
       socket.current.addEventListener('message', function (event) {
         if (JSON.parse(event.data).type === "users") {
@@ -318,12 +318,13 @@ import React, {
         </ul>
           </div>
       {my_cards.length!=0?(
-      <div className="mt-3">
+      <div className="mt-3 test" >
         <label>Claim to throw card</label>
         {card_to_throw.length!==0?<h3>Total card selected {card_to_throw.length}</h3>:null}
           
           <Select
-            className="adjustWidthForMultiSelect"
+          
+            className=" adjustWidthForMultiSelect"
             name="claimedCard"
             // value={[userInput.claimedCard]}
             placeholder="Select an option to claim card that you are throwing (You could bluff also)"

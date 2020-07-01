@@ -690,9 +690,34 @@
 }
 
 /* //added by akhil above one */
-.pt-4, .py-4 {
+/* .pt-4, .py-4 {
     z-index: -99999 !important;
+} */
+
+/* .Select.is-open { position: relative; z-index: 1000 !important; } */
+
+/* .css-1n7v3ny-option {
+    z-index: 99999 !important;
 }
 
 
+
+.Select.is-focused {
+    z-index: 5000;
+  } */
 /* //added by akhil above one */
+
+
+.mt-3.test {
+    width: 37em;
+}
+
+@media (max-width: 576px){
+.mt-3.test {
+    width: 14em;
+}
+}
+div.css-4ljt47-MenuList{
+    z-index: 99999 !important;
+    height: 16em !important;
+}
