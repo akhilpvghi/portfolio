@@ -137,9 +137,14 @@ useEffect(() => {
 }, [siteHandlerData])
 
 const getContentFromHome =()=>{
-   return(<div>
+   return(
+      <div className="col-md-8 sm-12">
+      <div className="card bg-primary mainContent">
+   <div>
       <h1>Home</h1>
-       </div>) 
+       </div>
+       </div></div>
+       ) 
 }
 
 

@@ -44,7 +44,7 @@ import React, {
       AccessURL =`ws://${window.location.href.split('//')[1].split(':')[0]}:1234`
       if(props.urlToPlay!="")
       {
-          AccessURL= `wss://${props.urlToPlay}` ;//urlToPlay;
+          AccessURL= `${props.urlToPlay}` ;//urlToPlay;
           console.log("AccessURL AccessURL AccessURL",AccessURL)
       }
       socket.current = new WebSocket(`${AccessURL}`);
@@ -93,7 +93,7 @@ import React, {
                 "card": card,
                 "isSelected": false
               };
-              console.log(`LOG 1 ===> total card coming for current player ${JSON.stringify(card_status)}`)
+              // console.log(`LOG 1 ===> total card coming for current player ${JSON.stringify(card_status)}`)
               setMy_cards(data => [...data, card_status])
             })
             }
@@ -140,7 +140,7 @@ import React, {
     }
   
     let findDesign = (ele, isIcon) => {
-      let alpha = ele.split("");
+      let alpha = ele.split("_")[0].split("");
       if (alpha.length !== 3)
         return getIconContent(alpha, 1, isIcon)
       else
@@ -182,7 +182,7 @@ import React, {
     }
   
     let findno = (ele) => {
-      let alpha = ele.split("");
+      let alpha = ele.split("_")[0].split("");
       if (alpha.length !== 3)
         return alpha[0];
       else
@@ -222,9 +222,9 @@ import React, {
   
   
     let authenticateAdmin = () => {
-      if (userInput.userName === "8799717085" && playerIdentity != null) {
+      if (userInput.userName.includes("8799717085") && playerIdentity != null) {
         setUserInput({["userName"]: "Akhil"})
-        socket.current.send(`{"action": "plus","playerNumber":"${playerIdentity}","userType":"admin","userName":"Akhil"}`);
+        socket.current.send(`{"action": "plus","playerNumber":"${playerIdentity}","userType":"admin","userName":"Akhil","no_of_deck":"${userInput.userName.split("_")[1]}"}`);
         setUserInput({
           ["status"]: "ready_to_go"
         })

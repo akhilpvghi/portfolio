@@ -719,5 +719,9 @@
 }
 div.css-4ljt47-MenuList{
     z-index: 99999 !important;
-    height: 16em !important;
+    height: 14em !important;
+}
+
+.row {
+    justify-content: center;
 }

@@ -1,20 +1,9 @@
-const columns = [{
-        //   Header: 'Name',
-          Header: () => (
-            <span>
-             <h3>Akhil</h3>
-            </span>
-          ),
-          accessor: 'name' // String-based value accessors!
-        }, {
-          Header: 'Age',
-          accessor: 'age',
-          Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-        }, {
-          id: 'friendName', // Required because our accessor is not a string
-          Header: 'Friend Name',
-          accessor: d => d.friend.name // Custom value accessors!
-        }, {
-          Header: props => <span>Friend Age</span>, // Custom header components!
-          accessor: 'friend.age'
-        }]
+
+
+UNDERSTANDING OF BLUFF_MASTER
+
+---->if more than one no of deck then filtering while selction of card is complicated as we use no ID with card identification
+
+
+01-02-2020===>now cards are ging to client in this format AD_1, 9D_4 etc
+
