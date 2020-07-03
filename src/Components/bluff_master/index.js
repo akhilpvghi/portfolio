@@ -41,7 +41,7 @@ import React, {
       let playerNumber = 0;
       let AccessURL="";
       console.log('creating one time socket');
-      AccessURL =`ws://${window.location.href.split('//')[1].split(':')[0]}:1234`
+      AccessURL =`ws://akhil-bluff-code-bluff-backend.apps.us-west-1.starter.openshift-online.com/`
       if(props.urlToPlay!="")
       {
           AccessURL= `${props.urlToPlay}` ;//urlToPlay;
