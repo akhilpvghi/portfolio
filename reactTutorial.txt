@@ -802,6 +802,24 @@ cart.push(element);
 
  ______________________________________________________________________________
 
+
+
+
+to run reacts code on specific port in ubuntu
+
+ "scripts": {
+    "start": "PORT=8080 react-scripts start",
+.
+.
+.
+    }
+
+in ubuntu system
+
+
+
+
+__________________________________________________________________________________
  useReducer uses.....to add multiple input element into states 
 
  const [userInput, setUserInput] = useReducer(

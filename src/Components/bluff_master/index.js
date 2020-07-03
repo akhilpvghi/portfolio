@@ -48,6 +48,7 @@ import React, {
           console.log("AccessURL AccessURL AccessURL",AccessURL)
       }
       socket.current = new WebSocket(`${AccessURL}`);
+      // ,'chat-1.0'
       socket.current.onopen = () => console.log("ws opened");
       socket.current.addEventListener('message', function (event) {
         if (JSON.parse(event.data).type === "users") {
