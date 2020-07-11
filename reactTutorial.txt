@@ -150,6 +150,12 @@ jest looks for .test file in src
 
 11.05.2019
 ---------->npm i -g create-react-app
+====>no more in useNOW
+
+$ npx create-react-app my-app
+$ cd my-app
+
+
 -------->create-react-app app_name
 ---------->add roaming/npm path in path and system variables 
 
@@ -563,6 +569,8 @@ Regular Expression
 ^(?:Male|Female)$
 ^(?!\s*$).+
 
+^[0-9]+(?:\.[0-9]+)?$    ====>matches any positive integer and float value 
+
 
 https://regex101.com/    -------------->to check regEx
 
@@ -844,6 +852,39 @@ ________________________________________________________________________________
      <div className="col-md-12 addIn"><label className="fixedDisplay">Email:</label><input className="adjustWidth" name="email" value={userInput.email} onChange ={handleChange} type="text"/></div>
                
 another linkkkkk---->https://levelup.gitconnected.com/clean-components-with-react-hooks-part-2-41b92f64f8b3
+   
+   
+   input unfocusses onChange
+   24
+
+
+1
+it is because you are rendering the form in a function inside render().
+
+Every time your state/prop change, the function returns a new form. it caused you to lose focus.
+
+Try putting what's inside the function into your render directly.
+
+       <main id="main" role="main">
+            <div className="container-fluid">
+                <FormPostSingle />
+            </div>
+        </main>
+====>
+
+       <main id="main" role="main">
+            <div className="container-fluid">
+                <form onSubmit={onSubmit}>
+                    <InputText name="title" label="Title" placeholder="Enter a title" onChange={onChange} value={valueTitle} />
+                    <InputSubmit name="Save" />
+                </form>
+            </div>
+        </main>
+
+        https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character
+
+
+   
     ____________________________________________________________________________________________________________________________
 
 style={{ border: "1px solid red" }}>
@@ -1012,6 +1053,7 @@ Parent:
 <div className="col-sm-9">
      <SelectLanguage onSelectLanguage={this.handleLanguage} /> 
 </div>
+
 Child:
 
 handleLangChange = () => {
@@ -1055,7 +1097,62 @@ to change state from its previous value
 
 setSeconds(seconds => seconds + 1);
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+to run json-server
+
+json-server --watch db.json
+================================
+First, you need to check json-server installed globally or not. or you can install it globally by
+
+npm install -g json-server
+If you install it locally in your project, use npx to run it
+
+npx json-server --watch db.json
+
+npx json-server --watch db.json --port 3001
+
+=====>post is added by default , if using post request
+
+===>everythong depends on id
+_________________________________________________________________________________
+
+
+react-table
+
+basic example
+https://codesandbox.io/s/github/tannerlinsley/react-table/tree/master/examples/basic
+
+_________________________________________________________________________________
+
+to execute multiple commands simultaneously
+
+npm i --save concurrently
+
+"scripts": {
+    "start": "react-scripts start",
+    "dev": "concurrently \"npm run start\" \"npx json-server --watch db.json --port 3001\""
+}
+
+https://medium.com/@joelazarz/using-concurrently-with-json-server-and-your-react-app-3d07487acc50
+
+_________________________________________________________________________________
+
+<div
+  contentEditable='true'
+  onInput={e => console.log('Text inside div', e.currentTarget.textContent)}
+>
+Text inside div
+</div>
+
+_________________________________________________________________________________
+
+to refresh page using js
+
+<button onClick={() => window.location.reload(false)}>Click to reload!</button>
 
 
 
 
+https://upmostly.com/tutorials/how-to-refresh-a-page-or-component-in-react
+
+______________________________________________________________________________
