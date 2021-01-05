@@ -119,6 +119,117 @@ ________________________________________________________________________________
 
 https://www.freecodecamp.org/news/cjn-google-sheets-as-json-endpoint/-----to use spreadsheet as json
 
+Section 1: Creating a Google Sheet
+Step 1:
+
+Go to Google Sheets
+
+Step 2:
+
+Create a new spreadsheet
+
+
+Section 2: Publishing your Google Sheets to the web
+Note: New Share Dialog Box update as of 5/13/2020, located after Step 2.
+
+Step 1:
+
+Click File > Publish to the web…
+
+
+Step 2:
+
+Click Publish, then OK
+
+
+Step 3:
+
+No need to do anything here
+
+
+UPDATE: 5/13/2020 - New Share Dialog Box
+Step 1:
+Click Share
+
+
+Step 2:
+
+Click "Change to anyone with the link"
+
+Step 3:
+
+Click "Done"
+
+
+Section 4: Using your Google Sheets as JSON endpoint
+Step 1:
+
+Copy the template URL and paste in the address bar:
+
+https://spreadsheets.google.com/feeds/cells/YOURGOOGLESHEETCODE/SHEETPAGENUMBER/public/full?alt=json
+
+Step 2:
+
+Go to your opened Google Sheets and check the address bar
+
+
+
+Google Sheets url
+
+
+Google Sheets code
+
+
+Step 3:
+
+Go to the template URL and replace
+
+YOURGOOGLESHEETCODE with 1ifbWzueslEP5-_ysP6gg7o_NaHQmqF8LlXBfStCwFMs
+SHEETPAGENUMBER to 1
+Step 4:
+
+Retrieve JSON URL
+
+https://spreadsheets.google.com/feeds/cells/1ifbWzueslEP5-_ysP6gg7o_NaHQmqF8LlXBfStCwFMs/1/public/full?alt=json
+
+
+// feed can be list or cells
+Section 5: Making your Google Sheets public (for collaboration and data entry)
+Step 1:
+On the top right, click Share
+
+
+
+Step 2:
+
+Add a name, click Save
+
+Step 3:
+
+Click Advanced
+
+Step 4:
+
+Click Change…
+
+Step 5:
+
+Click On — Public on the web, then Save
+
+
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vTWO49TqqUT7ulGVg23yr_OezYGD-JMvhGqaHrGfDJLhSHbmck2yMni4ECArrdhIewXjx6O1hvHgFyu/pubhtml
+
+https://docs.google.com/spreadsheets/d/1cPSHzaim1l0qO1ygazRWO6OHWZcrDU9kiS1Ga6h9CNs/edit?usp=sharing
+
+
+
+https://spreadsheets.google.com/feeds/list/1cPSHzaim1l0qO1ygazRWO6OHWZcrDU9kiS1Ga6h9CNs/1/public/full?alt=json
+
+===============================================================================================================================
+
+
+
    https://json-csv.com/-----json to excel converter
 
    https://jsonformatter.org/---json beautifier and viewer
@@ -597,4 +708,42 @@ https://www.thegeekstuff.com/2014/02/cpp-stl-vector/
 
 
 http://www.yolinux.com/TUTORIALS/LinuxTutorialC++STL.html
+
+
+
++=================================================================================================
+
+canf will not consume \n so it will be taken by the gets which follows the scanf. flush the input stream after scanf like this.
+
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+   int a;
+   char b[20];
+
+   printf("Input your ID: ");
+   scanf("%d", &a);
+   fflush(stdin);
+   printf("Input your name: ");
+   gets(b);   
+
+   printf("---------");
+
+   printf("Name: %s", b);   
+
+   system("pause");
+   return 0;
+}
+
+______________________________________________________________________________________________________________________________________
+
+change location in powershell
+
+Set-Location "Q:\My Test Folder"
+
+
+______________________________________________________________________________________________________________________________________
+
+
 

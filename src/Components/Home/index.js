@@ -6,7 +6,7 @@
    import DP from '../../Assets/Images/B5216.jpg';
    import Phonelogo from '../../Assets/Images/sh_call_icon.png';
    import AboutMe from '../AboutMe';
-   import Bluff from '../bluff_master';
+   import Games from '../Games';
    import Experience from '../Experience';
    import Hobbies from '../Hobbies';
    import AppModal from '../helper/AppModal';
@@ -94,7 +94,8 @@
          }else if(componentName.includes("Hobbi")){
             setComponent( <Hobbies />)   
          }else if(componentName.includes("Games")){
-            setComponent( <Bluff urlToPlay={siteHandlerData.gamePlayURL}/>)   
+            setComponent( <Games />)   
+            // Bluff urlToPlay={siteHandlerData.gamePlayURL}
          }else if(componentName.includes("Download")){
             // if(getDownloadSubmenuData.length!=0) 3 commenting as it  doesnot loading download 
             setComponent(<Downloads getDownloadMenuData={getDownloadMenuData} getDownloadSubmenuData={getDownloadSubmenuData}/>)

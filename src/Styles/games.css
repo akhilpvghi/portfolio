@@ -1,0 +1,18 @@
+.game_individual_box {
+    border: solid 1px;
+    padding: 79px;
+    border-radius: 54px;
+    background-color: steelblue;
+}
+
+.game_big_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 47px;
+}
+
+
+.top_level_game_class {
+    width: -webkit-fill-available;
+}

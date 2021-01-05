@@ -5,7 +5,7 @@ import React, {
     useReducer
   } from 'react';
 //   import './App.css';
-  import '../../Styles/card.css'
+  import '../../../Styles/card.css'
   import Select from "react-select";
   
   

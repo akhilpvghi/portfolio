@@ -5,23 +5,23 @@ export const useHttp = (url) =>{
   const [data,setData] = useState([])
   
   
-  useEffect(() => {
-    axios.get(url)
-    .then((res)=>{
-            if(!url.includes('spre'))
-            setData(res.data.data)
-            else
-           {
-             setData(res.data);
-            // setData();
-           } 
-    } ).catch((err)=>{console.log('insta error',err)
+  // useEffect(() => {
+  //   axios.get(url)
+  //   .then((res)=>{
+  //           if(!url.includes('spre'))
+  //           setData(res.data.data)
+  //           else
+  //          {
+  //            setData(res.data);
+  //           // setData();
+  //          } 
+  //   } ).catch((err)=>{console.log('insta error',err)
   
-    // setData();
-  })
+  //   // setData();
+  // })
     
         
-  }, [url,data.length])
+  // }, [url,data.length])
 
   
 
