@@ -142,7 +142,7 @@ const getContentFromHome =()=>{
       <div className="col-md-8 sm-12">
       <div className="card bg-primary mainContent">
    <div>
-      <h1>Home</h1>
+      <h1 className="set_in_middle">Home</h1>
        </div>
        </div></div>
        ) 

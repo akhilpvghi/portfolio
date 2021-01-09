@@ -27,7 +27,7 @@ const Experience =() =>{
         <div className="col-md-8 sm-12">
         <div className="card bg-primary mainContent">
         <div className="Experience">
-            <h1>Experience</h1>
+            <h1 class="set_in_middle">Experience</h1>
 
           
              {

@@ -198,3 +198,10 @@ height: 180px;
     /* font-size: x-large; */
 }
 }
+
+.set_in_middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 22px;
+}

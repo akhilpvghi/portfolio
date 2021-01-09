@@ -281,7 +281,7 @@ don't rewrite index.html press (N)
 then---> command----->firebase deploy
 
 OR
-At the time of deploy..
+At the time of deploy..in firebase.json
 
 {
   "hosting": {

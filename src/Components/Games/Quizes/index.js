@@ -4,8 +4,12 @@ import React, {
     useRef,
     useReducer
   } from 'react';
+  import "../../../Styles/Common.css";
   import '../../../Styles/quizes.css'
+  import correct_ans from '../../../Assets/audio/correct.mp3';
+  import wrong from '../../../Assets/audio/wrong.mp3';
 import Axios from 'axios';
+
 
 const Quizes =(props)=>{
     const [all_word_n_meaning, set_all_word_n_meaning] = useState([]);
@@ -150,7 +154,7 @@ let setNewQuestion=()=>{
 let content =(
     <div className="">
         
-        <h2>Quizes</h2>
+        <h2 className="set_in_middle">Quizes</h2>
         <div class="scp-quizzes-main">
         <div className="scp-quizzes-data">
         <h3> {quiz.word} : Meaning ?</h3>
@@ -161,6 +165,8 @@ let content =(
          return (<div className="a">
           <input type="radio" name="question2" />
          <label key={index} className={(ele.isCorrectAns==null ?"": (ele.isCorrectAns ?"correct_ans": "wrongans"))} onClick={() => checkForAns(quiz.word,ele.value,index)}>{ele.value} {ele.isCorrectAns}</label><br/>
+         {/* {ele.isCorrectAns && (ele.isCorrectAns!=null) ? : <audio autoPlay src={wrong} preload="auto"></audio>} */}
+         {(ele.isCorrectAns==null ?"": (ele.isCorrectAns ?<audio autoPlay src={correct_ans} preload="auto"></audio>: <audio autoPlay src={wrong} preload="auto"></audio>))}
          </div>)
     }) :(<h2>nothing</h2>)}
 
