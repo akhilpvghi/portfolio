@@ -263,7 +263,11 @@ to create build---npm run build---->this will create build folder with needed bu
 
 
 
-then init command-------->command----->firebase init--->then confirm it by pressing (Y)---->then selesct hosting 
+then init command-------->command----->
+
+firebase init
+
+--->then confirm it by pressing (Y)---->then selesct hosting 
 by arrow key and select by pressing space bar---then hit enter----->
 
 if  Error: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
@@ -278,8 +282,6 @@ overwrite 404.html----->N
 don't rewrite index.html press (N)
 
 
-then---> command----->firebase deploy
-
 OR
 At the time of deploy..in firebase.json
 
@@ -289,8 +291,10 @@ At the time of deploy..in firebase.json
     "public": "public",
     ...
   }
+
 }
 
+then---> command----->firebase deploy
 
 firebase projects:list
 

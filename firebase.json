@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "site": "akhilpvghi",
     "public": "build",
+    "site": "akhilpvghi",
     "ignore": [
       "firebase.json",
       "**/.*",
