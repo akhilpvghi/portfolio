@@ -257,6 +257,7 @@ npm install -g firebase-tools----to install firebase tool
 
 
 login to firebase---command----->firebase login---->
+logout to firebase ==>firebase logout
 
 to create build---npm run build---->this will create build folder with needed build
 
