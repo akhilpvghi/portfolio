@@ -1,15 +1,15 @@
 {
   "projects": {
-    "default": "portfolio-fd8ac"
+    "default": "cdac-noida-exams"
   },
   "targets": {
-    "akhilpvghi": {
+    "cdacnoidaexam": {
       "hosting": {
-        "akhil": [
-          "akhilpvghi"
+        "cdacnoidaexam": [
+          "cdac-noida-exams"
         ],
         "portfolio": [
-          "portfolio-fd8ac"
+          "cdac-noida-exams"
         ]
       }
     }

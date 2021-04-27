@@ -42,7 +42,7 @@
       const[textFieldObject,setTextFieldObject] =  useState({});
     const[columns,setColumns] =  useState({});
       // const[instaData,setInstaData] =  useState(null);
-      const navbarElementsFromHome=["Home", "About me", "Experience" , "Hobbies" , "Get in touch", "Downloads","Games"];
+      const navbarElementsFromHome=["Home",  "Exam", ,"MCQ"];
       const FooterElementsFromHome=["Facebook", "Instagram", "LinkedIn" , "Twitter" ];
       
       const[observableData,getInTouchInfo,getDownloadMenuData,getDownloadSubmenuData,siteHandlerData]= useObservable();
@@ -89,11 +89,11 @@
             setComponent(<AboutMe get_in_touch_info={getInTouchInfo}/>)
          }else if(componentName.includes("Exper")){
             setComponent(<Experience />)
-         }else if(componentName.includes("Get")){
+         }else if(componentName.includes("Exam")){
             setComponent(<GetInTouch get_in_touch_info={getInTouchInfo}/>)
          }else if(componentName.includes("Hobbi")){
             setComponent( <Hobbies />)   
-         }else if(componentName.includes("Games")){
+         }else if(componentName.includes("MCQ")){
             setComponent( <Games />)   
             // Bluff urlToPlay={siteHandlerData.gamePlayURL}
          }else if(componentName.includes("Download")){
@@ -142,8 +142,9 @@ const getContentFromHome =()=>{
       <div className="col-md-8 sm-12">
       <div className="card bg-primary mainContent">
    <div>
-      <h1 className="set_in_middle">Home</h1>
+      <h1 className="set_in_middle"></h1>
        </div>
+       <h1 className="set_in_middle">This portal is to be designed for examination purpose.</h1>
        </div></div>
        ) 
 }
@@ -152,17 +153,6 @@ const getContentFromHome =()=>{
 
 
 
-const showModalfn=(componentToLoad)=>{
-   if(componentToLoad.includes("gall")){
-      setChildMessage('How Do you Like them ?');
-      setModalComponent('gallery');
-   }else if(componentToLoad.includes("tab")){
-      setModalComponent('table');
-   }
-   setShowModal(true);
-console.log("isshowmodal true")
-
-}
 
 
    
@@ -171,13 +161,6 @@ console.log("isshowmodal true")
    
 
 
-
-useEffect(()=>{
-     if(followingData.length!=0){
-         setFollowing(followingData.counts.follows)
-         setFollowers(followingData.counts.followed_by) 
-   }
-},followingData.length)
 
 useEffect(()=>{
    let InstaPhoto=[];
@@ -227,110 +210,8 @@ isAuthenticatedreplyFromAuthComp */}
 {isAuthenticated ? <AppModal  textFieldObjectcolumns={textFieldObject} isClosedFromAppModal={isClosedFromAppModal} componentToLoad="table" messageToChild="Data Records"></AppModal>:null}
 
 
-{(windowWidth>987||componentName.includes("Home")) && !componentName.includes("Game") ?
-<div className="col-md-4 sm-12">
-
-
-<div className="rotatingFrontCard">
-<div className="card-container">
-   <div className="card">
-      <div className="front" >
-      {/* style={{display : "none"}} */}
-      {/* <i className="fa fa-sync" /> */}
-      {/* <i className="fa fa-sync"></i> */}
-      {/* <i class="fa fa-sync"></i> */}
-         <div className="cover" >
-         <i className="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            {/* <img src="https://www.clipartsgram.com/image/129556292-kyz84k3.jpg"/> */}
-            <div className="profilePicture" >
-               {/* <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/> */}
-            </div>
-         </div>
-         <div className="user " >
-         {/* style={{display : "none"}} */}
-            <img src={DP} alt="Logo" className="container rounded-circle dpDimension"/>
-         </div>
-         <div className="content" >
-         {/* style={{display : "none"}} */}
-            <div className="main">
-               <h3 className="name">Akhil Kumar</h3>
-               <p className="profession">Software Engineer</p>
-            </div>
-         </div>
-      </div>
-      <div className="back">
-         <div className="header">
-            <h5 className="motto"></h5>
-         </div>
-         <div className="content">
-            <div className="main">
-               <h4 className="text-center">Job Description</h4>
-               <p className="text-center">HTML5, CSS3, JavaScript, TypeScript, Angular2+, ReactJs</p>
-               <div className="stats-container">
-                  <div className="stats cursrPointer" onClick={()=>{showModalfn('table')}}>
-                     {(followers==null) ?<div className="spinner-border text-secondary" role="status">
-</div> :
-                     <h4>{followers}</h4>}
-                     <p>   
-                        Followers
-                     </p>
-                  </div>
-                  <div className="stats cursrPointer">
-                  {(following==null) ?<div className="spinner-border text-secondary" role="status">
-</div> :
-                     <h4>{following}</h4>}
-                     <p>
-                        Following
-                     </p>
-                  </div>
-                  <div className="stats cursrPointer" onClick={()=>{showModalfn('gallery')}}>
-                  {(gallerySize==null) ?<div className="spinner-border text-secondary" role="status">
-</div> :
-                     <h4>{gallerySize}</h4>}
-                     <p>
-                        Gallery
-                     </p>
-                  </div>
-                  {/* mobNoMargin  MobLogoAdjust row oneDiv container icon style={{display: 'unset'}}*/}
-                  <div className="row oneDiv ">
-                  {/* fixeed */}
-                  <div >
-                  {/* className="col-sm-3 md-3" */}
-                        <img src={Phonelogo} alt="Logo" className="icon"/>
-                  </div>   
-                  <div > <h5 >+91-8799717085</h5></div>
-                  {/* className="col-sm-9 md-9 rightt" */}
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div className="footer">
-            <div className="social-links text-center">
-            <Link to="//facebook.com/adgrt" target="_blank"  className="facebook"   >
-               <i className="fa fa-facebook fa-fw"></i>
-</Link>
-<Link to="//linkedin.com/in/akhil-kumar-91097566" target="_blank"  className="li-ic"   >
-{/* https://www.linkedin.com/in/akhil-kumar-91097566 */}
-  <i className="fa fa-linkedin fa-fw"> </i>
-{/* </a> */}
-</Link>
-              {/* <a href="http://deepak646.blogspot.in/" className="google"><i className="fa fa-google-plus fa-fw"></i></a> */}
-               <Link to="//twitter.com/akhilpvghi" target="_blank" className="twitter">
-  <i className="fa fa-twitter fa-fw"> </i>
-  </Link>
-            </div>
-         </div>
-         
-      </div>
-   </div>
-</div>
-</div>
-</div>:null}
 
 {component ? component : getContentFromHome()}
-<div className="col-md-12 pt-4">
-<Footer footerElements={FooterElementsFromHome}/>
-</div>
 </div>)  
 
 return content;

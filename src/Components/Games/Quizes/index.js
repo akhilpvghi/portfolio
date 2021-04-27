@@ -24,8 +24,8 @@ const Quizes =(props)=>{
     //     {}        m
     //   );
     useEffect(() => {
-       Axios.get('https://spreadsheets.google.com/feeds/list/1cPSHzaim1l0qO1ygazRWO6OHWZcrDU9kiS1Ga6h9CNs/1/public/full?alt=json')
-            .then((res)=>{
+       Axios.get('https://spreadsheets.google.com/feeds/list/1Hf0IxmK5vCzNFNQXUGfc3RS6ajFioLiW1escKh8bV94/1/public/full?alt=json')
+       .then((res)=>{
 
                 console.log('response from quiz',res.data['feed']['entry'])
                 if(res.data['feed']['entry'])
@@ -154,7 +154,7 @@ let setNewQuestion=()=>{
 let content =(
     <div className="">
         
-        <h2 className="set_in_middle">Quizes</h2>
+        <h2 className="set_in_middle">MCQ</h2>
         <div class="scp-quizzes-main">
         <div className="scp-quizzes-data">
         <h3> {quiz.word} : Meaning ?</h3>
@@ -176,13 +176,13 @@ let content =(
           >
             Next
           </button>
-
+{/* 
 <button
             className="primary fixedDisplay adjustWidth mt-15"
             onClick={() => goToGames()}
           >
             BACK
-          </button>
+          </button> */}
 
     {/* <input type="radio" name="question2" />
        <label className="worngans">1. #read&lt;file></label><br/>
