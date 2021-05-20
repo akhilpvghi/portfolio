@@ -10,6 +10,7 @@ const GetInTouch = (props) => {
   const [modalComponent, setModalComponent] = useState("gallery");
   const [childMessage, setChildMessage] = useState("null");
   const [showModal, setShowModal] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const [infoDataFromObserval, setInfoDataFromObserval] = useState([]);
   const [textFieldObject, setTextFieldObject] = useState({});
   const [textFieldObjectForOptions, setTextFieldObjectForOptions] = useState(
@@ -78,7 +79,9 @@ const GetInTouch = (props) => {
   // let isClose = true;
 
   const isClosedFromAppModal = (data_from_appModal) => {
-    if (data_from_appModal.includes("clos")) setShowModal(false);
+    if (data_from_appModal.includes("clos")) 
+    setShowModal(false);
+    setShowWarning(false)
   };
 
   const handleMultiChange = (option, mesg) => {
@@ -164,6 +167,13 @@ const GetInTouch = (props) => {
     );
   };
 
+  let handlePaste =(evt) =>{
+    const name = evt.target.name;
+    setUserInput({ [name]: "" });
+    console.log("paste is not allowed");
+    setShowWarning(true);
+  }
+
   let saveToProfileData = (userInput) => {
     let url_system = "";
 
@@ -220,6 +230,15 @@ const GetInTouch = (props) => {
     // },0)
   };
 
+  let warningBox = (
+
+     <AppModal componentToLoad="NoComponent" isClosedFromAppModal={isClosedFromAppModal}  messageToChild="Warning!!"></AppModal>
+    // {showModal? <AppModal  isClosedFromAppModal={isClosedFromAppModal} componentToLoad={modalComponent} messageToChild={childMessage}></AppModal>:null}
+    // isAuthenticatedEventToAuth={funcToFindIsUserAuthenticated} isClosedFromAppModal={isClosedFromAppModal} 
+   
+)
+
+
   let content = (
     <div className="col-md-8 sm-12">
 <div className="card bg-primary mainContent">
@@ -230,6 +249,9 @@ const GetInTouch = (props) => {
           componentToLoad={modalComponent}
           messageToChild={childMessage}
         ></AppModal>
+      ) : null}
+
+{showWarning ? ( warningBox
       ) : null}
 
       
@@ -246,6 +268,7 @@ const GetInTouch = (props) => {
                     name={ele.textfield}
                     value={userInput.textfield}
                     onChange={handleChange}
+                    onPaste={handlePaste}
                     type="text"
                   />
                   <p className="addIner blinking">{error[ele.textfield]} </p>

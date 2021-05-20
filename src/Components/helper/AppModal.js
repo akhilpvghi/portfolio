@@ -84,6 +84,18 @@ import Auth from './Auth';
           this.setState({componentToLoad: <TableCompo columns={this.props.textFieldObjectcolumns}></TableCompo>})
         }else if(this.props.componentToLoad.includes('Auth')){
           this.setState({componentToLoad: <Auth isAuthenticatedEventToAuth={this.funcToFindIsUserAuthenticated}></Auth>})
+        }else if(this.props.componentToLoad.includes('NoComponent')){
+          this.setState({componentToLoad: ( <div className="a">
+          <div className="col-md-12 set_in_middle">
+                
+                 <p className="addIner blinking set_in_middle">Event is captured (copy/paste keys are used).
+                 <br></br>
+                 <br></br>
+                                                                A notification will be sent to Exam cell.</p> 
+                 {/* <div className="col-md-12 addIn"><button className="fixedDisplay adjustWidth mt-15" >Close</button></div> */}
+                 {/* onClick={} */}
+          </div>
+          </div>)})
         }else {
           this.setState({isModalBodyRequire : false});
           // this.setState({componentToLoad: 
